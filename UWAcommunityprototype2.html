@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Message Board</title>
+    <link rel="stylesheet" href="UWAstyles2.css">
+</head>
+<body>
+    <div class="container">
+        <img src="community_logo.jpg" alt="Logo" id="logo", width="200px", class="center">
+        <h1>Local Community Message Board</h1>
+        <div id="authForm">
+            <h2>Create an Account</h2>
+            <input type="text" id="usernameInput" placeholder="Username">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button id="signupButton">Sign Up</button>
+        </div>
+        <div id="signInForm"></div>
+            <h2>Already have an account? Sign In</h2>
+            <input type="text" id="usernameInput" placeholder="Username">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button id="signInButton">Sign In</button>
+        </div>
+        <form id="taskForm" style="display: none;">
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <button type="submit">Add Task</button>
+        </form>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script src="UWAscript2.js"></script>
+</body>
+</html>
