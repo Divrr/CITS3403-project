@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: "uwa-banner.png";
+    background-image: url('uwa-banner.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
