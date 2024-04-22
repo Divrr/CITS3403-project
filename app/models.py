@@ -23,6 +23,7 @@ class User(db.Model):
     updated_at   : so.Mapped[datetime]      = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
 
     requests     : so.WriteOnlyMapped['Request'] = so.relationship(back_populates='user')
+    offers       : so.WriteOnlyMapped['Offer']   = so.relationship(back_populates='user')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -48,7 +49,34 @@ class Request(db.Model):
     updated_at   : so.Mapped[datetime]      = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
 
 
-    user         : so.Mapped[User] = so.relationship(back_populates='requests')
+    user         : so.Mapped[User]             = so.relationship(back_populates='requests')
+    offers       : so.WriteOnlyMapped['Offer'] = so.relationship(back_populates='request')
+
+
+    def __repr__(self):
+        return '<Request {}: "{}">'.format(self.title, self.description)
+    
+class Offer(db.Model):
+    # Offers Table:
+    # id (Primary Key)
+    # request_id (Foreign Key from Requests)
+    # user_id (Foreign Key from Users)
+    # details
+    # created_at (indexed)
+    # updated_at
+
+    id           : so.Mapped[int]           = so.mapped_column(primary_key=True)
+    request_id   : so.Mapped[int]           = so.mapped_column(sa.ForeignKey(Request.id), index=True)
+    user_id      : so.Mapped[int]           = so.mapped_column(sa.ForeignKey(User.id), index=True)
+
+    description  : so.Mapped[str]           = so.mapped_column(sa.String(256))
+    status       : so.Mapped[str]           = so.mapped_column(sa.Enum('Pending', 'Accepted', 'Rejected', 'Withdrawn'), nullable=False, default='Pending')
+
+    created_at   : so.Mapped[datetime]      = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
+    updated_at   : so.Mapped[datetime]      = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
+
+    user         : so.Mapped[User]    = so.relationship(back_populates='offers')
+    request      : so.Mapped[Request] = so.relationship(back_populates='offers')
 
 
     def __repr__(self):
