@@ -9,7 +9,8 @@ body {
     width: 100%;
     padding: 10px;
     border: solid 15px rgb(168, 236, 196);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Keeps contents within the block */
 }
 
 .fixed_heading {
@@ -17,13 +18,19 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+.welcome_message {
+    margin: 0 auto; /* Centers the text horizontally */
+    font-size: 1.2em; /* Slightly larger font size for better readability */
+    text-align: center; /* Central text alignment */
+    padding: 0 10%; /* Horizontal padding to control text width */
 }
 
 main {
-    padding-top: 150px;
-
-    /* Adjust the padding value to create space below the fixed header */
- } 
+    padding-top: 225px; /* Increased to provide adequate space for the fixed header */
+}
 
 .subheading {
     font-size: x-large;
@@ -275,9 +282,6 @@ table {
     display: block;
     margin: 0 auto;
 }
-
-
-/* new styles post-commit here */
 
 .searchbaroffer {
     width: 100%;
