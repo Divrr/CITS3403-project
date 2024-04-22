@@ -22,5 +22,34 @@ class User(db.Model):
     created_at   : so.Mapped[datetime]      = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
     updated_at   : so.Mapped[datetime]      = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
 
+    requests     : so.WriteOnlyMapped['Request'] = so.relationship('Request', back_populates='user')
+
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+class Request(db.Model):
+    # Requests Table schema:
+    # id (Primary Key)
+    # user_id (Foreign Key from Users)
+    # title
+    # description
+    # status
+    # created_at (indexed)
+    # updated_at
+
+    id           : so.Mapped[int]           = so.mapped_column(primary_key=True)
+    user_id      : so.Mapped[int]           = so.mapped_column(sa.ForeignKey(User.id), index=True)
+
+    title        : so.Mapped[str]           = so.mapped_column(sa.String(64))
+    description  : so.Mapped[str]           = so.mapped_column(sa.String(256))
+    status = sa.Column(sa.Enum('Open', 'Closed', 'Pending', 'Completed'), nullable=False, default='Open')
+
+    created_at   : so.Mapped[datetime]      = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
+    updated_at   : so.Mapped[datetime]      = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
+
+
+    user         : so.WriteOnlyMapped[User] = so.relationship('User', back_populates='requests')
+
+
+    def __repr__(self):
+        return '<Request {}: "{}">'.format(self.title, self.description)
