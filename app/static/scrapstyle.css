@@ -275,3 +275,53 @@ table {
     display: block;
     margin: 0 auto;
 }
+
+
+/* new styles post-commit here */
+
+.searchbaroffer {
+    width: 100%;
+    background-color: rgb(136, 209, 167);
+    margin: 50px auto;
+    border: 15px solid rgb(201, 240, 217);
+    border-radius: 15px;
+    font-size: large;
+    font-family: sans-serif;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    padding: 70px;
+}
+
+.searchbarequest {
+    width: 100%;
+    background-color: #87d08d;
+    margin: 50px auto;
+    border: 15px solid #b7f0b7;
+    border-radius: 15px;
+    font-size: large;
+    font-family: sans-serif;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    padding: 70px;
+}
+
+
+
+.offerpage {
+    background-color: #a5d0ff;
+    padding: 10px;
+    margin: 20px;
+}
+
+.requestpage {
+    background-color: #ffc484;
+    padding: 10px;
+    margin: 20px;
+}
+
+.articlerequestpage {
+    background-color: #b7f0b7;
+    padding: 10px;
+    border: solid 5px #87d08d;
+    border-radius: 15px;
+}
