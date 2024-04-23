@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../static/scrapstyle.css" type="text/css" />
     <title>Local Community Hub</title>
@@ -12,7 +15,14 @@
     <main>
       <div class="heading fixed_heading">
         <h1>Welcome to Our Community Hub!</h1>
-        <p class="welcome_message">Connect, share, and thrive with your local community! This is a platform for neighbors to help neighbors, where you can offer your skills and services or request help when you need it. Whether you're looking to lend a hand or need a helping hand, we're glad you're here. Browse our listings, post your own offers and requests, and let's build a supportive community together!</p>
+        <p class="welcome_message">
+          Connect, share, and thrive with your local community! This is a
+          platform for neighbors to help neighbors, where you can offer your
+          skills and services or request help when you need it. Whether you're
+          looking to lend a hand or need a helping hand, we're glad you're here.
+          Browse our listings, post your own offers and requests, and let's
+          build a supportive community together!
+        </p>
       </div>
 
       <!-- ---------------------------------------------------------------------------------------------------------------------- -->
@@ -29,20 +39,10 @@
                 />
               </div>
             </div>
-            <div class="userRequest row">
-              <div class="col">Teach me to bake a cake.</div>
-              <div class="col-sm-3">
-                <img
-                  src="../static/img/tick.png"
-                  class="circlesmall"
-                  alt="chat symbol"
-                  id="chatSign"
-                />
-              </div>
-            </div>
-
+            <!-- TODO: check the type of data before displaying it, so we can get alternation of offers and requests as envisioned in zahra's (requires backend)-->
+            {% for offer in useroffers %}
             <div class="row userOffer">
-              <div class="col">I can help debug Python files.</div>
+              <div class="col">{{offer.title}}</div>
               <div class="col-sm-3">
                 <img
                   src="../static/img/tick.png"
@@ -52,8 +52,11 @@
                 />
               </div>
             </div>
+            {% endfor %}
+            <!---->
+            {% for request in userrequests %}
             <div class="row userRequest">
-              <div class="col">I need help fixing my doornob.</div>
+              <div class="col">{{request.title}}</div>
               <div class="col-sm-3">
                 <img
                   src="../static/img/tick.png"
@@ -63,31 +66,7 @@
                 />
               </div>
             </div>
-
-            <div class="row userOffer">
-              <div class="col">I can peer-review academic writing.</div>
-              <div class="col-sm-3">
-                <img
-                  src="../static/img/tick.png"
-                  class="circlesmall"
-                  alt="chat symbol"
-                  id="chatSign"
-                />
-              </div>
-            </div>
-
-            <div class="row userOffer">
-              <div class="col-sm-9">Down to give advice on your resume!</div>
-              <div class="col-sm-3">
-                <img
-                  src="../static/img/tick.png"
-                  class="circlesmall"
-                  alt="chat symbol"
-                  id="chatSign"
-                />
-              </div>
-            </div>
-
+            {% endfor %}
             <div class="row">
               <div class="col">
                 <img
@@ -296,4 +275,3 @@
     </main>
   </body>
 </html>
-
