@@ -63,3 +63,12 @@ li {
     display: block;
     margin: 0 auto 20px; /* Center the logo and add some space below */
 }
+
+#underLink {
+    text-align: center;
+    color: #ff992d;
+}
+
+p {
+    text-align: center;
+}

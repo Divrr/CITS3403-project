@@ -16,45 +16,41 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('signupButton').addEventListener('click', function() {
         const username = document.getElementById('usernameInput').value.trim();
         const password = document.getElementById('passwordInput').value.trim();
+        const email = document.getElementById('emailInput').value.trim();
 
-        if (username && password) {
-            localStorage.setItem('username', username);
-            localStorage.setItem('password', password);
-            localStorage.setItem('loggedIn', 'true');
-            showTaskForm();
+        if (username && password && email) {
+            // Check if the email has the correct extension
+            const emailExtension = getEmailExtension(email);
+            if (emailExtension === 'student.uwa.edu.au'_) {
+                // Check if the username already exists
+                const existingUser = checkExistingUser(username);
+                if (existingUser) {
+                    alert('Username already exists. Please choose a different username.');
+                } else {
+                    // Add new entry to authtable.csv
+                    addToAuthTable(username, password);
+                    localStorage.setItem('loggedIn', 'true');
+                    showTaskForm();
+                }
+            } else {
+                alert('Invalid email extension. Please enter a valid email address.');
+            }
         } else {
-            alert('Please enter both username and password');
+            alert('Please enter username, password, and email');
         }
     });
 
-    // Task form submission
-    taskForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const taskText = taskInput.value.trim();
-        if (taskText !== '') {
-            addTask(taskText);
-            taskInput.value = '';
-        }
-    });
-
-    function showTaskForm() {
-        authForm.style.display = 'none';
-        taskForm.style.display = 'block';
+    function getEmailExtension(email) {
+        const emailParts = email.split('.');
+        return emailParts[emailParts.length - 1];
+    }
+    function checkExistingUser(username) {
+        // Implement logic to check if the username already exists in authtable.csv
+        // Return true if the username exists, false otherwise
     }
 
-    function addTask(taskText) {
-        const li = document.createElement('li');
-        li.textContent = taskText;
-
-        const assignButton = document.createElement('button');
-        assignButton.textContent = 'Assign';
-        assignButton.classList.add('assign-button');
-        assignButton.addEventListener('click', function() {
-            alert('Assigning task: ' + taskText);
-            // Here you can implement the assignment logic
-        });
-
-        li.appendChild(assignButton);
-        taskList.appendChild(li);
+    function addToAuthTable(username, password) {
+        // Implement logic to add a new entry to authtable.csv with the username and password
     }
-});
+
+    
