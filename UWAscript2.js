@@ -44,13 +44,4 @@ document.addEventListener('DOMContentLoaded', function() {
         const emailParts = email.split('.');
         return emailParts[emailParts.length - 1];
     }
-    function checkExistingUser(username) {
-        // Implement logic to check if the username already exists in authtable.csv
-        // Return true if the username exists, false otherwise
-    }
-
-    function addToAuthTable(username, password) {
-        // Implement logic to add a new entry to authtable.csv with the username and password
-    }
-
     
