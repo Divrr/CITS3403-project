@@ -21,35 +21,32 @@ body {
     z-index: 1000; /* Ensures it stays on top of other content */
 }
 
-.welcome_message {
-    margin: 0 auto; /* Centers the text horizontally */
-    font-size: 1.2em; /* Slightly larger font size for better readability */
-    text-align: center; /* Central text alignment */
-    padding: 0 10%; /* Horizontal padding to control text width */
+main {
+    padding-top: 200px; /* Increased to provide adequate space for the fixed header */
 }
 
-main {
-    padding-top: 225px; /* Increased to provide adequate space for the fixed header */
+body.offerpage {
+    padding-top: 175px;
+}
+
+body.requestpage {
+    padding-top: 175px;
 }
 
 .subheading {
     font-size: x-large;
 }
 
-
 h3 {
-    font-family:  sans-serif;
+    font-family: sans-serif;
     font-weight: bold;
     align-items: left;
-
 }
 
 h5 {
     align-items: left;
     font-family: sans-serif;
 }
-
-
 
 #hr_bottom {
     margin-left: 100px;
@@ -68,23 +65,22 @@ h5 {
     font-weight: bold;
     margin: 20px;
     align-items: center;
-
 }
 
 .circlesmall {
-        width: 35px;
-            height: 35px;
-            background-color: rgb(91, 182, 129);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 100px;
-            color: white;
-            font-size: xx-large;
-            font-weight: bold;
-            margin: 20px;
-            align-items: center;
-            border: solid 2px rgb(68, 158, 105);
-            padding: 2px;
+    width: 35px;
+    height: 35px;
+    background-color: rgb(91, 182, 129);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+    font-size: xx-large;
+    font-weight: bold;
+    margin: 20px;
+    align-items: center;
+    border: solid 2px rgb(68, 158, 105);
+    padding: 2px;
 }
 
 .circle {
@@ -99,23 +95,20 @@ h5 {
     font-weight: bold;
     margin: 20px;
     align-items: center;
-
 }
 
-.circle:hover{
+.circle:hover {
     width: 90px;
-    height:90px;
+    height: 90px;
 }
 
-.circlesmall:hover{
+.circlesmall:hover {
     width: 40px;
-    height:40px;
+    height: 40px;
 }
-
-
 
 .circle-rectangle {
-    width: 290 px;
+    width: 290px;
     height: 800px;
     background-color: rgb(167, 216, 187);
     border-color: rgb(39, 100, 64);
@@ -127,9 +120,7 @@ h5 {
     font-weight: bold;
     margin: 20px;
     align-items: center;
-
 }
-
 
 .article {
     background-color: rgb(201, 240, 217);
@@ -138,23 +129,22 @@ h5 {
     border-radius: 15px;
 }
 
-
 .sub_articletext {
     font-size: large;
     text-align: left;
     font-style: italic;
-    font-family: sans-serif;;
+    font-family: sans-serif;
 }
 
 .bottom {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: xx-large;
-    font-weight: bold
+    font-weight: bold;
 }
 
 .tinyarticletext {
     font-size: small;
-    font-family: Verdana, Geneva, Tahoma, sans-serif
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .tinypaddingrequests {
@@ -164,7 +154,6 @@ h5 {
     border-radius: 15px;
     margin: 20px;
     width: 300px;
-    
 }
 
 .tinypaddingoffers {
@@ -186,19 +175,18 @@ h5 {
     border: 4px;
     margin-right: 0px;
     margin-left: 0px;
-
-
 }
 
 .userRequest:hover {
     background-color: #f48a18;
 }
+
 .userOffer:hover {
     background-color: #2283ea;
 }
 
 .userOffer {
-    font-size:medium;
+    font-size: medium;
     color: black;
     font-style: italic;
     background-color: #6dadf1;
@@ -208,17 +196,16 @@ h5 {
     margin-left: 0px;
 }
 
-
 .importantrequests {
     font-weight: bolder;
     color: #1a0d00;
-    font-size: xx-large
+    font-size: xx-large;
 }
 
 .importantoffers {
     font-weight: bolder;
     color: #000b17;
-    font-size: xx-large
+    font-size: xx-large;
 }
 
 .tinypaddingrequests:hover {
@@ -234,11 +221,9 @@ table {
     background-color: rgb(91, 182, 129);
 }
 
-
 .image-with-textrequest {
     display: flex;
     align-items: center;
-    /* new stuff */
     justify-content: center;
     background-color: #fbb469;
     border-color: #f48a18;
@@ -248,16 +233,14 @@ table {
     margin: 10px;
 }
 
-.image-with-textrequest:hover{
+.image-with-textrequest:hover {
     background-color: #f48a18;
     transform: scale(1.05);
-
 }
 
 .image-with-textoffer {
     display: flex;
     align-items: center;
-    /* new stuff */
     justify-content: center;
     background-color: #6dadf1;
     border-color: #2283ea;
@@ -267,12 +250,10 @@ table {
     margin: 10px;
 }
 
-.image-with-textoffer:hover{
+.image-with-textoffer:hover {
     background-color: #2283ea;
     transform: scale(1.05);
-
 }
-
 
 .image-container {
     text-align: center;
@@ -309,8 +290,6 @@ table {
     padding: 70px;
 }
 
-
-
 .offerpage {
     background-color: #a5d0ff;
     padding: 10px;
@@ -328,4 +307,35 @@ table {
     padding: 10px;
     border: solid 5px #87d08d;
     border-radius: 15px;
+}
+
+/* Navigation Bar Custom Styles */
+.navbar {
+    background-color: transparent !important;
+    display: flex;
+    justify-content: center; /* Center the navbar */
+    width: 100%;
+}
+
+.navbar-nav {
+    width: 100%; /* Use full width to allow even spacing */
+    display: flex;
+    justify-content: space-evenly; /* Evenly space the navigation items */
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    text-decoration: none; /* Remove underline */
+    font-size: 1.5em; /* Increase font size */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match heading font */
+}
+
+.navbar-nav .nav-link:hover {
+    font-size: 1.7em;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold; /* Make the active link bold */
+    color: white !important; /* Ensure active link is white */
 }
