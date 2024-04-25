@@ -26,11 +26,11 @@ main {
 }
 
 body.offerpage {
-    padding-top: 175px;
+    padding-top: 175px; /* Adjust this value based on your header's actual height */
 }
 
 body.requestpage {
-    padding-top: 175px;
+    padding-top: 175px; /* Adjust this value based on your header's actual height */
 }
 
 .subheading {
@@ -338,4 +338,13 @@ table {
 .navbar-nav .nav-link.active {
     font-weight: bold; /* Make the active link bold */
     color: white !important; /* Ensure active link is white */
+}
+
+.header-logo {
+    position: absolute;
+    top: 0px; /* Adjust this value to vertically center or place as needed */
+    left: 10px; /* Adjust for horizontal placement */
+    height: 150px; /* Or any size you prefer */
+    width: auto; /* Maintain aspect ratio */
+    z-index: 1050; /* Ensure it's above other items in the header */
 }
