@@ -129,10 +129,8 @@ h5 {
     border-radius: 15px;
 }
 
-.sub_articletext {
+.sans-serif {
     font-size: large;
-    text-align: left;
-    font-style: italic;
     font-family: sans-serif;
 }
 
@@ -158,11 +156,7 @@ h5 {
 
 .tinypaddingoffers {
     background-color: #a5d0ff;
-    padding: 20px;
     border: solid 4px #2283ea;
-    border-radius: 15px;
-    margin: 20px;
-    width: 300px;
 }
 
 .userRequest {
@@ -253,10 +247,6 @@ table {
 .image-with-textoffer:hover {
     background-color: #2283ea;
     transform: scale(1.05);
-}
-
-.image-container {
-    text-align: center;
 }
 
 .image-container img {
