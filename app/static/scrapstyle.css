@@ -348,3 +348,17 @@ table {
     width: auto; /* Maintain aspect ratio */
     z-index: 1050; /* Ensure it's above other items in the header */
 }
+
+.modal-footer.justify-content-center {
+    display: flex;
+    justify-content: center;
+  }
+
+.modal-title {
+    text-align: center;
+}
+  
+.modal-body {
+    text-align: center;
+}
+  
