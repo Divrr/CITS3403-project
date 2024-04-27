@@ -36,18 +36,18 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="mainpage.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="offers.html">Offers</a>
-              </li>
-              <li class="nav-item">
                 <a
                   class="nav-link active"
                   aria-current="page"
-                  href="requests.html"
-                  >Requests</a
+                  href="{{url_for('index')}}"
+                  >Home</a
                 >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('offers')}}">Offers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('requests')}}">Requests</a>
               </li>
             </ul>
           </div>
