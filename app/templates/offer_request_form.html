@@ -82,6 +82,15 @@
       </form>
     </div>
     <script>
+      // when the submit button is clicked, the user is redirected to the mainpage.html
+      document
+        .querySelector(".submit-btn")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.href = "mainpage.html";
+        });
+
+      // changes the color of the form based on the selected option
       function changeColor(selectObj) {
         var idx = selectObj.selectedIndex;
         var option = selectObj.options[idx];
