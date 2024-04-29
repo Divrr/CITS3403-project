@@ -13,6 +13,22 @@
   </head>
   <body>
     <main>
+      <!-- Modal -->
+      <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="welcomeModalLabel">Welcome to the UWA Community Hub</h5>
+            </div>
+            <div class="modal-body">
+              <p>Connect, share, and thrive with your local community! This is a platform for neighbours to help neighbours, where you can offer your skills and services or request help when you need it. Whether you're looking to lend a hand or need a helping hand, we're glad you're here. Browse our listings, post your own offers and requests, and let's build a supportive community together!</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="heading fixed_heading">
         <img
           src="../static/img/UWA University of Western Australia.png"
@@ -225,5 +241,7 @@
         </div>
       </div>
     </main>
+    <script src="../static/welcomeModal.js"></script>
   </body>
 </html>
+
