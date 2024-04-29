@@ -14,17 +14,39 @@
   <body>
     <main>
       <!-- Modal -->
-      <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="welcomeModal"
+        tabindex="-1"
+        aria-labelledby="welcomeModalLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="welcomeModalLabel">Welcome to the UWA Community Hub</h5>
+              <h5 class="modal-title" id="welcomeModalLabel">
+                Welcome to the UWA Community Hub
+              </h5>
             </div>
             <div class="modal-body">
-              <p>Connect, share, and thrive with your local community! This is a platform for neighbours to help neighbours, where you can offer your skills and services or request help when you need it. Whether you're looking to lend a hand or need a helping hand, we're glad you're here. Browse our listings, post your own offers and requests, and let's build a supportive community together!</p>
+              <p>
+                Connect, share, and thrive with your local community! This is a
+                platform for neighbours to help neighbours, where you can offer
+                your skills and services or request help when you need it.
+                Whether you're looking to lend a hand or need a helping hand,
+                we're glad you're here. Browse our listings, post your own
+                offers and requests, and let's build a supportive community
+                together!
+              </p>
             </div>
             <div class="modal-footer justify-content-center">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
@@ -83,6 +105,7 @@
                     class="bigCircle"
                     alt="user profile"
                     id="profilePic"
+                    title="Click to resolve this item- it will be removed for you and all other users"
                   />
                 </div>
               </div>
@@ -104,6 +127,7 @@
                       class="circlesmall"
                       alt="tick"
                       id="checkmark"
+                      title="Click to resolve this item- it will be removed for you and all other users"
                     />
                   </div>
                 </div>
@@ -122,6 +146,7 @@
                       class="circlesmall"
                       alt="tick"
                       id="checkmark"
+                      title="Click to resolve this item- it will be removed for you and all other users"
                     />
                   </div>
                 </div>
@@ -139,6 +164,7 @@
                       class="circlesmall"
                       alt="tick"
                       id="checkmark"
+                      title="Click to resolve this item- it will be removed for you and all other users"
                     />
                   </div>
                 </div>
@@ -157,12 +183,13 @@
                       class="circlesmall"
                       alt="tick"
                       id="checkmark"
+                      title="Click to resolve this item- it will be removed for you and all other users"
                     />
                   </div>
                 </div>
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col">
                   <img
                     src="../static/img/plus.jpg"
@@ -170,6 +197,20 @@
                     alt="plus symbol"
                     id="plusSign"
                   />
+                </div>
+              </div> -->
+
+              <div class="row">
+                <div class="col" style="text-align: center">
+                  <a href="offer_request_form.html">
+                    <img
+                      src="../static/img/plus.jpg"
+                      class="circle"
+                      alt="plus symbol"
+                      id="plusSign"
+                      title="Click the plus button to create a new Offer or Request!"
+                    />
+                  </a>
                 </div>
               </div>
 
@@ -190,6 +231,7 @@
                       class="circlesmall"
                       alt="tick"
                       id="checkmark"
+                      title="Click to resolve this item- it will be removed for you and all other users"
                     />
                   </div>
                 </div>
@@ -208,6 +250,7 @@
                       class="circlesmall"
                       alt="tick"
                       id="checkmark"
+                      title="Click to resolve this item- it will be removed for you and all other users"
                     />
                   </div>
                 </div>
@@ -227,7 +270,7 @@
                       src="../static/img/tick.png"
                       class="circlesmall"
                       alt="tick"
-                      id="checkmark"
+                      title="Click to resolve this item- it will be removed for you and all other users"
                     />
                   </div>
                 </div>
@@ -244,4 +287,3 @@
     <script src="../static/welcomeModal.js"></script>
   </body>
 </html>
-
