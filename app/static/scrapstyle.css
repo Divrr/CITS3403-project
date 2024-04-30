@@ -113,17 +113,20 @@ h5 {
 
 .article {
     background-color: rgb(201, 240, 217);
-    padding: 30px;
-    border: solid 15px rgb(120, 206, 156);
+    padding: 10px;
+    border: solid 15px rgb(157, 222, 184);
     border-radius: 40px;
     margin-bottom: 40px;
     margin-top: 210px;
 }
 
-.sub_articletext {
+.article2 {
+    background-color: rgb(201, 240, 217);
+    border: solid 5px rgb(157, 222, 184);
+}
+
+.sans-serif {
     font-size: large;
-    text-align: left;
-    font-style: italic;
     font-family: sans-serif;
 }
 
@@ -140,20 +143,12 @@ h5 {
 
 .tinypaddingrequests {
     background-color: #ffc484;
-    padding: 20px;
     border: solid 4px #f48a18;
-    border-radius: 15px;
-    margin: 20px;
-    width: 300px;
 }
 
 .tinypaddingoffers {
     background-color: #a5d0ff;
-    padding: 20px;
     border: solid 4px #2283ea;
-    border-radius: 15px;
-    margin: 20px;
-    width: 300px;
 }
 
 .userRequest {
@@ -242,10 +237,6 @@ table {
     transform: scale(1.05);
 }
 
-.image-container {
-    text-align: center;
-}
-
 .image-container img {
     display: block;
     margin: 0 auto;
@@ -287,13 +278,6 @@ table {
     background-color: #ffc484;
     padding: 10px;
     margin: 20px;
-}
-
-.articlerequestpage {
-    background-color: #b7f0b7;
-    padding: 10px;
-    border: solid 5px #87d08d;
-    border-radius: 15px;
 }
 
 /* Navigation Bar Custom Styles */
