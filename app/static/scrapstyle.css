@@ -21,10 +21,6 @@ body {
     z-index: 1000; /* Ensures it stays on top of other content */
 }
 
-main {
-    padding-top: 200px; /* Increased to provide adequate space for the fixed header */
-}
-
 body.offerpage {
     padding-top: 175px; /* Adjust this value based on your header's actual height */
 }
@@ -108,25 +104,20 @@ h5 {
 }
 
 .circle-rectangle {
-    width: 290px;
-    height: 800px;
-    background-color: rgb(167, 216, 187);
-    border-color: rgb(39, 100, 64);
-    border: solid 4px;
-    border-radius: 5%;
+
     text-align: center;
-    line-height: 100px;
-    color: white;
+    line-height: 50px; 
+    /* line-height controls the height of each row in the user part! */
     font-weight: bold;
-    margin: 20px;
-    align-items: center;
 }
 
 .article {
     background-color: rgb(201, 240, 217);
-    padding: 10px;
-    border: solid 5px rgb(157, 222, 184);
-    border-radius: 15px;
+    padding: 30px;
+    border: solid 15px rgb(120, 206, 156);
+    border-radius: 40px;
+    margin-bottom: 40px;
+    margin-top: 210px;
 }
 
 .sans-serif {
@@ -161,8 +152,6 @@ h5 {
     color: black;
     font-style: italic;
     background-color: #fbb469;
-    border-color: #f48a18;
-    border: 4px;
     margin-right: 0px;
     margin-left: 0px;
 }
@@ -180,8 +169,6 @@ h5 {
     color: black;
     font-style: italic;
     background-color: #6dadf1;
-    border-color: #2283ea;
-    border: 4px;
     margin-right: 0px;
     margin-left: 0px;
 }
@@ -333,4 +320,56 @@ table {
     height: 150px; /* Or any size you prefer */
     width: auto; /* Maintain aspect ratio */
     z-index: 1050; /* Ensure it's above other items in the header */
+}
+
+/* new styles start here */
+.user_subtitle {
+    background-color:rgb(120, 206, 156);
+    color:white;
+    font-size: x-large;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+body {
+    background-color: rgb(68, 158, 105);
+}
+
+.contact-button {
+    background-color: rgb(246, 255, 244);
+    color: darkgreen;
+    height: 50px;
+    border: 3px solid rgb(68, 158, 105);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 16px;
+    padding-left: 15px;
+    padding-right:15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.contact-button:hover {
+    transform: scale(1.07);
+    /* Increase size by 10% */
+}
+
+.userbuttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0px;
+}
+
+.your_items_container {
+    border: 12px solid rgb(68, 158, 105);
+    border-radius: 15px;
+}
+
+
+a {
+    text-decoration: none;
+    /* removes underlines from hyperlinks */
 }
