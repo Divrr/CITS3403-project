@@ -77,15 +77,17 @@
                   <a
                     class="nav-link active"
                     aria-current="page"
-                    href="mainpage.html"
+                    href="{{url_for('index')}}"
                     >Home</a
                   >
                 </li>
                 <li class="nav-item col-sm-3">
-                  <a class="nav-link" href="offers.html">Offers</a>
+                  <a class="nav-link" href="{{url_for('offers')}}">Offers</a>
                 </li>
                 <li class="nav-item col-sm-3">
-                  <a class="nav-link" href="requests.html">Requests</a>
+                  <a class="nav-link" href="{{url_for('requests')}}"
+                    >Requests</a
+                  >
                 </li>
               </ul>
             </div>

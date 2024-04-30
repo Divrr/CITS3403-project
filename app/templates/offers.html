@@ -14,347 +14,70 @@
   </head>
   <body class="offerpage">
     <div class="heading fixed_heading">
-      <img src="../static/img/UWA University of Western Australia.png" alt="Community Logo" class="header-logo">
-        <h1>UWA Community Hub</h1>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="mainpage.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="offers.html">Offers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="requests.html">Requests</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      <img
+        src="../static/img/UWA University of Western Australia.png"
+        alt="Community Logo"
+        class="header-logo"
+      />
+      <h1>UWA Community Hub</h1>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="{{url_for('index')}}"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('offers')}}">Offers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('requests')}}">Requests</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container mx-auto row searchbaroffer">
+      Search bar can go here Theresa!
     </div>
 
-    <div class="row searchbaroffer">Search bar can go here Theresa!</div>
-
-    <div class="article row">
-      <div class="image-with-textoffer">
-        <p class="importantoffers">OFFERS</p>
-      </div>
-
-      <div>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>NEW CATEGORY</h3>
-                  <h5>location</h5>
-                  <p class="sub_articletext">
-                    Description of the new category.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>REPAIRS</h3>
-                  <h5>vic park</h5>
-                  <p class="sub_articletext">
-                    I'm happy to help with any plumbing issues.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>SOCIAL</h3>
-                  <h5>subiaco</h5>
-                  <p class="sub_articletext">Always down for a coffee chat!</p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>SCHOOL</h3>
-                  <h5>wembley</h5>
-                  <p class="sub_articletext">I tutor Grade 10 Socials.</p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="column tinypaddingoffers image-container">
-                  <h3>UNI</h3>
-                  <h5>nedlands</h5>
-                  <p class="sub_articletext">
-                    Happy to peer review uni essays.
-                  </p>
-                  <br />
-                  <div>
-                    <button>accept</button>
-                    <button>chat</button>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="container mx-auto p-3 my-3 row rounded-4 article2">
+      <div class="container">
+        <div class="row justify-content-start">
+          {% for offer in offers %}
+          <div class="col-lg-3 col-md-4 col-sm-6 g-3">
+            <div
+              class="p-4 h-100 text-center d-flex flex-column rounded-4 justify-content-around tinypaddingoffers"
+            >
+              <div class="h4 fw-semibold text-uppercase">
+                {{ offer.category }}
+              </div>
+              <p class="fs-6 fst-italic text-start sans-serif text-center">
+                {{ offer.description }}
+              </p>
+              <button type="button" class="btn btn-light btn-sm">Accept</button>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </body>
 </html>
-
