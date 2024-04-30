@@ -113,11 +113,16 @@ h5 {
 
 .article {
     background-color: rgb(201, 240, 217);
-    padding: 30px;
-    border: solid 15px rgb(120, 206, 156);
+    padding: 10px;
+    border: solid 15px rgb(157, 222, 184);
     border-radius: 40px;
     margin-bottom: 40px;
     margin-top: 210px;
+}
+
+.article2 {
+    background-color: rgb(201, 240, 217);
+    border: solid 5px rgb(157, 222, 184);
 }
 
 .sans-serif {
@@ -273,13 +278,6 @@ table {
     background-color: #ffc484;
     padding: 10px;
     margin: 20px;
-}
-
-.articlerequestpage {
-    background-color: #b7f0b7;
-    padding: 10px;
-    border: solid 5px #87d08d;
-    border-radius: 15px;
 }
 
 /* Navigation Bar Custom Styles */
