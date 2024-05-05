@@ -1,7 +1,9 @@
 from flask import render_template
 from flask import Flask, request, jsonify
-
-from app import app
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import select
+from app.models import User, Activity
+from app import app, db
 
 @app.route("/")
 @app.route("/index")
@@ -14,36 +16,14 @@ def login():
 
 @app.route("/offers")
 def offers():
-    offerlist = [
-        { "category": "REPAIRS", "description": "I'm happy to help with any plumbing issues."},
-        { "category": "REPAIRS", "description": "I'm happy to help with any electrical issues."},
-        { "category": "REPAIRS", "description": "I'm happy to help with any carpentry issues."},
-        { "category": "SOCIAL", "description": "Always down for a coffee chat!"},
-        { "category": "SOCIAL", "description": "Hosting book club! DM me if you want to join."},
-        { "category": "SOCIAL", "description": "I'm hosting a board game night this Friday!"},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Math."},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Science."},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Socials."},
-        { "category": "UNI", "description": "Happy to peer-review uni essays"},
-        { "category": "UNI", "description": "I can help with any coding assignments."}
-    ]
+    offerlist = Activity.query.filter_by(type='Offer').all()
+    print(offerlist)
     return render_template("offers.html", offers=offerlist)
 
 @app.route("/requests")
 def requests():
-    requestlist = [
-        { "category": "REPAIRS", "description": "I'm happy to help with any plumbing issues."},
-        { "category": "REPAIRS", "description": "I'm happy to help with any electrical issues."},
-        { "category": "REPAIRS", "description": "I'm happy to help with any carpentry issues."},
-        { "category": "SOCIAL", "description": "Always down for a coffee chat!"},
-        { "category": "SOCIAL", "description": "Hosting book club! DM me if you want to join."},
-        { "category": "SOCIAL", "description": "I'm hosting a board game night this Friday!"},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Math."},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Science."},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Socials."},
-        { "category": "UNI", "description": "Happy to peer-review uni essays"},
-        { "category": "UNI", "description": "I can help with any coding assignments."}
-    ]
+    requestlist = Activity.query.filter_by(type='Request').all()
+    print(request)
     return render_template("requests.html", requests=requestlist)
 
 auth_table = []
