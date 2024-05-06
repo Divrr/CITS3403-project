@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +15,26 @@
         <h1>Local Community Message Board</h1>
         <div id="authForm"></div>
             <h2>Create Account</h2>
+            <form method="POST" action="">
+            
+            {{ form.hidden_tag() }}
             <input type="text" id="usernameInput" placeholder="Username">
+            {{ form.username }}
             <input type="text" id="emailInput" placeholder="Email">
             <input type="password" id="passwordInput" placeholder="Password">
+            {{ form.password }}
+            <input type="password" id="confirmPasswordInput" placeholder="Confirm Password">
             <button id="signupButton">Sign Up</button>
+            {{ form.submit }}
+            <p>
+                <a id="underLink" href="{{ url_for('login') }}">Already have an account? Sign In here</a>
+            </p>
+            
+            </form>
         </div>
     </div>
-
+    
     <script src="../static/UWAscript2.js"></script>
 </body>
 </html>
+{% endblock %}
