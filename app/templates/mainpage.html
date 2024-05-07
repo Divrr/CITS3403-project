@@ -115,14 +115,18 @@
               <div class="your_items_container user_subtitle row">
                 <div class="col">YOUR ITEMS</div>
 
-                <div class="userRequest row">
-                  <div class="col">Teach me to bake a cake. <br /></div>
+                {% for item in items %}
+                <div
+                  class="row {% if item.type == 'Request' %} userRequest {% else %} userOffer {% endif %}"
+                >
+                  <div class="col">{{item.content}}</div>
                   <div class="col-sm-5 userbuttons">
                     <a
-                      href="mailto:zahravink@gmail.com"
+                      href="mailto:{{email}}"
                       id="acceptee_email"
                       class="contact-button"
-                      >Contact <span id="acceptee_name">Zahra</span></a
+                      >Contact &nbsp;
+                      <span id="acceptee_name">{{item.name}}</span></a
                     >
                     <img
                       src="../static/img/tick.png"
@@ -133,78 +137,12 @@
                     />
                   </div>
                 </div>
-
-                <div class="row userOffer">
-                  <div class="col">I can help debug Python files.</div>
-                  <div class="col-sm-5 userbuttons">
-                    <a
-                      href="mailto:zahravink@gmail.com"
-                      id="acceptee_email"
-                      class="contact-button"
-                      >Contact <span id="acceptee_name">Zahra</span></a
-                    >
-                    <img
-                      src="../static/img/tick.png"
-                      class="circlesmall"
-                      alt="tick"
-                      id="checkmark"
-                      title="Click to resolve this item- it will be removed for you and all other users"
-                    />
-                  </div>
-                </div>
-                <div class="row userRequest">
-                  <div class="col">I need help fixing my doornob.</div>
-                  <div class="col-sm-5 userbuttons">
-                    <a
-                      href="mailto:zahravink@gmail.com"
-                      id="acceptee_email"
-                      class="contact-button"
-                      >Contact <span id="acceptee_name">Zahra</span></a
-                    >
-                    <img
-                      src="../static/img/tick.png"
-                      class="circlesmall"
-                      alt="tick"
-                      id="checkmark"
-                      title="Click to resolve this item- it will be removed for you and all other users"
-                    />
-                  </div>
-                </div>
-
-                <div class="row userOffer">
-                  <div class="col">I can peer-review academic writing.</div>
-                  <div class="col-sm-5 userbuttons">
-                    <a
-                      href="mailto:zahravink@gmail.com"
-                      id="acceptee_email"
-                      class="contact-button"
-                      >Contact <span id="acceptee_name">Zahra</span></a
-                    >
-                    <img
-                      src="../static/img/tick.png"
-                      class="circlesmall"
-                      alt="tick"
-                      id="checkmark"
-                      title="Click to resolve this item- it will be removed for you and all other users"
-                    />
-                  </div>
-                </div>
+                {% endfor %}
               </div>
-
-              <!-- <div class="row">
-                <div class="col">
-                  <img
-                    src="../static/img/plus.jpg"
-                    class="circle"
-                    alt="plus symbol"
-                    id="plusSign"
-                  />
-                </div>
-              </div> -->
 
               <div class="row">
                 <div class="col" style="text-align: center">
-                  <a href="offer_request_form.html">
+                  <a href="{{url_for('form')}}">
                     <img
                       src="../static/img/plus.jpg"
                       class="circle"
@@ -219,14 +157,19 @@
               <div class="your_items_container user_subtitle row">
                 <div class="col">YOUR ACCEPTS</div>
 
-                <div class="row userOffer">
-                  <div class="col">I can peer-review academic writing.</div>
+                {% for accept in accepts %}
+                <div
+                  class="row {% if accept.type == 'Request' %} userRequest {% else %} userOffer {% endif %}"
+                >
+                  <div class="col">{{accept.content}}</div>
                   <div class="col-sm-5 userbuttons">
                     <a
-                      href="mailto:zahravink@gmail.com"
+                      href="mailto:{{accept.email}}"
                       id="acceptee_email"
                       class="contact-button"
-                      >Contact <span id="acceptee_name">Zahra</span></a
+                      >Contact &nbsp;<span id="acceptee_name"
+                        >{{accept.name}}</span
+                      ></a
                     >
                     <img
                       src="../static/img/tick.png"
@@ -237,45 +180,7 @@
                     />
                   </div>
                 </div>
-
-                <div class="userRequest row">
-                  <div class="col">Teach me to bake a cake. <br /></div>
-                  <div class="col-sm-5 userbuttons">
-                    <a
-                      href="mailto:zahravink@gmail.com"
-                      id="acceptee_email"
-                      class="contact-button"
-                      >Contact <span id="acceptee_name">Zahra</span></a
-                    >
-                    <img
-                      src="../static/img/tick.png"
-                      class="circlesmall"
-                      alt="tick"
-                      id="checkmark"
-                      title="Click to resolve this item- it will be removed for you and all other users"
-                    />
-                  </div>
-                </div>
-
-                <div class="userRequest row">
-                  <div class="col">
-                    Can I have a 30 minute lesson on stoichiometery? <br />
-                  </div>
-                  <div class="col-sm-5 userbuttons">
-                    <a
-                      href="mailto:zahravink@gmail.com"
-                      id="acceptee_email"
-                      class="contact-button"
-                      >Contact <span id="acceptee_name">Zahra</span></a
-                    >
-                    <img
-                      src="../static/img/tick.png"
-                      class="circlesmall"
-                      alt="tick"
-                      title="Click to resolve this item- it will be removed for you and all other users"
-                    />
-                  </div>
-                </div>
+                {% endfor %}
               </div>
             </div>
             <!-- ------------------------------------------------------------------------------------------------------------------ -->

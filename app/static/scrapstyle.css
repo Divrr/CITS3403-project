@@ -122,7 +122,8 @@ h5 {
 
 .article2 {
     background-color: rgb(201, 240, 217);
-    border: solid 5px rgb(157, 222, 184);
+    border: solid 15px rgb(141 202 167);
+    border-radius: 40px;
 }
 
 .sans-serif {
@@ -153,9 +154,8 @@ h5 {
 
 .userRequest {
     font-size: medium;
-    font-weight: bold;
     color: black;
-    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #fbb469;
     margin-right: 0px;
     margin-left: 0px;
@@ -172,7 +172,7 @@ h5 {
 .userOffer {
     font-size: medium;
     color: black;
-    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #6dadf1;
     margin-right: 0px;
     margin-left: 0px;
@@ -244,39 +244,75 @@ table {
 
 .searchbaroffer {
     width: 100%;
-    background-color: rgb(136, 209, 167);
-    margin: 50px auto;
-    border: 15px solid rgb(201, 240, 217);
-    border-radius: 15px;
+    background-color: rgb(201, 240, 217);
+    border: 15px solid rgb(141 202 167);
+    border-radius: 95px;
     font-size: large;
     font-family: sans-serif;
     margin-top: 5px;
     margin-bottom: 25px;
-    padding: 70px;
+    padding: 40px;
 }
 
 .searchbarequest {
     width: 100%;
-    background-color: #87d08d;
-    margin: 50px auto;
-    border: 15px solid #b7f0b7;
-    border-radius: 15px;
+    background-color: rgb(201, 240, 217);
+    border: 15px solid rgb(141 202 167);
+    border-radius: 95px;
     font-size: large;
     font-family: sans-serif;
     margin-top: 5px;
     margin-bottom: 25px;
-    padding: 70px;
+    padding: 40px;
 }
 
+#offeracceptbtn {
+    background-color: white;
+    color: black;
+    border:3.5px solid #2283ea;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+
+}
+
+#offeracceptbtn:hover {
+    transform: scale(1.07);
+}
+
+#requestacceptbtn {
+    background-color: white;
+    border: 3.5px solid #f48a18;
+    border-radius: 10px;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+
+
+}
+
+#requestacceptbtn:hover {
+    transform: scale(1.07);
+}
+
+
 .offerpage {
-    background-color: #a5d0ff;
-    padding: 10px;
+    background-color: #5b8cc0;
+    padding: 50px;
     margin: 20px;
 }
 
 .requestpage {
-    background-color: #ffc484;
-    padding: 10px;
+    background-color: #e69b5e;
+    padding: 50px;
     margin: 20px;
 }
 
