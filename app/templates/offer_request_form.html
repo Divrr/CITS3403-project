@@ -13,70 +13,45 @@
   </head>
   <body>
     <div class="container form-container">
-      <form class="col-sm-12 col-lg-9 col-md-10">
+      <form action="" method="post" class="col-sm-12 col-lg-9 col-md-10">
+        {{ form.hidden_tag()}}
         <div class="row">
           <div class="mb-3">
-            <label for="type" class="form-label"
-              >Type: <br />
-              <div class="inputdescription">
-                Select Offer to volunteer a service of yours, and select Request
-                to ask for a service from the community!
-              </div></label
-            >
-            <select
-              id="type"
-              name="type"
-              class="form-select"
-              onchange="changeColor(this)"
-            >
-              <option selected disabled>Choose an item type</option>
-              <option value="offer" class="offer_dropdown">Offer</option>
-              <option value="request" class="request_dropdown">Request</option>
-            </select>
+            {{ form.type.label }}
+            <div class="inputdescription">
+              Select Offer to volunteer a service of yours, and select Request
+              to ask for a service from the community!
+            </div>
+            {{ form.type(class="form-select", onchange="changeColor(this)") }}
           </div>
         </div>
         <div class="row">
           <div class="mb-3">
-            <label for="category" class="form-label"
-              >Category: <br />
-              <div class="inputdescription">
-                Provide the theme or category that best describes your offer or
-                request. One or two words only please. Popular examples include
-                social, uni work, repairs, teaching, learning, and outdoors.
-              </div>
-            </label>
-            <input
-              type="text"
-              id="category"
-              name="category"
-              maxlength="15"
-              class="form-control"
-            />
+            {{ form.category.label }}
+            <div class="inputdescription">
+              Provide the theme or category that best describes your offer or
+              request. One or two words only please. Popular examples include
+              social, uni work, repairs, teaching, learning, and outdoors.
+            </div>
+            {{ form.category(class="form-control") }}
           </div>
         </div>
         <div class="row">
           <div class="mb-3">
-            <label for="description" class="form-label"
-              >Description:<br />
-              <div class="inputdescription">
-                Describe your offer or request in further detail. What is it,
-                how much time do you need/can you give, and where would the task
-                be accomplished? Keep it succinct, remember, anyone who accepts
-                your offer or request will email you or you can email them, so
-                you can share more details at that point!
-              </div>
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              maxlength="100"
-              class="form-control"
-            ></textarea>
+            {{ form.description.label }}
+            <div class="inputdescription">
+              Describe your offer or request in further detail. What is it, how
+              much time do you need/can you give, and where would the task be
+              accomplished? Keep it succinct, remember, anyone who accepts your
+              offer or request will email you or you can email them, so you can
+              share more details at that point!
+            </div>
+            {{ form.description(class="form-control") }}
           </div>
         </div>
         <div class="row">
           <div class="col-md-10 mb-3">
-            <input type="submit" value="Submit" class="submit-btn" />
+            {{ form.submit(class="submit-btn") }}
           </div>
         </div>
       </form>
@@ -87,7 +62,7 @@
         .querySelector(".submit-btn")
         .addEventListener("click", function (event) {
           event.preventDefault();
-          window.location.href = "mainpage.html";
+          window.location.href = "{{ url_for('index') }}";
         });
 
       // changes the color of the form based on the selected option
@@ -95,7 +70,8 @@
         var idx = selectObj.selectedIndex;
         var option = selectObj.options[idx];
         var formContainer = document.querySelector(".form-container");
-        var formLabels = document.querySelectorAll(".form-label");
+        // var formLabels = document.querySelectorAll(".form-label");
+        var formLabels = document.querySelectorAll(".mb-3 .inputdescription");
         var submitButton = document.querySelector(".submit-btn");
 
         if (option.value === "offer") {

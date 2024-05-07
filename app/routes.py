@@ -8,7 +8,21 @@ from app import app, db
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template("mainpage.html")
+    myitems = [
+        { "email": "zahravink@gmail.com", "content": "Can someone mow my lawn?", "name": "Joe", "type": "Request"},
+        { "email": "zahravink@gmail.com", "content": "I can teach you to bake cookies", "name": "Youssef", "type": "Offer"}
+    ]
+    myaccepts = [
+        { "email": "zahravink@gmail.com", "content": "Can someone give a 30min crash course on Flask?", "name": "Zahra", "type": "Request"},
+        { "email": "zahravink@gmail.com", "content": "I can fix a garborator", "name": "May", "type": "Offer"}
+    ]
+    return render_template("mainpage.html", items=myitems, accepts=myaccepts)
+
+from app.forms import OfferRequestForm
+@app.route("/form")
+def form():
+    form_object = OfferRequestForm()
+    return render_template("offer_request_form.html", form=form_object)
 
 @app.route("/login")
 def login():
