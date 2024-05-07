@@ -2,25 +2,14 @@
 from app import db, app
 from app.models import *
 
-# Hello! This is a script to generate test data for the database.
-# It will create 10 users and 20 activities.
-# Each user will have 2 activities, one authored and one accepted.
-# The activities are be randomly distributed between requests and offers.
-
-# To run this script, execute the following commands in the terminal:
-# (assuming you have flask, flask-migrate and flask-sqlalchemy installed in your virtual environment)
-# $ flask db upgrade
-# flask shell
-# >>> exec(open('app/test_data.py').read())
-
-# --- Test Data Generation ---
-# drop all tables and recreate them
-
 def initialise_test_database():
     app.app_context().push()
+
+    # drop all tables and recreate them
     db.drop_all()
     db.create_all()
 
+    # add test data
     db.session.add_all([
         User(username='user1', email='user1@example.com', password_hash='password1'),
         User(username='user2', email='user2@example.com', password_hash='password2'),
