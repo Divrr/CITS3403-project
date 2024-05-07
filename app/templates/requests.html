@@ -1,35 +1,33 @@
 {% extends "base.html" %} {% block content %} {% include 'navbar.html' %}
-<body class="requestpage">
-  <div class="container mx-auto row searchbaroffer">
-    Search bar can go here Theresa!
-  </div>
+<div class="container mx-auto row searchbaroffer">
+  Search bar can go here Theresa!
+</div>
 
-  <div class="container mx-auto row p-3 my-3 article2">
-    <div class="container">
-      <div class="row justify-content-start">
-        {% for request in requests %}
-        <div class="col-lg-3 col-md-4 col-sm-6 g-3">
-          <div
-            class="p-4 h-100 text-center d-flex flex-column justify-content-around tinypaddingrequests"
-          >
-            <div class="h4 fw-semibold text-uppercase">
-              {{ request.category }}
-            </div>
-            <p class="fs-6 fst-italic text-start sans-serif text-center">
-              {{ request.description }}
-            </p>
-            <button
-              type="button"
-              id="requestacceptbtn"
-              class="btn btn-light btn-sm"
-            >
-              accept
-            </button>
+<div class="container mx-auto row p-3 my-3 article2">
+  <div class="container">
+    <div class="row justify-content-start">
+      {% for request in requests %}
+      <div class="col-lg-3 col-md-4 col-sm-6 g-3">
+        <div
+          class="p-4 h-100 text-center d-flex flex-column justify-content-around tinypaddingrequests"
+        >
+          <div class="h4 fw-semibold text-uppercase">
+            {{ request.category }}
           </div>
+          <p class="fs-6 fst-italic text-start sans-serif text-center">
+            {{ request.description }}
+          </p>
+          <button
+            type="button"
+            id="requestacceptbtn"
+            class="btn btn-light btn-sm"
+          >
+            accept
+          </button>
         </div>
-        {% endfor %}
       </div>
+      {% endfor %}
     </div>
   </div>
-</body>
+</div>
 {% endblock %}

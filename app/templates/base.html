@@ -11,8 +11,12 @@
     <link rel="stylesheet" href="../static/scrapstyle.css" type="text/css" />
     <title>{{title}}</title>
   </head>
-  <body>
-    <!--TODO: variable classing-->
+  <body
+    {% if request.endpoint == 'offers' %} 
+      class="offerpage"
+    {% elif request.endpoint == 'requests' %} 
+      class="requestpage" 
+    {% endif %}>
     {% block content %} {% endblock %}
   </body>
 </html>

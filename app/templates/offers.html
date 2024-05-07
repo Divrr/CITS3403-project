@@ -1,35 +1,31 @@
 {% extends "base.html" %} {% block content %} {% include 'navbar.html' %}
-<body class="offerpage">
-  <div class="container mx-auto row searchbaroffer">
-    Search bar can go here Theresa!
-  </div>
+<div class="container mx-auto row searchbaroffer">
+  Search bar can go here Theresa!
+</div>
 
-  <div class="container mx-auto p-3 my-3 row article2">
-    <div class="container">
-      <div class="row justify-content-start">
-        {% for offer in offers %}
-        <div class="col-lg-3 col-md-4 col-sm-6 g-3">
-          <div
-            class="p-4 h-100 text-center d-flex flex-column justify-content-around tinypaddingoffers"
+<div class="container mx-auto p-3 my-3 row article2">
+  <div class="container">
+    <div class="row justify-content-start">
+      {% for offer in offers %}
+      <div class="col-lg-3 col-md-4 col-sm-6 g-3">
+        <div
+          class="p-4 h-100 text-center d-flex flex-column justify-content-around tinypaddingoffers"
+        >
+          <div class="h4 fw-semibold text-uppercase">{{ offer.category }}</div>
+          <p class="fs-6 fst-italic text-start sans-serif text-center">
+            {{ offer.description }}
+          </p>
+          <button
+            type="button"
+            id="offeracceptbtn"
+            class="btn btn-light btn-sm"
           >
-            <div class="h4 fw-semibold text-uppercase">
-              {{ offer.category }}
-            </div>
-            <p class="fs-6 fst-italic text-start sans-serif text-center">
-              {{ offer.description }}
-            </p>
-            <button
-              type="button"
-              id="offeracceptbtn"
-              class="btn btn-light btn-sm"
-            >
-              accept
-            </button>
-          </div>
+            accept
+          </button>
         </div>
-        {% endfor %}
       </div>
+      {% endfor %}
     </div>
   </div>
-</body>
+</div>
 {% endblock %}
