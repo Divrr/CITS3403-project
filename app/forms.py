@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, TextAreaField, SubmitField, PasswordField, ValidationError
-from wtforms.validators import DataRequired, Length, InputRequired
+from wtforms.validators import DataRequired, Length, InputRequired, Email
+from app.models import User
 
 class OfferRequestForm(FlaskForm):
     type = SelectField('Type', choices=[('', 'Select an item type'), ('offer', 'Offer'), ('request', 'Request')], validators=[DataRequired()])
@@ -14,6 +15,8 @@ class SigninForm(FlaskForm):
 
     password = PasswordField(validators=[
                              InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+
+    email = StringField('Email', validators=[DataRequired(), Email()])
 
     submit = SubmitField('Register')
 

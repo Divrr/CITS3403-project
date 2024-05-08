@@ -18,10 +18,8 @@
             <form method="POST" action="">
             
             {{ form.hidden_tag() }}
-            <input type="text" id="usernameInput" placeholder="Username">
             {{ form.username }}
-            <input type="text" id="emailInput" placeholder="Email">
-            <input type="password" id="passwordInput" placeholder="Password">
+            {{ form.email }}
             {{ form.password }}
             <input type="password" id="confirmPasswordInput" placeholder="Confirm Password">
             <button id="signupButton">Sign Up</button>

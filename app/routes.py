@@ -51,7 +51,7 @@ def signup():
 
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data)
-        new_user = User(username=form.username.data, password=hashed_password)
+        new_user = User(username=form.username.data, email=form.email.data, password_hash=hashed_password)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
