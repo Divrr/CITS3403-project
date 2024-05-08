@@ -1,47 +1,4 @@
 {% extends "base.html" %} {% block content %} {% include 'navbar.html' %}
-<script>
-  // This script is used to update the list when the user types in the search bar.
-  $(function () {
-    $("input").on("input", function () {
-      $.ajax({
-        type: "POST",
-        url: "",
-        data: {
-          search: $("input").val(),
-        },
-        success: function (response) {
-          $("#requestlist").empty();
-
-          // add the new items
-          for (let request of response) {
-            $("#requestlist").append(`
-  <div class="col-lg-3 col-md-4 col-sm-6 g-3">
-  <div
-      class="p-4 h-100 text-center d-flex flex-column justify-content-around tinypaddingrequests"
-  >
-      <div class="h4 fw-semibold text-uppercase">
-      ${request.category}
-      </div>
-      <p class="fs-6 fst-italic text-start sans-serif text-center">
-      ${request.description}
-      </p>
-      <button
-      type="button"
-      id="requestacceptbtn"
-      class="btn btn-light btn-sm"
-      >
-      accept
-      </button>
-  </div>
-`);
-          }
-        },
-      });
-      return false;
-    });
-  });
-</script>
-
 <div class="container mx-auto row searchbarequest">
   <form>
     <div class="input-group mx-auto py-3">
@@ -59,29 +16,10 @@
 
 <div class="container mx-auto row p-3 my-3 article2">
   <div class="container">
-    <div class="row justify-content-start" id="requestlist">
-      {% for request in requests %}
-      <div class="col-lg-3 col-md-4 col-sm-6 g-3">
-        <div
-          class="p-4 h-100 text-center d-flex flex-column justify-content-around tinypaddingrequests"
-        >
-          <div class="h4 fw-semibold text-uppercase">
-            {{ request.category }}
-          </div>
-          <p class="fs-6 fst-italic text-start sans-serif text-center">
-            {{ request.description }}
-          </p>
-          <button
-            type="button"
-            id="requestacceptbtn"
-            class="btn btn-light btn-sm"
-          >
-            accept
-          </button>
-        </div>
-      </div>
-      {% endfor %}
+    <div class="row justify-content-start" id="itemlist">
+      <!-- List of items will be rendered here -->
     </div>
   </div>
 </div>
+<script src="../static/search.js"></script>
 {% endblock %}
