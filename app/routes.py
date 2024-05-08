@@ -35,7 +35,7 @@ def form():
     form_object = OfferRequestForm()
     return render_template("offer_request_form.html", title="Create an Offer or Request", form=form_object)
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -45,7 +45,7 @@ def login():
                 login_user(user)
     return render_template("login.html", form=form)
 
-@app.route("/signup")
+@app.route("/signup", methods=['GET', 'POST'])
 def signup():
     form = SigninForm()
 
