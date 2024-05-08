@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local Community Message Board</title>
+    <title>UWA Community Hub</title>
     <link rel="stylesheet" href="../static/UWAstyles2.css">
 </head>
 <body>
     <div class="container">
-        <img src="../static/img/UWA University of Western Australia.png" alt="Logo" id="logo", width="200px", class="center">
+        <img src="../static/img/UWA University of Western Australia.png" alt="Logo" id="logo" width="200px" class="center">
         <h1>Local Community Message Board</h1>
-        <div id="authForm"></div>
+        <form id="authForm" action="/signup" method="POST">
             <h2>Create Account</h2>
-            <input type="text" id="usernameInput" placeholder="Username">
-            <input type="text" id="emailInput" placeholder="Email">
-            <input type="password" id="passwordInput" placeholder="Password">
-            <button id="signupButton">Sign Up</button>
-        </div>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" id="signupButton">Sign Up</button>
+        </form>
     </div>
-
     <script src="../static/UWAscript2.js"></script>
 </body>
 </html>
