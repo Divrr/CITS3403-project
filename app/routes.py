@@ -50,7 +50,21 @@ class LoginForm(FlaskForm):
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template("mainpage.html")
+    myitems = [
+        { "email": "zahravink@gmail.com", "content": "Can someone mow my lawn?", "name": "Joe", "type": "Request"},
+        { "email": "zahravink@gmail.com", "content": "I can teach you to bake cookies", "name": "Youssef", "type": "Offer"}
+    ]
+    myaccepts = [
+        { "email": "zahravink@gmail.com", "content": "Can someone give a 30min crash course on Flask?", "name": "Zahra", "type": "Request"},
+        { "email": "zahravink@gmail.com", "content": "I can fix a garborator", "name": "May", "type": "Offer"}
+    ]
+    return render_template("mainpage.html", title="UWA Community Hub", items=myitems, accepts=myaccepts)
+
+from app.forms import OfferRequestForm
+@app.route("/form")
+def form():
+    form_object = OfferRequestForm()
+    return render_template("offer_request_form.html", title="Create an Offer or Request", form=form_object)
 
 @app.route("/login")
 def login():
@@ -78,37 +92,15 @@ def signup():
 
 @app.route("/offers")
 def offers():
-    offerlist = [
-        { "category": "REPAIRS", "description": "I'm happy to help with any plumbing issues."},
-        { "category": "REPAIRS", "description": "I'm happy to help with any electrical issues."},
-        { "category": "REPAIRS", "description": "I'm happy to help with any carpentry issues."},
-        { "category": "SOCIAL", "description": "Always down for a coffee chat!"},
-        { "category": "SOCIAL", "description": "Hosting book club! DM me if you want to join."},
-        { "category": "SOCIAL", "description": "I'm hosting a board game night this Friday!"},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Math."},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Science."},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Socials."},
-        { "category": "UNI", "description": "Happy to peer-review uni essays"},
-        { "category": "UNI", "description": "I can help with any coding assignments."}
-    ]
-    return render_template("offers.html", offers=offerlist)
+    offerlist = Activity.query.filter_by(type='Offer').all()
+    print(offerlist)
+    return render_template("offers.html", title="All Offers", offers=offerlist)
 
 @app.route("/requests")
 def requests():
-    requestlist = [
-        { "category": "REPAIRS", "description": "I'm happy to help with any plumbing issues."},
-        { "category": "REPAIRS", "description": "I'm happy to help with any electrical issues."},
-        { "category": "REPAIRS", "description": "I'm happy to help with any carpentry issues."},
-        { "category": "SOCIAL", "description": "Always down for a coffee chat!"},
-        { "category": "SOCIAL", "description": "Hosting book club! DM me if you want to join."},
-        { "category": "SOCIAL", "description": "I'm hosting a board game night this Friday!"},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Math."},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Science."},
-        { "category": "SCHOOL", "description": "I tutor grade 10 Socials."},
-        { "category": "UNI", "description": "Happy to peer-review uni essays"},
-        { "category": "UNI", "description": "I can help with any coding assignments."}
-    ]
-    return render_template("requests.html", requests=requestlist)
+    requestlist = Activity.query.filter_by(type='Request').all()
+    print(request)
+    return render_template("requests.html", title="All Requests", requests=requestlist)
 
 auth_table = []
 
