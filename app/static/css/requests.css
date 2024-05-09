@@ -28,9 +28,9 @@ body {
 
 #acceptbtn {
   background-color: white;
+  color: black;
   border: 3.5px solid #f48a18;
   border-radius: 10px;
-  color: black;
   padding: 10px 20px;
   text-decoration: none;
   display: inline-block;
