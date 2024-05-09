@@ -61,11 +61,3 @@ def requests():
     requestlist = Activity.query.filter_by(type='Request').all()
     print(request)
     return render_template("requests.html", title="All Requests", requests=requestlist)
-
-auth_table = []
-
-@app.route('/auth', methods=['POST'])
-def add_auth():
-    data = request.get_json()
-    auth_table.append(data)
-    return jsonify({'message': 'Authentication details added successfully'})
