@@ -2,20 +2,11 @@ from flask import render_template
 from flask import Flask, request, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import select
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+from flask_login import current_user, login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import User, Activity
 from app.forms import OfferRequestForm, LoginForm, SigninForm
 from app import app, db
-
-
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
 
 @app.route("/")
 @app.route("/index")

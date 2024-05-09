@@ -2,9 +2,11 @@ from datetime import datetime, timezone
 from sqlalchemy import String, Integer, ForeignKey, Enum
 from sqlalchemy.orm import Mapped, WriteOnlyMapped, mapped_column, relationship
 from typing import Optional
+from flask_login import UserMixin
 from app import db
+from app import login
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id           : Mapped[int]           = mapped_column(primary_key=True)
     username     : Mapped[str]           = mapped_column(String(64), nullable=False, index=True, unique=True)
     email        : Mapped[str]           = mapped_column(String(128), nullable=False, index=True, unique=True)
@@ -34,3 +36,7 @@ class Activity(db.Model):
 
     def __repr__(self):
         return '<Request {}: "{}">'.format(self.category, self.description)
+
+@login.user_loader
+def load_user(id):
+    return db.session.get(User, int(id))
