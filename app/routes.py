@@ -1,12 +1,13 @@
-from flask import Flask, render_template, url_for, redirect, request, jsonify
+from flask import render_template
+from flask import Flask, request, jsonify, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import select
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
-
-from werkzeug.security import generate_password_hash
-
-
-from app import app, db
+from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import User, Activity
 from app.forms import OfferRequestForm, LoginForm, SigninForm
+from app import app, db
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -29,7 +30,6 @@ def index():
     ]
     return render_template("mainpage.html", title="UWA Community Hub", items=myitems, accepts=myaccepts)
 
-from app.forms import OfferRequestForm
 @app.route("/form")
 def form():
     form_object = OfferRequestForm()
