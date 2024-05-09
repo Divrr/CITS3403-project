@@ -1,0 +1,44 @@
+body {
+  padding: 50px;
+  padding-top: 175px; /* Adjust this value based on your header's actual height */
+  background-color: #5b8cc0;
+  margin: 20px;
+}
+
+.searchbar {
+  width: 100%;
+  background-color: rgb(201, 240, 217);
+  border: 15px solid rgb(141 202 167);
+  border-radius: 95px;
+  font-size: large;
+  font-family: sans-serif;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  padding: 40px;
+}
+
+#itemlist > div > div {
+  background-color: #a5d0ff;
+  border: solid 4px #2283ea;
+}
+
+#itemlist > div > div:hover {
+  background-color: #2283ea;
+}
+
+#acceptbtn {
+  background-color: white;
+  color: black;
+  border: 3.5px solid #2283ea;
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+#acceptbtn:hover {
+  transform: scale(1.07);
+}
