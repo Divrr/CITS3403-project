@@ -41,7 +41,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
-            if user.password_hash == generate_password_hash(form.password.data):
+            if check_password_hash(user.password_hash, form.password.data):
                 render_template("mainpage.html") #this leads after login #### this used to be login_user(user) #### it doesn't make difference
     return render_template("login.html", form=form)
 
