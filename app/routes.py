@@ -17,7 +17,7 @@ def index():
         { "email": "zahravink@gmail.com", "content": "Can someone give a 30min crash course on Flask?", "name": "Zahra", "type": "Request"},
         { "email": "zahravink@gmail.com", "content": "I can fix a garborator", "name": "May", "type": "Offer"}
     ]
-    return render_template("mainpage.html", items=myitems, accepts=myaccepts)
+    return render_template("mainpage.html", title="UWA Community Hub", items=myitems, accepts=myaccepts)
 
 @app.route('/form', methods=['GET', 'POST'])
 def form():
@@ -39,13 +39,13 @@ def login():
 def offers():
     offerlist = Activity.query.filter_by(type='Offer').all()
     print(offerlist)
-    return render_template("offers.html", offers=offerlist)
+    return render_template("offers.html", title="All Offers", offers=offerlist)
 
 @app.route("/requests")
 def requests():
     requestlist = Activity.query.filter_by(type='Request').all()
     print(request)
-    return render_template("requests.html", requests=requestlist)
+    return render_template("requests.html", title="All Requests", requests=requestlist)
 
 auth_table = []
 
