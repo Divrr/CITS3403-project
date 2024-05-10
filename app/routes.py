@@ -1,20 +1,12 @@
-from flask import Flask, render_template, url_for, redirect, request, jsonify
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
-
-from werkzeug.security import generate_password_hash
-
-
-from app import app, db
+from flask import render_template
+from flask import Flask, request, jsonify, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import select
+from flask_login import current_user, login_user, login_required, logout_user
+from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import User, Activity
 from app.forms import OfferRequestForm, LoginForm, SigninForm
-
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+from app import app, db
 
 @app.route("/")
 @app.route("/index")
@@ -29,7 +21,6 @@ def index():
     ]
     return render_template("mainpage.html", title="UWA Community Hub", items=myitems, accepts=myaccepts)
 
-from app.forms import OfferRequestForm
 @app.route("/form")
 def form():
     form_object = OfferRequestForm()
@@ -37,12 +28,18 @@ def form():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user:
-            if user.password_hash == generate_password_hash(form.password.data):
-                render_template("mainpage.html") #this leads after login #### this used to be login_user(user) #### it doesn't make difference
+        if user is None or not check_password_hash(user.password_hash, form.password.data):
+            return redirect(url_for('login'))
+        
+        login_user(user)
+        return redirect(url_for('index'))
+    
     return render_template("login.html", form=form)
 
 @app.route("/signup", methods=['GET', 'POST'])
@@ -70,11 +67,3 @@ def requests():
     requestlist = Activity.query.filter_by(type='Request').all()
     print(request)
     return render_template("requests.html", title="All Requests", requests=requestlist)
-
-auth_table = []
-
-@app.route('/auth', methods=['POST'])
-def add_auth():
-    data = request.get_json()
-    auth_table.append(data)
-    return jsonify({'message': 'Authentication details added successfully'})
