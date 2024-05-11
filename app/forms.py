@@ -22,7 +22,7 @@ class SignupForm(FlaskForm):
             raise ValidationError('That username is already used. Please choose a different one.')
 
     def validate_email(self, email):
-        email = User.query.filter_by(username=email.data).first()
+        email = User.query.filter_by(email=email.data).first()
         if email is not None:
             raise ValidationError('That email address is already used. Please choose a different one.')
         
