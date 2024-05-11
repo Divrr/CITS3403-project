@@ -4,7 +4,6 @@ from urllib.parse import urlsplit
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import select
 from flask_login import current_user, login_user, login_required, logout_user
-from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import User, Activity
 from app.forms import OfferRequestForm, LoginForm, SignupForm
 from app import app, db
@@ -40,7 +39,7 @@ def login():
     if form.validate_on_submit():
         # Check if the user exists and the password is correct
         user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not check_password_hash(user.password_hash, form.password.data):
+        if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
@@ -58,8 +57,8 @@ def signup():
     form = SignupForm()
 
     if form.validate_on_submit():
-        hashed_password = generate_password_hash(form.password.data)
-        new_user = User(username=form.username.data, email=form.email.data, password_hash=hashed_password)
+        new_user = User(username=form.username.data, email=form.email.data)
+        new_user.set_password(form.password.data)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
