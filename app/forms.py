@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, TextAreaField, SubmitField, PasswordField, ValidationError
-from wtforms.validators import DataRequired, Length, InputRequired, Email
+from wtforms import StringField, SelectField, TextAreaField, SubmitField, PasswordField, ValidationError, BooleanField
+from wtforms.validators import DataRequired, Length, InputRequired, Email, EqualTo
 from app.models import User
 
 class OfferRequestForm(FlaskForm):
@@ -9,30 +9,27 @@ class OfferRequestForm(FlaskForm):
     description = TextAreaField('Description', validators=[DataRequired(), Length(max=100)])
     submit = SubmitField('Submit')
 
-class SigninForm(FlaskForm):
-    username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
-
-    password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
-
+class SignupForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(min=4, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
-
-    submit = SubmitField('Register')
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=8, max=20)])
+    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Signup')
 
     def validate_username(self, username):
-        existing_user_username = User.query.filter_by(
-            username=username.data).first()
-        if existing_user_username:
-            raise ValidationError(
-                'That username already exists. Please choose a different one.')
+        user = User.query.filter_by(username=username.data).first()
+        if user is not None:
+            raise ValidationError('That username is already used. Please choose a different one.')
+
+    def validate_email(self, email):
+        email = User.query.filter_by(username=email.data).first()
+        if email is not None:
+            raise ValidationError('That email address is already used. Please choose a different one.')
         
 class LoginForm(FlaskForm):
-    username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
-
-    password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+    username = StringField(validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+    password = PasswordField(validators=[InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+    remember_me = BooleanField('Remember Me')
 
     submit = SubmitField('Login')
 
