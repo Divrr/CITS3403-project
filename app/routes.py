@@ -1,5 +1,6 @@
 from flask import render_template
 from flask import Flask, request, jsonify, redirect, url_for
+from urllib.parse import urlsplit
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import select
 from flask_login import current_user, login_user, login_required, logout_user
@@ -10,6 +11,7 @@ from app import app, db
 
 @app.route("/")
 @app.route("/index")
+@login_required
 def index():
     myitems = [
         { "email": "zahravink@gmail.com", "content": "Can someone mow my lawn?", "name": "Joe", "type": "Request"},
@@ -22,24 +24,33 @@ def index():
     return render_template("mainpage.html", title="UWA Community Hub", items=myitems, accepts=myaccepts)
 
 @app.route("/form")
+@login_required
 def form():
     form_object = OfferRequestForm()
     return render_template("offer_request_form.html", title="Create an Offer or Request", form=form_object)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    # Redirect to the index page if the user is already logged in
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    
+
     form = LoginForm()
+
     if form.validate_on_submit():
+        # Check if the user exists and the password is correct
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not check_password_hash(user.password_hash, form.password.data):
+            flash('Invalid username or password')
             return redirect(url_for('login'))
+        login_user(user, remember=form.remember_me.data)
         
-        login_user(user)
-        return redirect(url_for('index'))
-    
+        # Redirect to the next page if it exists, otherwise redirect to the index page
+        next_page = request.args.get('next')
+        if not next_page or urlsplit(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
+
     return render_template("login.html", form=form)
 
 @app.route("/signup", methods=['GET', 'POST'])
@@ -55,14 +66,25 @@ def signup():
 
     return render_template("signup.html", form=form)
 
+@login.user_loader
+def load_user(id):
+    return db.session.get(User, int(id))
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
 
 @app.route("/offers")
+@login_required
 def offers():
     offerlist = Activity.query.filter_by(type='Offer').all()
     print(offerlist)
     return render_template("offers.html", title="All Offers", offers=offerlist)
 
 @app.route("/requests")
+@login_required
 def requests():
     requestlist = Activity.query.filter_by(type='Request').all()
     print(request)
