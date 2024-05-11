@@ -15,19 +15,43 @@
         <h1>Local Community Message Board</h1>
         <div id="authForm"></div>
             <h2>Create Account</h2>
-            <form method="POST" action="">
-            
-            {{ form.hidden_tag() }}
-            {{ form.username }}
-            {{ form.email }}
-            {{ form.password }}
-            <input type="password" id="confirmPasswordInput" placeholder="Confirm Password">
-            {{ form.submit }}
-            <p>
-                <a id="underLink" href="{{ url_for('login') }}">Already have an account? Sign In here</a>
-            </p>
-            
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>{{ form.username(size=32, placeholder="Username")}}</p>
+                {% if form.username.errors %}
+                <ul>
+                    {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <p>{{ form.email(size=64, placeholder="Email") }}</p>
+                {% if form.email.errors %}
+                <ul>
+                    {% for error in form.email.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <p>{{ form.password(size=32, placeholder="Password") }}</p>
+                {% if form.password.errors %}
+                <ul>
+                    {% for error in form.password.errors %}
+                    <li>[{{ error }}]</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <p>{{ form.password2(size=32, placeholder="Confirm Password") }}</p>
+                {% if form.password2.errors %}
+                <ul>
+                    {% for error in form.password2.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <p>{{ form.submit() }}</p>
             </form>
+        
         </div>
     </div>
     

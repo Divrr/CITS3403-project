@@ -1,12 +1,12 @@
 from flask import render_template
-from flask import Flask, request, jsonify, redirect, url_for
+from flask import Flask, request, jsonify, redirect, url_for, flash
 from urllib.parse import urlsplit
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import select
 from flask_login import current_user, login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import User, Activity
-from app.forms import OfferRequestForm, LoginForm, SigninForm
+from app.forms import OfferRequestForm, LoginForm, SignupForm
 from app import app, db
 
 @app.route("/")
@@ -55,7 +55,7 @@ def login():
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
-    form = SigninForm()
+    form = SignupForm()
 
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data)
@@ -65,10 +65,6 @@ def signup():
         return redirect(url_for('login'))
 
     return render_template("signup.html", form=form)
-
-@login.user_loader
-def load_user(id):
-    return db.session.get(User, int(id))
 
 @app.route('/logout')
 def logout():
