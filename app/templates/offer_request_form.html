@@ -41,39 +41,5 @@
     </div>
   </form>
 </div>
-<script>
-  // when the submit button is clicked, the user is redirected to the mainpage.html
-  document
-    .querySelector(".submit-btn")
-    .addEventListener("click", function (event) {
-      event.preventDefault();
-      window.location.href = "{{ url_for('index') }}";
-    });
-
-  // changes the color of the form based on the selected option
-  function changeColor(selectObj) {
-    var idx = selectObj.selectedIndex;
-    var option = selectObj.options[idx];
-    var formContainer = document.querySelector(".form-container");
-    // var formLabels = document.querySelectorAll(".form-label");
-    var formLabels = document.querySelectorAll(".mb-3 .inputdescription");
-    var submitButton = document.querySelector(".submit-btn");
-
-    if (option.value === "offer") {
-      formContainer.style.backgroundColor = "#a5d0ff";
-      formContainer.style.borderColor = "#2283ea";
-      formLabels.forEach(function (label) {
-        label.style.color = "#2283ea";
-      });
-      submitButton.style.borderColor = "#2283ea";
-    } else if (option.value === "request") {
-      formContainer.style.backgroundColor = "#ffc484";
-      formContainer.style.borderColor = "#f48a18";
-      formLabels.forEach(function (label) {
-        label.style.color = "#f48a18";
-      });
-      submitButton.style.borderColor = "#f48a18";
-    }
-  }
-</script>
+<script src="../static/form_script.js"></script>
 {% endblock %}

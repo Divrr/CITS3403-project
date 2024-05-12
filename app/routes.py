@@ -24,9 +24,17 @@ def index():
 
 @app.route("/form")
 @login_required
+@app.route('/form', methods=['GET', 'POST'])
 def form():
-    form_object = OfferRequestForm()
-    return render_template("offer_request_form.html", title="Create an Offer or Request", form=form_object)
+    form = OfferRequestForm()
+    if form.validate_on_submit():
+        # Creating a new Activity instance from the form data
+        new_activity = Activity(type=form.type.data, category=form.category.data, description=form.description.data)
+        db.session.add(new_activity)
+        db.session.commit()
+        flash('Your activity has been created!', 'success')
+        return redirect(url_for('index'))  # Redirect to the main page
+    return render_template('offer_request_form.html', form=form)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
