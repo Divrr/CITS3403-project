@@ -21,32 +21,18 @@ renderlistitems = function (response) {
   for (let item of response) {
     $("#itemlist").append(`
     <div class="col-lg-3 col-md-4 col-sm-6 g-3">
-      <div class="p-4 h-100 text-center d-flex flex-column justify-content-around 
-          {% if request.endpoint == 'offers' %} 
-          tinypaddingoffers
-          {% elif request.endpoint == 'requests' %} 
-          tinypaddingrequests
-          {% endif %}">
-
+      <div class="p-4 h-100 text-center d-flex flex-column justify-content-around">
         <div class="h4 fw-semibold text-uppercase">
-            ${item.category}
+          ${ item.category }
         </div>
-
-        <div class="p fs-6 fst-italic text-start sans-serif text-center">
-            ${item.description}
-        </div>
-
-        <button type="button" 
-            {% if request.endpoint == 'offers' %} 
-            id="offeracceptbtn"
-            {% elif request.endpoint == 'requests' %} 
-            id="requestacceptbtn"
-            {% endif %}
-            class="btn btn-light btn-sm">
+        <p class="fs-6 fst-italic text-start sans-serif text-center">
+          ${ item.description }
+        </p>
+        <button type="button" id="acceptbtn" class="btn btn-light btn-sm">
           accept
         </button>
-      </div>
     </div>
+  </div>
 `);
   }
 };
