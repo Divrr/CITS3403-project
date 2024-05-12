@@ -22,7 +22,6 @@ def index():
     ]
     return render_template("mainpage.html", title="UWA Community Hub", items=myitems, accepts=myaccepts)
 
-@app.route("/form")
 @login_required
 @app.route('/form', methods=['GET', 'POST'])
 def form():
