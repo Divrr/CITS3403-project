@@ -3,6 +3,7 @@ from flask_login import current_user, login_user, login_required, logout_user
 from app import app, db
 from app.models import User, Activity
 from app.forms import OfferRequestForm, LoginForm, SignupForm
+from urllib.parse import urlsplit
 
 @app.route("/")
 @app.route("/index")
