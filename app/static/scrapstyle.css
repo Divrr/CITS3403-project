@@ -1,5 +1,6 @@
 body {
     background-color: rgb(255, 255, 255);
+    padding-top: 80px;  /* General padding to shift content down below the fixed header */
 }
 
 .heading {
@@ -7,10 +8,11 @@ body {
     text-align: center;
     background-color: rgb(91, 182, 129);
     width: 100%;
-    padding: 10px;
+    padding: 10px 0;
     border: solid 15px rgb(168, 236, 196);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden; /* Keeps contents within the block */
+    overflow: hidden;
+    position: relative;
 }
 
 .fixed_heading {
@@ -18,7 +20,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Ensures it stays on top of other content */
+    z-index: 1000;
 }
 
 .subheading {
@@ -96,10 +98,8 @@ h5 {
 }
 
 .circle-rectangle {
-
     text-align: center;
-    line-height: 50px; 
-    /* line-height controls the height of each row in the user part! */
+    line-height: 50px;
     font-weight: bold;
 }
 
@@ -259,17 +259,16 @@ table {
 .modal-footer.justify-content-center {
     display: flex;
     justify-content: center;
-  }
+}
 
 .modal-title {
     text-align: center;
 }
-  
+
 .modal-body {
     text-align: center;
 }
-  
-/* new styles start here */
+
 .user_subtitle {
     background-color:rgb(120, 206, 156);
     color:white;
@@ -287,20 +286,19 @@ body {
     color: darkgreen;
     height: 50px;
     border: 3px solid rgb(68, 158, 105);
-    
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     font-size: 16px;
     padding-left: 15px;
-    padding-right:15px;
+    padding-right: 15px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .contact-button:hover {
     transform: scale(1.07);
-    /* Increase size by 10% */
 }
 
 .userbuttons {
@@ -315,27 +313,23 @@ body {
     border-radius: 15px;
 }
 
-
 a {
     text-decoration: none;
     /* removes underlines from hyperlinks */
 }
 
-/* new styles for the form */
-
 .form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(201, 240, 217);
-  padding-top: 70px;
-  padding-bottom: 70px;
-  border: solid 15px rgb(120, 206, 156);
-  border-radius: 40px;
-  margin-bottom: 40px;
-  margin-top: 160px;
-  font-size: 30px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(201, 240, 217);
+    padding-top: 70px;
+    padding-bottom: 70px;
+    border: solid 15px rgb(120, 206, 156);
+    border-radius: 40px;
+    margin-bottom: 40px;
+    margin-top: 160px;
+    font-size: 30px;
 }
 
 .form-container .form-control {
@@ -348,27 +342,23 @@ a {
 }
 
 .inputdescription {
-
-          font-size: 15px;
-          font-style: italic;
-          color: black;
-
+    font-size: 15px;
+    font-style: italic;
+    color: black;
 }
 
 .offer_dropdown {
-      background-color: blue;
-      color: white;
-  }
+    background-color: blue;
+    color: white;
+}
 
 .request_dropdown {
-
-          background-color: orange;
-          color: white;
-
+    background_color: orange;
+    color: white;
 }
 
 .submit-btn {
-    background-color: white;
+    background_color: white;
     color: black;
     border: 4px solid darkgreen;
     border-radius: 5px;
@@ -378,7 +368,7 @@ a {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    text-align: center;
+    text_align: center;
 }
 
 .submit-btn:hover {
