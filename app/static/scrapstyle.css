@@ -15,6 +15,68 @@ body {
     position: relative;
 }
 
+.header-logo {
+    width: 120px; /* Increased width for a larger logo */
+    height: auto; /* Maintain aspect ratio */
+    margin: 10px auto; /* Center horizontally and add vertical spacing */
+    display: block;
+}
+
+h1 {
+    font-size: 2em; /* Reduced size for the title */
+    color: white;
+    margin: 0 auto;
+    padding: 0 20px; /* Sufficient padding to not overlap logo */
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .header-logo {
+        width: 80px; /* Adjusted smaller width for mobile devices */
+    }
+    h1 {
+        font-size: 1.2em; /* Further reduced font size for mobile */
+    }
+    .navbar-toggler {
+        margin-top: 10px; /* Ensure space between menu and title */
+    }
+}
+
+.navbar {
+    background-color: transparent !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.navbar-toggler {
+    margin: 0 auto; /* Center the navbar toggler button */
+}
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-nav .nav-link:hover {
+    font-size: 1.7em;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: white !important;
+}
+
 .fixed_heading {
     position: fixed;
     top: 0;
@@ -214,46 +276,6 @@ table {
 .image-container img {
     display: block;
     margin: 0 auto;
-}
-
-/* Navigation Bar Custom Styles */
-.navbar {
-    background-color: transparent !important;
-    display: flex;
-    justify-content: center; /* Center the navbar */
-    width: 100%;
-}
-
-.navbar-nav {
-    width: 100%; /* Use full width to allow even spacing */
-    display: flex;
-    justify-content: space-evenly; /* Evenly space the navigation items */
-}
-
-.navbar-nav .nav-link {
-    color: white !important;
-    text-decoration: none; /* Remove underline */
-    font-size: 1.5em; /* Increase font size */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match heading font */
-}
-
-.navbar-nav .nav-link:hover {
-    font-size: 1.7em;
-    transition: font-size 0.3s ease-in-out;
-}
-
-.navbar-nav .nav-link.active {
-    font-weight: bold; /* Make the active link bold */
-    color: white !important; /* Ensure active link is white */
-}
-
-.header-logo {
-    position: absolute;
-    top: 0px; /* Adjust this value to vertically center or place as needed */
-    left: 10px; /* Adjust for horizontal placement */
-    height: 150px; /* Or any size you prefer */
-    width: auto; /* Maintain aspect ratio */
-    z-index: 1050; /* Ensure it's above other items in the header */
 }
 
 .modal-footer.justify-content-center {
