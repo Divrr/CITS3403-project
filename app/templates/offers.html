@@ -1,31 +1,23 @@
 {% extends "base.html" %} {% block content %} {% include 'navbar.html' %}
-<div class="container mx-auto row searchbaroffer">
-  Search bar can go here Theresa!
+<div class="container mx-auto row searchbar">
+  <form>
+    <div class="input-group mx-auto py-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search"
+        aria-label="Search"
+        aria-describedby="search-button"
+        style="border-radius: 50px"
+      />
+    </div>
+  </form>
 </div>
 
-<div class="container mx-auto p-3 my-3 row article2">
-  <div class="container">
-    <div class="row justify-content-start">
-      {% for offer in offers %}
-      <div class="col-lg-3 col-md-4 col-sm-6 g-3">
-        <div
-          class="p-4 h-100 text-center d-flex flex-column justify-content-around tinypaddingoffers"
-        >
-          <div class="h4 fw-semibold text-uppercase">{{ offer.category }}</div>
-          <p class="fs-6 fst-italic text-start sans-serif text-center">
-            {{ offer.description }}
-          </p>
-          <button
-            type="button"
-            id="offeracceptbtn"
-            class="btn btn-light btn-sm"
-          >
-            accept
-          </button>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
+<div class="container row mx-auto p-3 my-3 article justify-content-center">
+  <div class="row justify-content-start" id="itemlist">
+    <!-- List of items will be rendered here -->
   </div>
 </div>
+<script src="../static/js/search.js"></script>
 {% endblock %}

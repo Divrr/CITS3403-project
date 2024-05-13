@@ -77,17 +77,26 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-
-@app.route("/offers")
+@app.route("/offers", methods=['GET', 'POST'])
 @login_required
 def offers():
-    offerlist = Activity.query.filter_by(type='Offer').all()
-    print(offerlist)
-    return render_template("offers.html", title="All Offers", offers=offerlist)
+    if request.method == 'POST':
+        search = request.form['search']
+        offerlist = Activity.query.filter_by(type='Offer').filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
+        offerlist_serializable = [activity.to_dict() for activity in offerlist]
+        return jsonify(offerlist_serializable)
 
-@app.route("/requests")
+    offerlist = Activity.query.filter_by(type='Offer').all()
+    return render_template("offers.html",title="All Offers", offers=offerlist)
+
+@app.route("/requests", methods=['GET', 'POST'])
 @login_required
 def requests():
+    if request.method == 'POST':
+        search = request.form['search']
+        requestlist = Activity.query.filter_by(type='Request').filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
+        requestlist_serializable = [activity.to_dict() for activity in requestlist]
+        return jsonify(requestlist_serializable)
+
     requestlist = Activity.query.filter_by(type='Request').all()
-    print(request)
     return render_template("requests.html", title="All Requests", requests=requestlist)
