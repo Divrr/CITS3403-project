@@ -27,14 +27,14 @@ function changeColor(selectObj) {
     var formLabels = document.querySelectorAll(".mb-3 .inputdescription");
     var submitButton = document.querySelector(".submit-btn");
 
-    if (option.value === "offer") {
+    if (option.value === "Offer") {
         formContainer.style.backgroundColor = "#a5d0ff";
         formContainer.style.borderColor = "#2283ea";
         formLabels.forEach(function (label) {
             label.style.color = "#2283ea";
         });
         submitButton.style.borderColor = "#2283ea";
-    } else if (option.value === "request") {
+    } else if (option.value === "Request") {
         formContainer.style.backgroundColor = "#ffc484";
         formContainer.style.borderColor = "#f48a18";
         formLabels.forEach(function (label) {
