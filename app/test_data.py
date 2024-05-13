@@ -10,18 +10,25 @@ def initialise_test_database():
     db.create_all()
 
     # add test data
-    db.session.add_all([
-        User(username='user1', email='user1@example.com', password_hash='password1'),
-        User(username='user2', email='user2@example.com', password_hash='password2'),
-        User(username='user3', email='user3@example.com', password_hash='password3'),
-        User(username='user4', email='user4@example.com', password_hash='password4'),
-        User(username='user5', email='user5@example.com', password_hash='password5'),
-        User(username='user6', email='user6@example.com', password_hash='password6'),
-        User(username='user7', email='user7@example.com', password_hash='password7'),
-        User(username='user8', email='user8@example.com', password_hash='password8'),
-        User(username='user9', email='user9@example.com', password_hash='password9'),
-        User(username='user10', email='user10@example.com', password_hash='password10')
-    ])
+    users = [
+        User(username='user1', email='user1@example.com'),
+        User(username='user2', email='user2@example.com'),
+        User(username='user3', email='user3@example.com'),
+        User(username='user4', email='user4@example.com'),
+        User(username='user5', email='user5@example.com'),
+        User(username='user6', email='user6@example.com'),
+        User(username='user7', email='user7@example.com'),
+        User(username='user8', email='user8@example.com'),
+        User(username='user9', email='user9@example.com'),
+        User(username='user10', email='user10@example.com')
+    ]
+
+    for user in users:
+        user.set_password('password')
+
+    db.session.add_all(users)
+
+
 
     db.session.add_all([
         Activity(author_id=1, type='Offer', category='Programming', description='Python programming task'),
