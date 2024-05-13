@@ -11,22 +11,22 @@ from urllib.parse import urlsplit
 def index():
     # Fetch activities where the current user is the author and join with User to get the email and username
     myitems = db.session.query(
-        User.email, Activity.description, User.username, Activity.type
-    ).join(Activity, User.id == Activity.author_id).filter(
+        User.email, Activity.description, User.username, Activity.type, Activity.acceptor_id
+    ).join(User, User.id == Activity.author_id).filter(
         Activity.author_id == current_user.id
     ).all()
     myitems = [
-        {"email": item.email, "content": item.description, "name": item.username, "type": item.type}
+        {"email": item.email, "content": item.description, "name": item.username, "type": item.type, "acceptor_id": item.acceptor_id}
         for item in myitems
     ]
     # Fetch activities where the current user is the acceptor and join with User to get the email and username
     myaccepts = db.session.query(
-        User.email, Activity.description, User.username, Activity.type
-    ).join(Activity, User.id == Activity.acceptor_id).filter(
+        User.email, Activity.description, User.username, Activity.type, Activity.acceptor_id
+    ).join(User, User.id == Activity.acceptor_id).filter(
         Activity.acceptor_id == current_user.id
     ).all()
     myaccepts = [
-        {"email": item.email, "content": item.description, "name": item.username, "type": item.type}
+        {"email": item.email, "content": item.description, "name": item.username, "type": item.type, "acceptor_id": item.acceptor_id}
         for item in myaccepts
     ]
     return render_template("mainpage.html", title="UWA Community Hub", items=myitems, accepts=myaccepts)

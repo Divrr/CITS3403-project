@@ -56,20 +56,19 @@
 
           <div class="your_items_container user_subtitle row">
             <div class="col">YOUR ITEMS</div>
-
             {% for item in items %}
             <div
               class="row {% if item.type == 'Request' %} userRequest {% else %} userOffer {% endif %}"
             >
-              <div class="col">{{item.content}}</div>
+              <div class="col">{{ item.content }}</div>
               <div class="col-sm-5 userbuttons">
+                {% if item.acceptor_id %}
                 <a
-                  href="mailto:{{email}}"
-                  id="acceptee_email"
+                  href="mailto:{{ item.acceptor_email }}"
                   class="contact-button"
-                  >Contact &nbsp;
-                  <span id="acceptee_name">{{item.name}}</span></a
+                  >Contact &nbsp;<span>{{ item.acceptor_name }}</span></a
                 >
+                {% endif %}
                 <img
                   src="../static/img/tick.png"
                   class="circlesmall"
@@ -84,7 +83,7 @@
 
           <div class="row">
             <div class="col" style="text-align: center">
-              <a href="{{url_for('form')}}">
+              <a href="{{ url_for('form') }}">
                 <img
                   src="../static/img/plus.jpg"
                   class="circle"
@@ -98,21 +97,19 @@
 
           <div class="your_items_container user_subtitle row">
             <div class="col">YOUR ACCEPTS</div>
-
             {% for accept in accepts %}
             <div
               class="row {% if accept.type == 'Request' %} userRequest {% else %} userOffer {% endif %}"
             >
-              <div class="col">{{accept.content}}</div>
+              <div class="col">{{ accept.content }}</div>
               <div class="col-sm-5 userbuttons">
+                {% if accept.acceptor_id %}
                 <a
-                  href="mailto:{{accept.email}}"
-                  id="acceptee_email"
+                  href="mailto:{{ accept.acceptor_email }}"
                   class="contact-button"
-                  >Contact &nbsp;<span id="acceptee_name"
-                    >{{accept.name}}</span
-                  ></a
+                  >Contact &nbsp;<span>{{ accept.acceptor_name }}</span></a
                 >
+                {% endif %}
                 <img
                   src="../static/img/tick.png"
                   class="circlesmall"
