@@ -56,19 +56,6 @@ class Activity(db.Model):
             'updated_at': self.updated_at
         }
 
-
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'author': self.author.username,
-            'acceptor': self.acceptor.username if self.acceptor else None,
-            'type': self.type,
-            'category': self.category,
-            'description': self.description,
-            'status': self.status,
-            'updated_at': self.updated_at
-        }
-
 @login.user_loader
 def load_user(id):
     return db.session.get(User, int(id))

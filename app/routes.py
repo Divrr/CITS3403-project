@@ -1,4 +1,5 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, jsonify
+from urllib.parse import urlsplit
 from flask_login import current_user, login_user, login_required, logout_user
 from app import app, db
 from app.models import User, Activity
