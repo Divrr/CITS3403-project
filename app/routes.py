@@ -4,32 +4,50 @@ from app import app, db
 from app.models import User, Activity
 from app.forms import OfferRequestForm, LoginForm, SignupForm
 from urllib.parse import urlsplit
+from sqlalchemy.orm import aliased
 
 @app.route("/")
 @app.route("/index")
 @login_required
 def index():
-    # Fetch activities where the current user is the author and join with User to get the email and username
+    Acceptor = aliased(User)
+
+    # Fetch activities where the current user is the author
     myitems = db.session.query(
-        User.email, Activity.description, User.username, Activity.type, Activity.acceptor_id
-    ).join(User, User.id == Activity.author_id).filter(
-        Activity.author_id == current_user.id
-    ).all()
-    myitems = [
-        {"email": item.email, "content": item.description, "name": item.username, "type": item.type, "acceptor_id": item.acceptor_id}
+        User.email.label('author_email'),
+        User.username.label('author_name'),
+        Acceptor.email.label('acceptor_email'),
+        Acceptor.username.label('acceptor_name'),
+        Activity.description,
+        Activity.type,
+        Activity.acceptor_id
+    ).join(User, User.id == Activity.author_id)\
+    .outerjoin(Acceptor, Acceptor.id == Activity.acceptor_id)\
+    .filter(Activity.author_id == current_user.id)\
+    .all()
+
+    items = [
+        {"content": item.description, "type": item.type, "author_email": item.author_email, "author_name": item.author_name, "acceptor_email": item.acceptor_email, "acceptor_name": item.acceptor_name, "acceptor_id": item.acceptor_id}
         for item in myitems
     ]
-    # Fetch activities where the current user is the acceptor and join with User to get the email and username
+
+    # Fetch activities where the current user is the acceptor
     myaccepts = db.session.query(
-        User.email, Activity.description, User.username, Activity.type, Activity.acceptor_id
-    ).join(User, User.id == Activity.acceptor_id).filter(
-        Activity.acceptor_id == current_user.id
-    ).all()
-    myaccepts = [
-        {"email": item.email, "content": item.description, "name": item.username, "type": item.type, "acceptor_id": item.acceptor_id}
-        for item in myaccepts
+        User.email.label('author_email'),
+        User.username.label('author_name'),
+        Activity.description,
+        Activity.type,
+        Activity.author_id
+    ).join(User, User.id == Activity.author_id)\
+    .filter(Activity.acceptor_id == current_user.id)\
+    .all()
+
+    accepts = [
+        {"content": accept.description, "type": accept.type, "author_email": accept.author_email, "author_name": accept.author_name, "author_id": accept.author_id}
+        for accept in myaccepts
     ]
-    return render_template("mainpage.html", title="UWA Community Hub", items=myitems, accepts=myaccepts)
+
+    return render_template("mainpage.html", title="UWA Community Hub", items=items, accepts=accepts)
 
 @app.route('/form', methods=['GET', 'POST'])
 @login_required
