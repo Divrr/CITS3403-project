@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length, InputRequired, Email, Equal
 from app.models import User
 
 class OfferRequestForm(FlaskForm):
-    type = SelectField('Type', choices=[('', 'Select an item type'), ('offer', 'Offer'), ('request', 'Request')], validators=[DataRequired()])
+    type = SelectField('Type', choices=[('', 'Select an item type'), ('Offer', 'Offer'), ('Request', 'Request')], validators=[DataRequired()])
     category = StringField('Category', validators=[DataRequired(), Length(max=15)])
     description = TextAreaField('Description', validators=[DataRequired(), Length(max=100)])
     submit = SubmitField('Submit')

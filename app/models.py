@@ -43,8 +43,7 @@ class Activity(db.Model):
 
     def __repr__(self):
         return '<Request {}: "{}">'.format(self.category, self.description)
-
-
+    
     def to_dict(self):
         return {
             'id': self.id,
