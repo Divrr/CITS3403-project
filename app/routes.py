@@ -1,11 +1,10 @@
 from flask import render_template, request, redirect, url_for, flash, jsonify, session
-from urllib.parse import urlsplit
 from flask_login import current_user, login_user, login_required, logout_user
 from app import app, db
 from app.models import User, Activity
 from app.forms import OfferRequestForm, LoginForm, SignupForm, EmptyForm
-from urllib.parse import urlsplit
 from sqlalchemy.orm import aliased
+from urllib.parse import urlsplit
 
 @app.route("/")
 @app.route("/index")
@@ -18,22 +17,24 @@ def index():
         User.username.label('author_name'),
         Acceptor.email.label('acceptor_email'),
         Acceptor.username.label('acceptor_name'),
+        Activity.id,
         Activity.description,
         Activity.type,
         Activity.acceptor_id
     ).join(User, User.id == Activity.author_id)\
     .outerjoin(Acceptor, Acceptor.id == Activity.acceptor_id)\
-    .filter(Activity.author_id == current_user.id)\
+    .filter(Activity.author_id == current_user.id, Activity.status != 'Closed')\
     .all()
 
     myaccepts = db.session.query(
         User.email.label('author_email'),
         User.username.label('author_name'),
+        Activity.id,
         Activity.description,
         Activity.type,
         Activity.author_id
     ).join(User, User.id == Activity.author_id)\
-    .filter(Activity.acceptor_id == current_user.id)\
+    .filter(Activity.acceptor_id == current_user.id, Activity.status != 'Closed')\
     .all()
 
     return render_template("mainpage.html", title="UWA Community Hub", items=myitems, accepts=myaccepts)
@@ -143,3 +144,17 @@ def accept(activity_id):
         flash('Accepted activity' + Activity.query.get(activity_id).description + '!')
     
     return redirect(request.referrer)
+
+@app.route('/complete_activity/<int:activity_id>', methods=['POST'])
+@login_required
+def complete_activity(activity_id):
+    print(f"Attempting to complete activity with id: {activity_id}")
+    activity = Activity.query.get_or_404(activity_id)
+    if activity.author_id != current_user.id:
+        print("Unauthorized attempt to complete activity.")
+        return jsonify({'error': 'Unauthorized'}), 403
+    
+    activity.close()
+    db.session.commit()
+    print(f"Activity with id: {activity_id} marked as complete.")
+    return jsonify({'success': 'Activity marked as complete'}), 200
