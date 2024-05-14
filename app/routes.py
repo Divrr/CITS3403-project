@@ -3,7 +3,7 @@ from urllib.parse import urlsplit
 from flask_login import current_user, login_user, login_required, logout_user
 from app import app, db
 from app.models import User, Activity
-from app.forms import OfferRequestForm, LoginForm, SignupForm
+from app.forms import OfferRequestForm, LoginForm, SignupForm, EmptyForm
 from urllib.parse import urlsplit
 from sqlalchemy.orm import aliased
 
@@ -101,6 +101,40 @@ def requests():
 def search():
     search = request.args.get('search')
     searchtype = request.referrer.split('/')[-1] == 'offers' and 'Offer' or 'Request'
-    itemlist = Activity.query.filter_by(type=searchtype).filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
-    rendered_results = [render_template('searchboxitem.html', item=item) for item in itemlist]
+    itemlist = Activity.query.filter_by(type=searchtype, status="Open").filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
+
+    form = EmptyForm()
+    rendered_results = [render_template('searchboxitem.html', item=item, form=form) for item in itemlist]
     return ''.join(rendered_results)
+
+@app.route("/accept/<activity_id>", methods=['GET', 'POST'])
+def accept(activity_id):
+    form = EmptyForm()
+    if form.validate_on_submit():
+        activity = Activity.query.get(activity_id)
+
+        if activity is None:
+            flash('Activity not found.')
+            return redirect(request.referrer)
+        
+        if activity.status != "Open":
+            flash('Activity is not open for acceptance.')
+        
+        if activity.acceptor_id == current_user.id:
+            flash('You cannot accept your own activity.')
+
+        if current_user.has_accepted(activity):
+            flash('You have already accepted this activity.')
+            return redirect(url_for('index'))
+        
+        # Check if the user has accepted 5 activities already (the maximum number of accepted activities allowed)
+        ActivityCount = Activity.query.filter_by(acceptor_id=current_user.id).count()
+        if ActivityCount >= 5:
+            flash('You have already accepted the maximum number of activities allowed (5).')
+            return redirect(url_for('index'))
+        
+        current_user.accept(activity)
+        db.session.commit()
+        flash('Accepted activity' + Activity.query.get(activity_id).description + '!')
+    
+    return redirect(request.referrer)

@@ -33,3 +33,5 @@ class LoginForm(FlaskForm):
 
     submit = SubmitField('Login')
 
+class EmptyForm(FlaskForm):
+    submit = SubmitField('Submit')
