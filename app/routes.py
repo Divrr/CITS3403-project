@@ -3,7 +3,7 @@ from urllib.parse import urlsplit
 from flask_login import current_user, login_user, login_required, logout_user
 from app import app, db
 from app.models import User, Activity
-from app.forms import OfferRequestForm, LoginForm, SignupForm
+from app.forms import OfferRequestForm, LoginForm, SignupForm, EmptyForm
 from urllib.parse import urlsplit
 from sqlalchemy.orm import aliased
 
@@ -104,3 +104,9 @@ def search():
     itemlist = Activity.query.filter_by(type=searchtype).filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
     rendered_results = [render_template('searchboxitem.html', item=item) for item in itemlist]
     return ''.join(rendered_results)
+
+@app.route("/accept/<activity_id>", methods=['GET', 'POST'])
+def accept(activity_id):
+    form = EmptyForm()
+    if form.validate_on_submit():
+        return "Accepted activity '" + Activity.query.get(activity_id).description + "'!"
