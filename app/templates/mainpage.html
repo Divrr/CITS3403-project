@@ -58,7 +58,7 @@
             <div class="col">YOUR ACCEPTS</div>
             {% for accept in accepts %}
             <div class="row {% if accept.type == 'Request' %} userRequest {% else %} userOffer {% endif %}">
-                <div class="col">{{ accept.content }}</div>
+                <div class="col">{{ accept.description }}</div>
                 <div class="col-sm-5 userbuttons">
                     {% if accept.author_id %}
                     <a href="mailto:{{ accept.author_email }}" class="contact-button">Contact &nbsp;<span>{{ accept.author_name }}</span></a>
