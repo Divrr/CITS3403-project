@@ -115,14 +115,17 @@ def accept(activity_id):
 
         if activity is None:
             flash('Activity not found.')
+            return redirect(request.referrer)
 
         if current_user.has_accepted(activity):
             flash('You have already accepted this activity.')
             return redirect(url_for('index'))
         
         # Check if the user has accepted 5 activities already (the maximum number of accepted activities allowed)
-        if len(current_user.accepted) >= 5:
-            flash('You have reached the maximum number of accepted activities.')
+        ActivityCount = Activity.query.filter_by(acceptor_id=current_user.id).count()
+        if ActivityCount >= 5:
+            flash('You have already accepted the maximum number of activities allowed (5).')
+            return redirect(url_for('index'))
         
         current_user.accept(activity)
         db.session.commit()
