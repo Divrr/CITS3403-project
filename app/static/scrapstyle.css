@@ -30,7 +30,7 @@ h1 {
     text-align: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {  /* Adjust this breakpoint to match your navbar's collapse point */
     .header-logo {
         width: 80px; /* Adjusted smaller width for mobile devices */
     }
@@ -39,6 +39,21 @@ h1 {
     }
     .navbar-toggler {
         margin-top: 10px; /* Ensure space between menu and title */
+    }
+
+    /* Updated navbar styles for mobile */
+    .navbar-nav {
+        flex-direction: column; /* Stack the links vertically */
+        align-items: center; /* Center-align the items */
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%; /* Full width to each nav item */
+        text-align: center; /* Center the text of each nav link */
+    }
+
+    .navbar-nav .nav-link {
+        width: 100%; /* Ensure the link uses full width for better tap targets */
     }
 }
 
