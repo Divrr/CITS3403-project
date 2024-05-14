@@ -55,11 +55,37 @@ h1 {
 
 h2 {
     text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 form {
     margin-bottom: 20px;
 }
+label {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#username {
+    border: 3px solid rgb(57, 130, 87);
+    border-radius: 10px;
+}
+
+#password {
+    border: 3px solid rgb(57, 130, 87);
+    border-radius: 10px;
+}
+
+#password2 {
+    border: 3px solid rgb(57, 130, 87);
+    border-radius: 10px;
+}
+
+
+#email {
+    border: 3px solid rgb(57, 130, 87);
+    border-radius: 10px;
+}
+
 
 #submit {
     background-color: rgb(74, 145, 103);
@@ -71,6 +97,7 @@ form {
     border-radius: 15px;
     color: white;
     font-weight: 400;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #submit:hover {
@@ -112,15 +139,26 @@ li {
 #logo {
     max-width: 200px;
     display: block;
-    margin: 0 auto 20px; /* Center the logo and add some space below */
+    margin: auto; /* Center the logo and add some space below */
 }
 
 #underLink {
     text-align: center;
     color: blue;
     font-style: italic;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+#underLink {
+    text-align: center;
+    color: blue;
+    font-style: italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+a#underLink:hover {
+    transform: scale(1.07);
+}
 
 p {
     text-align: center;
