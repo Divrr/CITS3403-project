@@ -1,10 +1,9 @@
-from flask import render_template, request, redirect, url_for, flash, jsonify
+from flask import render_template, request, redirect, url_for, flash, jsonify, session
 from urllib.parse import urlsplit
 from flask_login import current_user, login_user, login_required, logout_user
 from app import app, db
 from app.models import User, Activity
 from app.forms import OfferRequestForm, LoginForm, SignupForm
-from urllib.parse import urlsplit
 from sqlalchemy.orm import aliased
 
 @app.route("/")
@@ -13,7 +12,6 @@ from sqlalchemy.orm import aliased
 def index():
     Acceptor = aliased(User)
 
-    # Fetch activities where the current user is the author
     myitems = db.session.query(
         User.email.label('author_email'),
         User.username.label('author_name'),
@@ -27,7 +25,6 @@ def index():
     .filter(Activity.author_id == current_user.id)\
     .all()
 
-    # Fetch activities where the current user is the acceptor
     myaccepts = db.session.query(
         User.email.label('author_email'),
         User.username.label('author_name'),
@@ -64,6 +61,7 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
+        session['show_welcome'] = True
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('index')
@@ -85,18 +83,19 @@ def signup():
 @app.route('/logout')
 def logout():
     logout_user()
+    session.pop('show_welcome', None)
     return redirect(url_for('index'))
 
 @app.route("/offers", methods=['GET', 'POST'])
 @login_required
 def offers():
-    return render_template("offers.html",title="All Offers")
+    return render_template("offers.html", title="All Offers")
 
 @app.route("/requests", methods=['GET', 'POST'])
 @login_required
 def requests():
-    return render_template("requests.html",title="All Requests")
-    
+    return render_template("requests.html", title="All Requests")
+
 @app.route('/search')
 def search():
     search = request.args.get('search')
@@ -104,3 +103,8 @@ def search():
     itemlist = Activity.query.filter_by(type=searchtype).filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
     rendered_results = [render_template('searchboxitem.html', item=item) for item in itemlist]
     return ''.join(rendered_results)
+
+@app.route('/clear_welcome_flag', methods=['POST'])
+def clear_welcome_flag():
+    session.pop('show_welcome', None)
+    return '', 204
