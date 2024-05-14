@@ -20,8 +20,9 @@
           ,
           class="center"
         />
-        <h1>UWA Community Hub</h1>
+        <h1>UWA COMMUNITY HUB</h1>
         <div id="signInForm"></div>
+        <br />
         <h2>Sign In</h2>
         <form action="" method="post">
           {{ form.hidden_tag() }}
@@ -52,7 +53,7 @@
           <p>{{ form.submit() }}</p>
         </form>
         <div>
-          <p>
+          <p class="noaccount">
             <a id="underLink" href="{{ url_for('signup') }}"
               >Don't have an account? Create Account here</a
             >
