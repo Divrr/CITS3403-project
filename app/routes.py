@@ -120,6 +120,10 @@ def accept(activity_id):
             flash('You have already accepted this activity.')
             return redirect(url_for('index'))
         
+        # Check if the user has accepted 5 activities already (the maximum number of accepted activities allowed)
+        if len(current_user.accepted) >= 5:
+            flash('You have reached the maximum number of accepted activities.')
+        
         current_user.accept(activity)
         db.session.commit()
         flash('Accepted activity' + Activity.query.get(activity_id).description + '!')
