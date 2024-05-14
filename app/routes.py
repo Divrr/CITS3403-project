@@ -90,21 +90,17 @@ def logout():
 @app.route("/offers", methods=['GET', 'POST'])
 @login_required
 def offers():
-    if request.method == 'POST':
-        search = request.form['search']
-        offerlist = Activity.query.filter_by(type='Offer').filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
-        offerlist_serializable = [activity.to_dict() for activity in offerlist]
-        return jsonify(offerlist_serializable)
-    offerlist = Activity.query.filter_by(type='Offer').all()
-    return render_template("offers.html",title="All Offers", offers=offerlist)
+    return render_template("offers.html",title="All Offers")
 
 @app.route("/requests", methods=['GET', 'POST'])
 @login_required
 def requests():
-    if request.method == 'POST':
-        search = request.form['search']
-        requestlist = Activity.query.filter_by(type='Request').filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
-        requestlist_serializable = [activity.to_dict() for activity in requestlist]
-        return jsonify(requestlist_serializable)
-    requestlist = Activity.query.filter_by(type='Request').all()
-    return render_template("requests.html", title="All Requests", requests=requestlist)
+    return render_template("requests.html",title="All Requests")
+    
+@app.route('/search')
+def search():
+    search = request.args.get('search')
+    searchtype = request.referrer.split('/')[-1] == 'offers' and 'Offer' or 'Request'
+    offerlist = Activity.query.filter_by(type=searchtype).filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
+    rendered_results = [render_template('searchboxitem.html', item=item) for item in offerlist]
+    return ''.join(rendered_results)
