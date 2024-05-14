@@ -31,7 +31,9 @@ class User(UserMixin, db.Model):
         if self.has_authored(activity):
             activity.status = 'Closed'
             self.authored.remove(activity)
-    
+            if activity.acceptor_id:
+                activity.acceptor.accepted.remove(activity)
+
     def cancel(self, activity):
         if self.has_accepted(activity):
             activity.status = 'Open'
@@ -63,6 +65,9 @@ class Activity(db.Model):
     author       : Mapped[User] = relationship(back_populates='authored', foreign_keys=[author_id])
     acceptor     : Mapped[User] = relationship(back_populates='accepted', foreign_keys=[acceptor_id])
 
+    def close(self):
+        self.status = 'Closed'
+        self.updated_at = datetime.now(timezone.utc)
 
     def __repr__(self):
         return '<Request {}: "{}">'.format(self.category, self.description)
@@ -70,4 +75,3 @@ class Activity(db.Model):
 @login.user_loader
 def load_user(id):
     return db.session.get(User, int(id))
-
