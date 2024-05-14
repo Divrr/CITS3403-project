@@ -62,38 +62,9 @@
 <script>
     var showWelcomeModal = {{ session.get('show_welcome', False) | tojson }};
 </script>
-<script src="../static/welcomeModal.js"></script>
+<script src="{{ url_for('static', filename='welcomeModal.js') }}"></script>
 {% endif %}
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const csrfToken = '{{ csrf_token() }}';
-    document.querySelectorAll('.complete-activity').forEach(function(element) {
-      element.addEventListener('click', function() {
-        const activityRow = this.closest('.row');
-        const activityId = activityRow.getAttribute('data-id');
-        console.log(`Attempting to complete activity with id: ${activityId}`);
-
-        fetch(`/complete_activity/${activityId}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken // Pass CSRF token in the headers
-          }
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            console.log(`Activity with id: ${activityId} completed successfully.`);
-            activityRow.remove();
-          } else {
-            console.error(data.error || 'An error occurred while completing the activity.');
-          }
-        })
-        .catch(error => console.error('Error:', error));
-      });
-    });
-  });
-</script>
+<script src="{{ url_for('static', filename='js/complete_activity.js') }}"></script>
 
 {% endblock %}
