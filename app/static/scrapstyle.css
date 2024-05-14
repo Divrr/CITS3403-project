@@ -67,6 +67,11 @@ h1 {
 
 .navbar-toggler {
     margin: 0 auto; /* Center the navbar toggler button */
+    border-color: transparent; /* Optional: remove border color if desired */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(68, 158, 105)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* SVG path for the icon with stroke color set to rgb(68, 158, 105) */
 }
 
 .navbar-nav {
