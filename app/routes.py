@@ -101,6 +101,6 @@ def requests():
 def search():
     search = request.args.get('search')
     searchtype = request.referrer.split('/')[-1] == 'offers' and 'Offer' or 'Request'
-    offerlist = Activity.query.filter_by(type=searchtype).filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
-    rendered_results = [render_template('searchboxitem.html', item=item) for item in offerlist]
+    itemlist = Activity.query.filter_by(type=searchtype).filter(Activity.description.contains(search) | Activity.category.contains(search)).all()
+    rendered_results = [render_template('searchboxitem.html', item=item) for item in itemlist]
     return ''.join(rendered_results)
