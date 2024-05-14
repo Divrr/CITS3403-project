@@ -1,6 +1,6 @@
 body {
     background-color: rgb(255, 255, 255);
-    padding-top: 80px;  /* General padding to shift content down below the fixed header */
+    padding-top: 80px;  /* Adds padding to shift content down below the fixed header */
 }
 
 .heading {
@@ -16,44 +16,40 @@ body {
 }
 
 .header-logo {
-    width: 120px; /* Increased width for a larger logo */
-    height: auto; /* Maintain aspect ratio */
-    margin: 10px auto; /* Center horizontally and add vertical spacing */
+    width: 120px;
+    height: auto;
+    margin: 10px auto;
     display: block;
 }
 
 h1 {
-    font-size: 2em; /* Reduced size for the title */
+    font-size: 2em;
     color: white;
     margin: 0 auto;
-    padding: 0 20px; /* Sufficient padding to not overlap logo */
+    padding: 0 20px;
     text-align: center;
 }
 
-@media (max-width: 991px) {  /* Adjust this breakpoint to match your navbar's collapse point */
+@media (max-width: 991px) {
     .header-logo {
-        width: 80px; /* Adjusted smaller width for mobile devices */
+        width: 80px;
     }
     h1 {
-        font-size: 1.2em; /* Further reduced font size for mobile */
+        font-size: 1.2em; /* Heading size reduced on smaller screens */
     }
     .navbar-toggler {
-        margin-top: 10px; /* Ensure space between menu and title */
+        margin-top: 10px;
     }
 
-    /* Updated navbar styles for mobile */
     .navbar-nav {
-        flex-direction: column; /* Stack the links vertically */
-        align-items: center; /* Center-align the items */
+        flex-direction: column;
+        align-items: center;
     }
 
-    .navbar-nav .nav-item {
-        width: 100%; /* Full width to each nav item */
-        text-align: center; /* Center the text of each nav link */
-    }
-
-    .navbar-nav .nav-link {
-        width: 100%; /* Ensure the link uses full width for better tap targets */
+    .navbar-nav .nav-item .nav-link {
+        width: 100%;
+        text-align: center;
+        font-size: 1em !important; /* Explicit reduction and !important to ensure application */
     }
 }
 
@@ -66,12 +62,12 @@ h1 {
 }
 
 .navbar-toggler {
-    margin: 0 auto; /* Center the navbar toggler button */
-    border-color: transparent; /* Optional: remove border color if desired */
+    margin: 0 auto;
+    border-color: transparent;
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(68, 158, 105)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* SVG path for the icon with stroke color set to rgb(68, 158, 105) */
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(68, 158, 105)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .navbar-nav {
