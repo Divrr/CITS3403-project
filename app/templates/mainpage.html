@@ -1,22 +1,8 @@
-{% extends "base.html" %} {% block content %} {% include 'navbar.html' %}
+{% extends "base.html" %}
+{% block content %}
+{% include 'navbar.html' %}
+
 <main>
-  <!-- Modal -->
-  <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="welcomeModalLabel">Welcome to the UWA Community Hub</h5>
-        </div>
-        <div class="modal-body">
-          <p>Connect, share, and thrive with your local community! This is a platform for neighbours to help neighbours, where you can offer your skills and services or request help when you need it. Whether you're looking to lend a hand or need a helping hand, we're glad you're here. Browse our listings, post your own offers and requests, and let's build a supportive community together!</p>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ---------------------------------------------------------------------------------------------------------------------- -->
   <div class="col-sm-12 col-md-10 col-lg-7 mx-auto">
     <div class="circle-rectangle">
       <div class="article">
@@ -30,13 +16,13 @@
           <div class="your_items_container user_subtitle row">
             <div class="col">YOUR ITEMS</div>
             {% for item in items %}
-            <div class="row {% if item.type == 'Request' %} userRequest {% else %} userOffer {% endif %}">
+            <div class="row {% if item.type == 'Request' %} userRequest {% else %} userOffer {% endif %}" data-id="{{ item.id }}">
               <div class="col">{{ item.description }}</div>
               <div class="col-sm-5 userbuttons">
                 {% if item.acceptor_id %}
                 <a href="mailto:{{ item.acceptor_email }}" class="contact-button">Contact &nbsp;<span>{{ item.acceptor_name }}</span></a>
                 {% endif %}
-                <img src="../static/img/tick.png" class="circlesmall" alt="tick" id="checkmark" title="Click to resolve this item- it will be removed for you and all other users" />
+                <img src="../static/img/tick.png" class="circlesmall complete-activity" alt="tick" id="checkmark" title="Click to resolve this item- it will be removed for you and all other users" />
               </div>
             </div>
             {% endfor %}
@@ -65,7 +51,6 @@
             {% endfor %}
           </div>
         </div>
-        <!-- ------------------------------------------------------------------------------------------------------------------ -->
         <div class="row">
           <div></div>
         </div>
@@ -79,4 +64,36 @@
 </script>
 <script src="../static/welcomeModal.js"></script>
 {% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const csrfToken = '{{ csrf_token() }}';
+    document.querySelectorAll('.complete-activity').forEach(function(element) {
+      element.addEventListener('click', function() {
+        const activityRow = this.closest('.row');
+        const activityId = activityRow.getAttribute('data-id');
+        console.log(`Attempting to complete activity with id: ${activityId}`);
+
+        fetch(`/complete_activity/${activityId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken // Pass CSRF token in the headers
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            console.log(`Activity with id: ${activityId} completed successfully.`);
+            activityRow.remove();
+          } else {
+            console.error(data.error || 'An error occurred while completing the activity.');
+          }
+        })
+        .catch(error => console.error('Error:', error));
+      });
+    });
+  });
+</script>
+
 {% endblock %}
