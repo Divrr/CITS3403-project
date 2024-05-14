@@ -22,6 +22,29 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def accept(self, activity):
+        if not self.has_accepted(activity):
+            activity.status = 'Pending'
+            self.accepted.add(activity)
+
+    def resolve(self, activity):
+        if self.has_authored(activity):
+            activity.status = 'Closed'
+            self.authored.remove(activity)
+    
+    def cancel(self, activity):
+        if self.has_accepted(activity):
+            activity.status = 'Open'
+            self.authored.remove(activity)
+
+    def has_accepted(self, activity):
+        query = self.accepted.select().where(Activity.id == activity.id)
+        return db.session.scalar(query) is not None
+    
+    def has_authored(self, activity):
+        query = self.authored.select().where(Activity.id == activity.id)
+        return db.session.scalar(query) is not None
+
     def __repr__(self):
         return '<User {}>'.format(self.username)
 

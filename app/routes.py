@@ -3,7 +3,8 @@ from urllib.parse import urlsplit
 from flask_login import current_user, login_user, login_required, logout_user
 from app import app, db
 from app.models import User, Activity
-from app.forms import OfferRequestForm, LoginForm, SignupForm
+from app.forms import OfferRequestForm, LoginForm, SignupForm, EmptyForm
+from urllib.parse import urlsplit
 from sqlalchemy.orm import aliased
 
 @app.route("/")
@@ -108,3 +109,35 @@ def search():
 def clear_welcome_flag():
     session.pop('show_welcome', None)
     return '', 204
+
+@app.route("/accept/<activity_id>", methods=['GET', 'POST'])
+def accept(activity_id):
+    form = EmptyForm()
+    if form.validate_on_submit():
+        activity = Activity.query.get(activity_id)
+
+        if activity is None:
+            flash('Activity not found.')
+            return redirect(request.referrer)
+        
+        if activity.status != "Open":
+            flash('Activity is not open for acceptance.')
+        
+        if activity.acceptor_id == current_user.id:
+            flash('You cannot accept your own activity.')
+
+        if current_user.has_accepted(activity):
+            flash('You have already accepted this activity.')
+            return redirect(url_for('index'))
+        
+        # Check if the user has accepted 5 activities already (the maximum number of accepted activities allowed)
+        ActivityCount = Activity.query.filter_by(acceptor_id=current_user.id).count()
+        if ActivityCount >= 5:
+            flash('You have already accepted the maximum number of activities allowed (5).')
+            return redirect(url_for('index'))
+        
+        current_user.accept(activity)
+        db.session.commit()
+        flash('Accepted activity' + Activity.query.get(activity_id).description + '!')
+    
+    return redirect(request.referrer)
