@@ -17,33 +17,15 @@
 // We loop through the items in response and append them to the itemlist div.
 renderlistitems = function (response) {
   $("#itemlist").empty();
-
-  for (let item of response) {
-    $("#itemlist").append(`
-    <div class="col-lg-3 col-md-4 col-sm-6 g-3">
-      <div class="p-4 h-100 text-center d-flex flex-column justify-content-around">
-        <div class="h4 fw-semibold text-uppercase">
-          ${ item.category }
-        </div>
-        <p class="fs-6 fst-italic text-start sans-serif text-center">
-          ${ item.description }
-        </p>
-        <button type="button" id="acceptbtn" class="btn btn-light btn-sm">
-          accept
-        </button>
-    </div>
-  </div>
-`);
-  }
+  $("#itemlist").append(response);
 };
 
 $(function () {
   // On page load, we send an ajax request to the server to get all valid items.
   // We then render the list of items on the page using the renderlistitems function.
-  console.log("search.js loaded");
   $.ajax({
-    type: "POST",
-    url: "",
+    type: "GET",
+    url: "/search",
     data: {
       search: "",
     },
@@ -56,8 +38,8 @@ $(function () {
   // We then render the list of items on the page using the renderlistitems function.
   $("input").on("input", function () {
     $.ajax({
-      type: "POST",
-      url: "",
+      type: "GET",
+      url: "/search",
       data: {
         search: $("input").val(),
       },
@@ -65,6 +47,5 @@ $(function () {
         renderlistitems(response);
       },
     });
-    return false;
   });
 });
