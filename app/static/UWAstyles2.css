@@ -9,10 +9,22 @@ body {
 .container {
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-top:30px;
+    padding-bottom:30px;
+    background-color: rgb(141 202 167);
+    border: 10px solid rgb(12, 96, 47);
+    border-radius: 30px;
+}
+
+.outercontainter {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: rgb(74, 145, 103);
+    border: 10px solid rgb(190, 229, 206);
+    border-radius: 30px;
 }
 
 h1 {
