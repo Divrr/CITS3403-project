@@ -1,8 +1,4 @@
-{% extends "base.html" %}
-
-{% block content %}
-{% include 'navbar.html' %}
-
+{% extends "base.html" %} {% block content %} {% include 'navbar.html' %}
 <main>
   <!-- Modal -->
   <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
@@ -77,5 +73,10 @@
     </div>
   </div>
 </main>
+{% if session.get('show_welcome', False) %}
+<script>
+    var showWelcomeModal = {{ session.get('show_welcome', False) | tojson }};
+</script>
 <script src="../static/welcomeModal.js"></script>
+{% endif %}
 {% endblock %}
