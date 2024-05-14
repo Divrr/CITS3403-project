@@ -1,6 +1,4 @@
-{% extends "base.html" %}
-{% block content %}
-{% include 'navbar.html' %}
+{% extends "base.html" %} {% block content %} {% include 'navbar.html' %}
 
 <main>
   <div class="col-sm-12 col-md-10 col-lg-7 mx-auto">
@@ -9,20 +7,39 @@
         <div>
           <div class="row">
             <div class="col">
-              <img src="../static/img/profile.png" class="bigCircle" alt="user profile" id="profilePic" title="Click to resolve this item- it will be removed for you and all other users" />
+              <img
+                src="../static/img/profile.png"
+                class="bigCircle"
+                alt="user profile"
+                id="profilePic"
+                title="Click to resolve this item- it will be removed for you and all other users"
+              />
             </div>
           </div>
 
           <div class="your_items_container user_subtitle row">
             <div class="col">YOUR ITEMS</div>
             {% for item in items %}
-            <div class="row {% if item.type == 'Request' %} userRequest {% else %} userOffer {% endif %}" data-id="{{ item.id }}">
+            <div
+              class="row {% if item.type == 'Request' %} userRequest {% else %} userOffer {% endif %}"
+              data-id="{{ item.id }}"
+            >
               <div class="col">{{ item.description }}</div>
               <div class="col-sm-5 userbuttons">
                 {% if item.acceptor_id %}
-                <a href="mailto:{{ item.acceptor_email }}" class="contact-button">Contact &nbsp;<span>{{ item.acceptor_name }}</span></a>
+                <a
+                  href="mailto:{{ item.acceptor_email }}"
+                  class="contact-button"
+                  >Contact &nbsp;<span>{{ item.acceptor_name }}</span></a
+                >
                 {% endif %}
-                <img src="../static/img/tick.png" class="circlesmall complete-activity" alt="tick" id="checkmark" title="Click to resolve this item- it will be removed for you and all other users" />
+                <img
+                  src="../static/img/tick.png"
+                  class="circlesmall complete-activity"
+                  alt="tick"
+                  id="checkmark"
+                  title="Click to resolve this item- it will be removed for you and all other users"
+                />
               </div>
             </div>
             {% endfor %}
@@ -31,7 +48,13 @@
           <div class="row">
             <div class="col" style="text-align: center">
               <a href="{{ url_for('form') }}">
-                <img src="../static/img/plus.jpg" class="circle" alt="plus symbol" id="plusSign" title="Click the plus button to create a new Offer or Request!" />
+                <img
+                  src="../static/img/plus.jpg"
+                  class="circle"
+                  alt="plus symbol"
+                  id="plusSign"
+                  title="Click the plus button to create a new Offer or Request!"
+                />
               </a>
             </div>
           </div>
@@ -39,14 +62,26 @@
           <div class="your_items_container user_subtitle row">
             <div class="col">YOUR ACCEPTS</div>
             {% for accept in accepts %}
-            <div class="row {% if accept.type == 'Request' %} userRequest {% else %} userOffer {% endif %}">
-                <div class="col">{{ accept.description }}</div>
-                <div class="col-sm-5 userbuttons">
-                    {% if accept.author_id %}
-                    <a href="mailto:{{ accept.author_email }}" class="contact-button">Contact &nbsp;<span>{{ accept.author_name }}</span></a>
-                    {% endif %}
-                    <img src="../static/img/tick.png" class="circlesmall" alt="tick" id="checkmark" title="Click to resolve this item- it will be removed for you and all other users" />
-                </div>
+            <div
+              class="row {% if accept.type == 'Request' %} userRequest {% else %} userOffer {% endif %}"
+            >
+              <div class="col">{{ accept.description }}</div>
+              <div class="col-sm-5 userbuttons">
+                {% if accept.author_id %}
+                <a
+                  href="mailto:{{ accept.author_email }}"
+                  class="contact-button"
+                  >Contact &nbsp;<span>{{ accept.author_name }}</span></a
+                >
+                {% endif %}
+                <img
+                  src="../static/img/x-button1.jpeg"
+                  class="circlesmall1"
+                  alt="cancel button"
+                  id="x button"
+                  title="Click to cancel your acceptance of this item"
+                />
+              </div>
             </div>
             {% endfor %}
           </div>
@@ -60,7 +95,7 @@
 </main>
 {% if session.get('show_welcome', False) %}
 <script>
-    var showWelcomeModal = {{ session.get('show_welcome', False) | tojson }};
+  var showWelcomeModal = {{ session.get('show_welcome', False) | tojson }};
 </script>
 <script src="{{ url_for('static', filename='welcomeModal.js') }}"></script>
 {% endif %}
