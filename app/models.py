@@ -24,6 +24,7 @@ class User(UserMixin, db.Model):
 
     def accept(self, activity):
         if not self.has_accepted(activity):
+            activity.status = 'Pending'
             self.accepted.add(activity)
 
     def resolve(self, activity):

@@ -44,16 +44,16 @@ def initialise_test_database():
     ])
 
     db.session.add_all([
-        Activity(author_id=1, acceptor_id=2, type='Request', category='Web Development', description='Build a website for a small business'),
-        Activity(author_id=2, acceptor_id=3, type='Request', category='Data Analysis', description='Perform statistical analysis on sales data'),
-        Activity(author_id=3, acceptor_id=4, type='Request', category='Machine Learning', description='Train a model to predict customer churn'),
-        Activity(author_id=4, acceptor_id=5, type='Request', category='Mobile App Development', description='Develop an iOS app for a startup'),
-        Activity(author_id=5, acceptor_id=6, type='Request', category='Database Management', description='Optimize database queries for a large-scale application'),
-        Activity(author_id=6, acceptor_id=7, type='Offer', category='UI/UX Design', description='Design a user-friendly interface for a mobile app'),
-        Activity(author_id=7, acceptor_id=8, type='Offer', category='Software Testing', description='Write test cases for a web application'),
-        Activity(author_id=8, acceptor_id=9, type='Offer', category='Cybersecurity', description='Perform a security audit on a network infrastructure'),
-        Activity(author_id=9, acceptor_id=10, type='Offer', category='Cloud Computing', description='Deploy a scalable web application on AWS'),
-        Activity(author_id=10, acceptor_id=1, type='Offer', category='Artificial Intelligence', description='Implement a natural language processing algorithm')
+        Activity(author_id=1, acceptor_id=2, type='Request', category='Web Development', description='Build a website for a small business', status='Pending'),
+        Activity(author_id=2, acceptor_id=3, type='Request', category='Data Analysis', description='Perform statistical analysis on sales data', status='Pending'),
+        Activity(author_id=3, acceptor_id=4, type='Request', category='Machine Learning', description='Train a model to predict customer churn', status='Pending'),
+        Activity(author_id=4, acceptor_id=5, type='Request', category='Mobile App Development', description='Develop an iOS app for a startup', status='Pending'),
+        Activity(author_id=5, acceptor_id=6, type='Request', category='Database Management', description='Optimize database queries for a large-scale application', status='Pending'),
+        Activity(author_id=6, acceptor_id=7, type='Offer', category='UI/UX Design', description='Design a user-friendly interface for a mobile app', status='Pending'),
+        Activity(author_id=7, acceptor_id=8, type='Offer', category='Software Testing', description='Write test cases for a web application', status='Pending'),
+        Activity(author_id=8, acceptor_id=9, type='Offer', category='Cybersecurity', description='Perform a security audit on a network infrastructure', status='Pending'),
+        Activity(author_id=9, acceptor_id=10, type='Offer', category='Cloud Computing', description='Deploy a scalable web application on AWS', status='Pending'),
+        Activity(author_id=10, acceptor_id=1, type='Offer', category='Artificial Intelligence', description='Implement a natural language processing algorithm', status='Pending')
     ])
 
     db.session.commit()
