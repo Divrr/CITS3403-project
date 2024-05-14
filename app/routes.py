@@ -116,6 +116,12 @@ def accept(activity_id):
         if activity is None:
             flash('Activity not found.')
             return redirect(request.referrer)
+        
+        if activity.status != "Open":
+            flash('Activity is not open for acceptance.')
+        
+        if activity.acceptor_id == current_user.id:
+            flash('You cannot accept your own activity.')
 
         if current_user.has_accepted(activity):
             flash('You have already accepted this activity.')
