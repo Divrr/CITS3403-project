@@ -10,5 +10,10 @@ options.add_experimental_option("detach", True)
 # Set the path to the chromedriver executable
 driver = webdriver.Chrome(service = Service(ChromeDriverManager().install()), options=options)
 
-driver.get('http://127.0.0.1:5000)
+driver.get('http://127.0.0.1:5000')
+driver.maximize_window()
 
+driver.execute_script('window.scrollBy(0,120)')
+link_to_signup = driver.find_element("xpath", "//a[@href='/signup']")
+time.sleep(8)
+link_to_signup.click()
