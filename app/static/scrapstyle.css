@@ -1,5 +1,6 @@
 body {
     background-color: rgb(255, 255, 255);
+    padding-top: 80px;  /* General padding to shift content down below the fixed header */
 }
 
 .heading {
@@ -7,10 +8,73 @@ body {
     text-align: center;
     background-color: rgb(91, 182, 129);
     width: 100%;
-    padding: 10px;
+    padding: 10px 0;
     border: solid 15px rgb(168, 236, 196);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden; /* Keeps contents within the block */
+    overflow: hidden;
+    position: relative;
+}
+
+.header-logo {
+    width: 120px; /* Increased width for a larger logo */
+    height: auto; /* Maintain aspect ratio */
+    margin: 10px auto; /* Center horizontally and add vertical spacing */
+    display: block;
+}
+
+h1 {
+    font-size: 2em; /* Reduced size for the title */
+    color: white;
+    margin: 0 auto;
+    padding: 0 20px; /* Sufficient padding to not overlap logo */
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .header-logo {
+        width: 80px; /* Adjusted smaller width for mobile devices */
+    }
+    h1 {
+        font-size: 1.2em; /* Further reduced font size for mobile */
+    }
+    .navbar-toggler {
+        margin-top: 10px; /* Ensure space between menu and title */
+    }
+}
+
+.navbar {
+    background-color: transparent !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.navbar-toggler {
+    margin: 0 auto; /* Center the navbar toggler button */
+}
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-nav .nav-link:hover {
+    font-size: 1.7em;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: white !important;
 }
 
 .fixed_heading {
@@ -18,15 +82,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Ensures it stays on top of other content */
-}
-
-body.offerpage {
-    padding-top: 175px; /* Adjust this value based on your header's actual height */
-}
-
-body.requestpage {
-    padding-top: 175px; /* Adjust this value based on your header's actual height */
+    z-index: 1000;
 }
 
 .subheading {
@@ -104,10 +160,8 @@ h5 {
 }
 
 .circle-rectangle {
-
     text-align: center;
-    line-height: 50px; 
-    /* line-height controls the height of each row in the user part! */
+    line-height: 50px;
     font-weight: bold;
 }
 
@@ -140,16 +194,6 @@ h5 {
 .tinyarticletext {
     font-size: small;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.tinypaddingrequests {
-    background-color: #ffc484;
-    border: solid 4px #f48a18;
-}
-
-.tinypaddingoffers {
-    background-color: #a5d0ff;
-    border: solid 4px #2283ea;
 }
 
 .userRequest {
@@ -188,14 +232,6 @@ h5 {
     font-weight: bolder;
     color: #000b17;
     font-size: xx-large;
-}
-
-.tinypaddingrequests:hover {
-    background-color: #f48a18;
-}
-
-.tinypaddingoffers:hover {
-    background-color: #2283ea;
 }
 
 table {
@@ -242,134 +278,19 @@ table {
     margin: 0 auto;
 }
 
-.searchbaroffer {
-    width: 100%;
-    background-color: rgb(201, 240, 217);
-    border: 15px solid rgb(141 202 167);
-    border-radius: 95px;
-    font-size: large;
-    font-family: sans-serif;
-    margin-top: 5px;
-    margin-bottom: 25px;
-    padding: 40px;
-}
-
-.searchbarequest {
-    width: 100%;
-    background-color: rgb(201, 240, 217);
-    border: 15px solid rgb(141 202 167);
-    border-radius: 95px;
-    font-size: large;
-    font-family: sans-serif;
-    margin-top: 5px;
-    margin-bottom: 25px;
-    padding: 40px;
-}
-
-#offeracceptbtn {
-    background-color: white;
-    color: black;
-    border:3.5px solid #2283ea;
-    border-radius: 10px;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-
-}
-
-#offeracceptbtn:hover {
-    transform: scale(1.07);
-}
-
-#requestacceptbtn {
-    background-color: white;
-    border: 3.5px solid #f48a18;
-    border-radius: 10px;
-    color: black;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-
-
-}
-
-#requestacceptbtn:hover {
-    transform: scale(1.07);
-}
-
-
-.offerpage {
-    background-color: #5b8cc0;
-    padding: 50px;
-    margin: 20px;
-}
-
-.requestpage {
-    background-color: #e69b5e;
-    padding: 50px;
-    margin: 20px;
-}
-
-/* Navigation Bar Custom Styles */
-.navbar {
-    background-color: transparent !important;
-    display: flex;
-    justify-content: center; /* Center the navbar */
-    width: 100%;
-}
-
-.navbar-nav {
-    width: 100%; /* Use full width to allow even spacing */
-    display: flex;
-    justify-content: space-evenly; /* Evenly space the navigation items */
-}
-
-.navbar-nav .nav-link {
-    color: white !important;
-    text-decoration: none; /* Remove underline */
-    font-size: 1.5em; /* Increase font size */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match heading font */
-}
-
-.navbar-nav .nav-link:hover {
-    font-size: 1.7em;
-    transition: font-size 0.3s ease-in-out;
-}
-
-.navbar-nav .nav-link.active {
-    font-weight: bold; /* Make the active link bold */
-    color: white !important; /* Ensure active link is white */
-}
-
-.header-logo {
-    position: absolute;
-    top: 0px; /* Adjust this value to vertically center or place as needed */
-    left: 10px; /* Adjust for horizontal placement */
-    height: 150px; /* Or any size you prefer */
-    width: auto; /* Maintain aspect ratio */
-    z-index: 1050; /* Ensure it's above other items in the header */
-}
-
 .modal-footer.justify-content-center {
     display: flex;
     justify-content: center;
-  }
+}
 
 .modal-title {
     text-align: center;
 }
-  
+
 .modal-body {
     text-align: center;
 }
-  
-/* new styles start here */
+
 .user_subtitle {
     background-color:rgb(120, 206, 156);
     color:white;
@@ -387,20 +308,19 @@ body {
     color: darkgreen;
     height: 50px;
     border: 3px solid rgb(68, 158, 105);
-    
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     font-size: 16px;
     padding-left: 15px;
-    padding-right:15px;
+    padding-right: 15px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .contact-button:hover {
     transform: scale(1.07);
-    /* Increase size by 10% */
 }
 
 .userbuttons {
@@ -415,27 +335,23 @@ body {
     border-radius: 15px;
 }
 
-
 a {
     text-decoration: none;
     /* removes underlines from hyperlinks */
 }
 
-/* new styles for the form */
-
 .form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(201, 240, 217);
-  padding-top: 70px;
-  padding-bottom: 70px;
-  border: solid 15px rgb(120, 206, 156);
-  border-radius: 40px;
-  margin-bottom: 40px;
-  margin-top: 160px;
-  font-size: 30px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(201, 240, 217);
+    padding-top: 70px;
+    padding-bottom: 70px;
+    border: solid 15px rgb(120, 206, 156);
+    border-radius: 40px;
+    margin-bottom: 40px;
+    margin-top: 160px;
+    font-size: 30px;
 }
 
 .form-container .form-control {
@@ -448,27 +364,23 @@ a {
 }
 
 .inputdescription {
-
-          font-size: 15px;
-          font-style: italic;
-          color: black;
-
+    font-size: 15px;
+    font-style: italic;
+    color: black;
 }
 
 .offer_dropdown {
-      background-color: blue;
-      color: white;
-  }
+    background-color: blue;
+    color: white;
+}
 
 .request_dropdown {
-
-          background-color: orange;
-          color: white;
-
+    background_color: orange;
+    color: white;
 }
 
 .submit-btn {
-    background-color: white;
+    background_color: white;
     color: black;
     border: 4px solid darkgreen;
     border-radius: 5px;
@@ -478,7 +390,7 @@ a {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    text-align: center;
+    text_align: center;
 }
 
 .submit-btn:hover {
