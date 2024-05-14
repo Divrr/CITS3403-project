@@ -109,4 +109,17 @@ def search():
 def accept(activity_id):
     form = EmptyForm()
     if form.validate_on_submit():
-        return "Accepted activity '" + Activity.query.get(activity_id).description + "'!"
+        activity = Activity.query.get(activity_id)
+
+        if activity is None:
+            flash('Activity not found.')
+
+        if current_user.has_accepted(activity):
+            flash('You have already accepted this activity.')
+            return redirect(url_for('index'))
+        
+        current_user.accept(activity)
+        db.session.commit()
+        flash('Accepted activity' + Activity.query.get(activity_id).description + '!')
+    
+    return redirect(request.referrer)
