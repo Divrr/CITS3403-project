@@ -4,19 +4,40 @@ from flask_login import current_user, login_user, login_required, logout_user
 from app import app, db
 from app.models import User, Activity
 from app.forms import OfferRequestForm, LoginForm, SignupForm
+from urllib.parse import urlsplit
+from sqlalchemy.orm import aliased
 
 @app.route("/")
 @app.route("/index")
 @login_required
 def index():
-    myitems = [
-        {"email": "zahravink@gmail.com", "content": "Can someone mow my lawn?", "name": "Joe", "type": "Request"},
-        {"email": "zahravink@gmail.com", "content": "I can teach you to bake cookies", "name": "Youssef", "type": "Offer"}
-    ]
-    myaccepts = [
-        {"email": "zahravink@gmail.com", "content": "Can someone give a 30min crash course on Flask?", "name": "Zahra", "type": "Request"},
-        {"email": "zahravink@gmail.com", "content": "I can fix a garborator", "name": "May", "type": "Offer"}
-    ]
+    Acceptor = aliased(User)
+
+    # Fetch activities where the current user is the author
+    myitems = db.session.query(
+        User.email.label('author_email'),
+        User.username.label('author_name'),
+        Acceptor.email.label('acceptor_email'),
+        Acceptor.username.label('acceptor_name'),
+        Activity.description,
+        Activity.type,
+        Activity.acceptor_id
+    ).join(User, User.id == Activity.author_id)\
+    .outerjoin(Acceptor, Acceptor.id == Activity.acceptor_id)\
+    .filter(Activity.author_id == current_user.id)\
+    .all()
+
+    # Fetch activities where the current user is the acceptor
+    myaccepts = db.session.query(
+        User.email.label('author_email'),
+        User.username.label('author_name'),
+        Activity.description,
+        Activity.type,
+        Activity.author_id
+    ).join(User, User.id == Activity.author_id)\
+    .filter(Activity.acceptor_id == current_user.id)\
+    .all()
+
     return render_template("mainpage.html", title="UWA Community Hub", items=myitems, accepts=myaccepts)
 
 @app.route('/form', methods=['GET', 'POST'])
@@ -27,6 +48,7 @@ def form():
         new_activity = Activity(author_id=current_user.id, type=form.type.data, category=form.category.data, description=form.description.data)
         db.session.add(new_activity)
         db.session.commit()
+        flash('Your activity has been created!', 'success')
         return redirect(url_for('index'))
     return render_template('offer_request_form.html', form=form)
 
@@ -56,6 +78,7 @@ def signup():
         new_user.set_password(form.password.data)
         db.session.add(new_user)
         db.session.commit()
+        flash('Account successfully created!', 'success')
         return redirect(url_for('login'))
     return render_template("signup.html", form=form)
 
