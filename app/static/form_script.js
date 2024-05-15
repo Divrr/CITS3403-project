@@ -36,13 +36,15 @@ function changeColor(selectObj) {
     formLabels.forEach(function (label) {
       label.style.color = "#074d97";
     });
+    submitButton.style.backgroundColor = "#2283ea";
     submitButton.style.borderColor = "#2283ea";
   } else if (option.value === "Request") {
-    formContainer.style.backgroundColor = "rgb(255 220 177)";
+    formContainer.style.backgroundColor = "rgb(255 208 148)";
     formContainer.style.borderColor = "rgb(155 108 59)";
     formLabels.forEach(function (label) {
       label.style.color = "rgb(151 74 0)";
     });
-    submitButton.style.borderColor = "#f48a18";
+    submitButton.style.backgroundColor = "rgb(155 108 59)";
+    submitButton.style.borderColor = "rgb(155 108 59)";
   }
 }
