@@ -158,3 +158,15 @@ def complete_activity(activity_id):
     db.session.commit()
     print(f"Activity with id: {activity_id} marked as complete.")
     return jsonify({'success': 'Activity marked as complete'}), 200
+
+@app.route("/unaccept/<int:activity_id>", methods=['POST'])
+@login_required
+def unaccept(activity_id):
+    activity = Activity.query.get_or_404(activity_id)
+    
+    if activity.acceptor_id != current_user.id:
+        return jsonify({'error': 'Unauthorized'}), 403
+    
+    current_user.unaccept(activity)
+    db.session.commit()
+    return jsonify({'success': 'Activity acceptance canceled'}), 200
