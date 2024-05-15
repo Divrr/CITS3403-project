@@ -31,15 +31,15 @@ function changeColor(selectObj) {
   var submitButton = document.querySelector(".submit-btn");
 
   if (option.value === "Offer") {
-    formContainer.style.backgroundColor = "#a5d0ff";
-    formContainer.style.borderColor = "#2283ea";
+    formContainer.style.backgroundColor = "rgb(200 224 251)";
+    formContainer.style.borderColor = "rgb(43 114 191)";
     formLabels.forEach(function (label) {
       label.style.color = "#074d97";
     });
     submitButton.style.borderColor = "#2283ea";
   } else if (option.value === "Request") {
-    formContainer.style.backgroundColor = "#ffc484";
-    formContainer.style.borderColor = "#f48a18";
+    formContainer.style.backgroundColor = "rgb(255 215 165)";
+    formContainer.style.borderColor = "rgb(209 144 77)";
     formLabels.forEach(function (label) {
       label.style.color = "#bd5d00";
     });
