@@ -1,6 +1,23 @@
 {% extends "base.html" %} {% block content %} {% include 'navbar.html' %}
 
 <main>
+  <!-- Modal -->
+  <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="welcomeModalLabel">Welcome to the UWA Community Hub</h5>
+        </div>
+        <div class="modal-body">
+          <p>Connect, share, and thrive with your UWA student community! This is a platform for students to help students, where you can offer your skills and services or request help when you need it. Whether you're looking to lend a hand or need a helping hand, we're glad you're here. Browse our listings, post your own offers and requests, and let's build a supportive UWA community together!</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ---------------------------------------------------------------------------------------------------------------------- -->
   <div class="col-sm-12 col-md-10 col-lg-7 mx-auto">
     <div class="circle-rectangle">
       <div class="article">
@@ -97,7 +114,7 @@
 <script>
   var showWelcomeModal = {{ session.get('show_welcome', False) | tojson }};
 </script>
-<script src="{{ url_for('static', filename='welcomeModal.js') }}"></script>
+<script src="../static/welcomeModal.js"></script>
 {% endif %}
 
 <script src="{{ url_for('static', filename='js/complete_activity.js') }}"></script>
