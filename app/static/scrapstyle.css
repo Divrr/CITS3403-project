@@ -392,6 +392,20 @@ a {
     font-size: 30px;
 }
 
+div,
+select {
+    margin-bottom: 2%;
+    /* Adjust the value for desired space */
+}
+
+label,
+div {
+    margin-bottom: 1%;
+    /* Adjust the value for desired space */
+}
+
+
+
 .form-container .form-control {
     height: auto;
 }
