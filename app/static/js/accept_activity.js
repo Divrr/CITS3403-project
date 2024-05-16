@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    document.querySelectorAll('.complete-activity').forEach(function(element) {
-        element.addEventListener('click', function() {
-            const activityRow = this.closest('.row');
-            const activityId = activityRow.getAttribute('data-id');
+    document.querySelector('#itemlist').addEventListener('click', function(e) {
+        if (e.target.classList.contains('acceptbtn')) {
+            const activityBox = e.target.parentElement.parentElement;
+            const activityId = activityBox.getAttribute('data-id');
             console.log(`Attempting to complete activity with id: ${activityId}`);
-
-            fetch(`/complete_activity/${activityId}`, {
+            fetch(`/accept/${activityId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -17,12 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (data.success) {
                     showToast(data.success);
-                    activityRow.remove();
-                } else {
-                    showToast(data.error || 'An error occurred while completing the activity.');
+                    activityBox.remove();
+                }
+                else {
+                    showToast(data.error);
                 }
             })
             .catch(error => console.error('Error:', error));
-        });
-    });
+        }
+});
 });

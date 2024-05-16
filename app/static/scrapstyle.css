@@ -151,6 +151,23 @@ h5 {
     padding: 2px;
 }
 
+/* style for the cancel button border */
+.circlesmall1 {
+    width: 35px;
+    height: 35px;
+    background-color: rgb(168, 23, 23);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+    font-size: xx-large;
+    font-weight: bold;
+    margin: 20px;
+    align-items: center;
+    border: solid 2px rgb(131, 8, 8);
+    padding: 2px;
+}
+
 .circle {
     width: 80px;
     height: 80px;
@@ -168,6 +185,11 @@ h5 {
 .circle:hover {
     width: 90px;
     height: 90px;
+}
+
+.circlesmall1:hover {
+    width: 40px;
+    height: 40px;
 }
 
 .circlesmall:hover {
@@ -355,7 +377,6 @@ a {
     text-decoration: none;
     /* removes underlines from hyperlinks */
 }
-
 .form-container {
     display: flex;
     justify-content: center;
@@ -363,12 +384,26 @@ a {
     background-color: rgb(201, 240, 217);
     padding-top: 70px;
     padding-bottom: 70px;
-    border: solid 15px rgb(120, 206, 156);
+    border: solid 15px rgb(108, 193, 143);
     border-radius: 40px;
     margin-bottom: 40px;
     margin-top: 160px;
     font-size: 30px;
 }
+
+div,
+select {
+    margin-bottom: 2%;
+    /* Adjust the value for desired space */
+}
+
+label,
+div {
+    margin-bottom: 1%;
+    /* Adjust the value for desired space */
+}
+
+
 
 .form-container .form-control {
     height: auto;
@@ -396,19 +431,27 @@ a {
 }
 
 .submit-btn {
-    background_color: white;
-    color: black;
-    border: 4px solid darkgreen;
-    border-radius: 5px;
+    background-color: darkgreen;
+    color: rgb(255, 255, 255);
+    border: 4px solid rgb(255, 255, 255);
+    border-radius: 10px;
     margin-bottom: 20px;
     padding: 10px 20px;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    text_align: center;
+    text-align: center;
 }
 
 .submit-btn:hover {
     transform: scale(1.07);
+}
+
+.toast-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px;
 }

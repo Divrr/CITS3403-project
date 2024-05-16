@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-  if (document.getElementById('welcomeModal')) {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    if (document.getElementById('welcomeModal')) {
       var myModal = new bootstrap.Modal(document.getElementById('welcomeModal'), {
           keyboard: false
       });
@@ -8,7 +9,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
       fetch('/clear_welcome_flag', {
           method: 'POST',
           headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrfToken // Pass CSRF token in the headers
           },
           body: JSON.stringify({ show_welcome: false })
       })

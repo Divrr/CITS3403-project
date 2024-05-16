@@ -39,6 +39,14 @@ class User(UserMixin, db.Model):
             activity.status = 'Open'
             self.authored.remove(activity)
 
+    def unaccept(self, activity):
+        if self.has_accepted(activity):
+            activity.status = 'Open'
+            activity.acceptor_id = None
+            db.session.add(activity)
+            self.accepted.remove(activity)
+            db.session.commit()
+
     def has_accepted(self, activity):
         query = self.accepted.select().where(Activity.id == activity.id)
         return db.session.scalar(query) is not None

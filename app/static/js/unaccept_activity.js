@@ -1,12 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', (event) => {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    document.querySelectorAll('.complete-activity').forEach(function(element) {
-        element.addEventListener('click', function() {
+    document.querySelectorAll('.unaccept-activity').forEach(button => {
+        button.addEventListener('click', function () {
             const activityRow = this.closest('.row');
             const activityId = activityRow.getAttribute('data-id');
-            console.log(`Attempting to complete activity with id: ${activityId}`);
+            console.log(`Attempting to unaccept activity with id: ${activityId}`);
 
-            fetch(`/complete_activity/${activityId}`, {
+            fetch(`/unaccept/${activityId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    showToast(data.success);
+                    showToast(data.success)
                     activityRow.remove();
                 } else {
-                    showToast(data.error || 'An error occurred while completing the activity.');
+                    showToast(data.error || 'Error canceling accept');
+
                 }
-            })
-            .catch(error => console.error('Error:', error));
+            });
         });
     });
 });
