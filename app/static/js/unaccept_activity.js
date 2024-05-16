@@ -13,16 +13,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     'X-CSRFToken': csrfToken // Pass CSRF token in the headers
                 }
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showToast(data.success)
-                    activityRow.remove();
-                } else {
-                    showToast(data.error || 'Error canceling accept');
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(data.success)
+                        activityRow.remove();
+                    } else {
+                        showToast(data.error || 'Error canceling accept');
 
-                }
-            });
+                    }
+                });
         });
     });
 });

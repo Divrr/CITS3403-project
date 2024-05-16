@@ -1,56 +1,29 @@
 <!--TODO: navbar-bolding-->
 <div class="heading fixed_heading">
-  <img
-    src="../static/img/UWA University of Western Australia.png"
-    alt="Community Logo"
-    class="header-logo"
-  />
+  <img src="../static/img/UWA University of Western Australia.png" alt="Community Logo" class="header-logo" />
   <h1>UWA Community Hub</h1>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse row" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item col-sm-3">
-            <a
-              class="nav-link {% if request.endpoint == 'index' %}active{% endif %}"
-              href="{{url_for('index')}}"
-              {% if request.endpoint == 'index' %}aria-current="page"{% endif %}
-              >Home</a
-            >
+            <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="{{url_for('index')}}" {% if
+              request.endpoint=='index' %}aria-current="page" {% endif %}>Home</a>
           </li>
           <li class="nav-item col-sm-3">
-            <a
-              class="nav-link {% if request.endpoint == 'offers' %}active{% endif %}"
-              href="{{url_for('offers')}}"
-              {% if request.endpoint == 'offers' %}aria-current="page"{% endif %}
-              >Offers</a
-            >
+            <a class="nav-link {% if request.endpoint == 'offers' %}active{% endif %}" href="{{url_for('offers')}}" {%
+              if request.endpoint=='offers' %}aria-current="page" {% endif %}>Offers</a>
           </li>
           <li class="nav-item col-sm-3">
-            <a
-              class="nav-link {% if request.endpoint == 'requests' %}active{% endif %}"
-              href="{{url_for('requests')}}"
-              {% if request.endpoint == 'requests' %}aria-current="page"{% endif %}
-              >Requests</a
-            >
+            <a class="nav-link {% if request.endpoint == 'requests' %}active{% endif %}" href="{{url_for('requests')}}"
+              {% if request.endpoint=='requests' %}aria-current="page" {% endif %}>Requests</a>
           </li>
           <li class="nav-item col-sm-3">
-            <a
-              class="nav-link"
-              href="{{url_for('logout')}}"
-              >Logout</a
-            >
+            <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
         </ul>
       </div>
     </div>

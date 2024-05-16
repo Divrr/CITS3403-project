@@ -1,6 +1,7 @@
 body {
   padding: 50px;
-  padding-top: 260px; /* Adjust this value based on your header's actual height */
+  padding-top: 260px;
+  /* Adjust this value based on your header's actual height */
   background-color: #e69b5e;
   margin: 20px;
 }
@@ -17,12 +18,12 @@ body {
   padding: 40px;
 }
 
-#itemlist > div > div {
+#itemlist>div>div {
   background-color: #ffc484;
   border: solid 4px #f48a18;
 }
 
-#itemlist > div > div:hover {
+#itemlist>div>div:hover {
   background-color: #f48a18;
 }
 
