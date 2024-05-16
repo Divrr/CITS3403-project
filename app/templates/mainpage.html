@@ -91,7 +91,7 @@
 <script>
   var showWelcomeModal = {{ session.get('show_welcome', False) | tojson }};
 </script>
-<script src="../static/welcomeModal.js"></script>
+<script src="../static/js/welcome_modal.js"></script>
 {% endif %}
 
 <script src="{{ url_for('static', filename='js/resolve_activity.js') }}"></script>
