@@ -62,7 +62,6 @@ class Activity(db.Model):
     description  : Mapped[str]      = mapped_column(String(100), nullable=False)
 
     status       : Mapped[str]      = mapped_column(Enum('Open', 'Pending', 'Closed'), nullable=False, default='Open')
-    updated_at   : Mapped[datetime] = mapped_column(index=True, nullable=False, default=lambda: datetime.now(timezone.utc))
 
     author       : Mapped[User] = relationship(back_populates='authored', foreign_keys=[author_id])
     acceptor     : Mapped[User] = relationship(back_populates='accepted', foreign_keys=[acceptor_id])
