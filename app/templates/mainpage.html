@@ -45,7 +45,7 @@
                 <a href="mailto:{{ item.acceptor_email }}" class="contact-button">Contact &nbsp;<span>{{
                     item.acceptor_name }}</span></a>
                 {% endif %}
-                <img src="../static/img/tick.png" class="circlesmall complete-activity" alt="tick" id="checkmark"
+                <img src="../static/img/tick.png" class="circlesmall resolve-activity" alt="tick" id="checkmark"
                   title="Click to resolve this item- it will be removed for you and all other users" />
               </div>
             </div>
@@ -72,7 +72,7 @@
                 <a href="mailto:{{ accept.author_email }}" class="contact-button">Contact &nbsp;<span>{{
                     accept.author_name }}</span></a>
                 {% endif %}
-                <img src="../static/img/x-button1.jpeg" class="circlesmall1 unaccept-activity" alt="cancel button"
+                <img src="../static/img/x-button1.jpeg" class="circlesmall1 cancel-activity" alt="cancel button"
                   id="x-button" title="Click to cancel your acceptance of this item" />
               </div>
             </div>
@@ -94,7 +94,7 @@
 <script src="../static/welcomeModal.js"></script>
 {% endif %}
 
-<script src="{{ url_for('static', filename='js/complete_activity.js') }}"></script>
-<script src="{{ url_for('static', filename='js/unaccept_activity.js') }}"></script>
+<script src="{{ url_for('static', filename='js/resolve_activity.js') }}"></script>
+<script src="{{ url_for('static', filename='js/cancel_activity.js') }}"></script>
 
 {% endblock %}
