@@ -125,7 +125,7 @@ def accept(activity_id):
         print("Activity not open for acceptance")
         return jsonify({'error': 'Activity not open for acceptance'}), 403
     
-    if activity.acceptor_id == current_user.id:
+    if activity.author_id == current_user.id:
         print("You cannot accept your own activity")
         return jsonify({'error': 'You cannot accept your own activity'}), 403
 
