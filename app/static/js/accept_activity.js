@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target.classList.contains('acceptbtn')) {
             const activityBox = e.target.parentElement.parentElement;
             const activityId = activityBox.getAttribute('data-id');
-            console.log(`Attempting to complete activity with id: ${activityId}`);
+            console.log(`Attempting to accept activity with id: ${activityId}`);
             fetch(`/accept/${activityId}`, {
                 method: 'POST',
                 headers: {
