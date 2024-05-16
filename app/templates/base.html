@@ -14,19 +14,15 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/requests.css') }}" type="text/css" />
   {% endif %}
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <script>
-    // Showing the toast message on page load
-    $(document).ready(function () {
-      $('.toast').toast('show');
-    });
-  </script>
   <title>{{title}}</title>
 </head>
 
 <body class="offerpage">
-  {% with messages = get_flashed_messages() %}
-  {% if messages %}
-  <div class="toast-container position-static">
+  <script src="../static/js/toast.js"></script>
+
+  <div class="toast-container position-static bottom-0 end-0 p-3">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
     {% for message in messages %}
     <div class="toast align-items-center bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true"
       data-bs-autohide="false">
@@ -38,8 +34,9 @@
       </div>
     </div>
     {% endfor %}
+    {% endif %}
+    {% endwith %}
   </div>
-  {% endif %}
-  {% endwith %}
+
   {% block content %} {% endblock %}
 </body>
