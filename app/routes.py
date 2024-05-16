@@ -68,7 +68,7 @@ def login():
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template("login.html", form=form)
+    return render_template("login.html", title="UWA Community Hub", form=form)
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
@@ -80,7 +80,7 @@ def signup():
         db.session.commit()
         flash('Account successfully created!', 'success')
         return redirect(url_for('login'))
-    return render_template("signup.html", form=form)
+    return render_template("signup.html", title="UWA Community Hub", form=form)
 
 @app.route('/logout')
 def logout():

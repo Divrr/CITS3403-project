@@ -1,67 +1,55 @@
 {% extends "base.html" %} {% block content %}
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="../static/UWAstyles2.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UWA Community Hub</title>
-  <link rel="stylesheet" href="../static/UWAstyles2.css" />
-</head>
-
-<body>
-  <div class="outercontainter">
-    <div class="container">
-      <img src="../static/img/UWA University of Western Australia.png" alt="Logo" id="logo" , width="200px" ,
-        class="center" />
-      <h1>LOCAL COMMUNITY MESSAGE FORM</h1>
-      <br />
-      <div id="authForm"></div>
-      <h2>Create Account</h2>
-      <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>{{ form.username(size=32, placeholder="Username")}}</p>
-        {% if form.username.errors %}
-        <ul>
-          {% for error in form.username.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-        <p>{{ form.email(size=64, placeholder="Email") }}</p>
-        {% if form.email.errors %}
-        <ul>
-          {% for error in form.email.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-        <p>{{ form.password(size=32, placeholder="Password") }}</p>
-        {% if form.password.errors %}
-        <ul>
-          {% for error in form.password.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-        <p>{{ form.password2(size=32, placeholder="Confirm Password") }}</p>
-        {% if form.password2.errors %}
-        <ul>
-          {% for error in form.password2.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-        <p>{{ form.submit() }}</p>
-      </form>
-      <p>
-        <a id="underLink" href="{{ url_for('login') }}">Already have an account? Sign In here</a>
-      </p>
-    </div>
+<div class="outercontainter">
+  <div class="container">
+    <img src="../static/img/UWA University of Western Australia.png" alt="Logo" id="logo" , width="200px" ,
+      class="center" />
+    <h1>UWA COMMUNITY HUB</h1>
+    <br />
+    <div id="authForm"></div>
+    <h2>Create Account</h2>
+    <form action="" method="post">
+      {{ form.hidden_tag() }}
+      <p>{{ form.username(size=32, placeholder="Username")}}</p>
+      {% if form.username.errors %}
+      <ul>
+        {% for error in form.username.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <p>{{ form.email(size=64, placeholder="Email") }}</p>
+      {% if form.email.errors %}
+      <ul>
+        {% for error in form.email.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <p>{{ form.password(size=32, placeholder="Password") }}</p>
+      {% if form.password.errors %}
+      <ul>
+        {% for error in form.password.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <p>{{ form.password2(size=32, placeholder="Confirm Password") }}</p>
+      {% if form.password2.errors %}
+      <ul>
+        {% for error in form.password2.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <p>{{ form.submit() }}</p>
+    </form>
+    <p>
+      <a id="underLink" href="{{ url_for('login') }}">Already have an account? Sign In here</a>
+    </p>
   </div>
+</div>
 
-  <script src="../static/UWAscript2.js"></script>
-</body>
-
-</html>
+<script src="../static/UWAscript2.js"></script>
 {% endblock %}
