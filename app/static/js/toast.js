@@ -11,8 +11,8 @@ function showToast(message) {
     </div>`;
 
     var toastContainer = $('.toast-container');
-    toastContainer.append(toastHTML);
-    var toastEl = toastContainer.find('.toast').last();
+    toastContainer.prepend(toastHTML);
+    var toastEl = toastContainer.find('.toast').first();
     var toast = new bootstrap.Toast(toastEl);
     toast.show();
 }
