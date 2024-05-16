@@ -1,8 +1,25 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 {% block content %}
 {% include 'navbar.html' %}
 
 <main>
+  <!-- Modal -->
+  <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="welcomeModalLabel">Welcome to the UWA Community Hub</h5>
+        </div>
+        <div class="modal-body">
+          <p>Connect, share, and thrive with your UWA student community! This is a platform for students to help students, where you can offer your skills and services or request help when you need it. Whether you're looking to lend a hand or need a helping hand, we're glad you're here. Browse our listings, post your own offers and requests, and let's build a supportive UWA community together!</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="col-sm-12 col-md-10 col-lg-7 mx-auto">
     <div class="circle-rectangle">
       <div class="article">
@@ -39,14 +56,14 @@
           <div class="your_items_container user_subtitle row">
             <div class="col">YOUR ACCEPTS</div>
             {% for accept in accepts %}
-            <div class="row {% if accept.type == 'Request' %} userRequest {% else %} userOffer {% endif %}">
-                <div class="col">{{ accept.description }}</div>
-                <div class="col-sm-5 userbuttons">
-                    {% if accept.author_id %}
-                    <a href="mailto:{{ accept.author_email }}" class="contact-button">Contact &nbsp;<span>{{ accept.author_name }}</span></a>
-                    {% endif %}
-                    <img src="../static/img/tick.png" class="circlesmall" alt="tick" id="checkmark" title="Click to resolve this item- it will be removed for you and all other users" />
-                </div>
+            <div class="row {% if accept.type == 'Request' %} userRequest {% else %} userOffer {% endif %}" data-id="{{ accept.id }}">
+              <div class="col">{{ accept.description }}</div>
+              <div class="col-sm-5 userbuttons">
+                {% if accept.author_id %}
+                <a href="mailto:{{ accept.author_email }}" class="contact-button">Contact &nbsp;<span>{{ accept.author_name }}</span></a>
+                {% endif %}
+                <img src="../static/img/x-button1.jpeg" class="circlesmall1 unaccept-activity" alt="cancel button" id="x-button" title="Click to cancel your acceptance of this item" data-id="{{ accept.id }}" />
+              </div>
             </div>
             {% endfor %}
           </div>
@@ -58,13 +75,15 @@
     </div>
   </div>
 </main>
+
 {% if session.get('show_welcome', False) %}
 <script>
-    var showWelcomeModal = {{ session.get('show_welcome', False) | tojson }};
+  var showWelcomeModal = {{ session.get('show_welcome', False) | tojson }};
 </script>
-<script src="{{ url_for('static', filename='welcomeModal.js') }}"></script>
+<script src="../static/welcomeModal.js"></script>
 {% endif %}
 
 <script src="{{ url_for('static', filename='js/complete_activity.js') }}"></script>
+<script src="{{ url_for('static', filename='js/unaccept_activity.js') }}"></script>
 
 {% endblock %}
