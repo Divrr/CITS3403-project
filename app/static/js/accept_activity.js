@@ -15,10 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    console.log(`Activity with id: ${activityId} completed successfully.`);
+                    showToast(data.success);
                     activityBox.remove();
-                } else {
-                    console.error(data.error || 'An error occurred while completing the activity.');
+                }
+                else {
+                    showToast(data.error);
                 }
             })
             .catch(error => console.error('Error:', error));
