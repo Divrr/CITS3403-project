@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     activityBox.remove();
                 }
                 else {
-                    showToast(data.error)
+                    showToast(data.error);
                 }
             })
             .catch(error => console.error('Error:', error));
