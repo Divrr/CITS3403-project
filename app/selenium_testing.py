@@ -47,6 +47,10 @@ time.sleep(3)
 submit_button = driver.find_element("xpath", "//input[@name='submit']")
 submit_button.click()
 
+time.sleep(2)
+close_button = driver.find_element("xpath", "//button[@class='btn btn-secondary']")
+close_button.click()
+
 time.sleep(6)
 offers = driver.find_element("xpath", "//a[@href='/offers']")
 offers.click()
