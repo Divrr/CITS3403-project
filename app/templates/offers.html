@@ -1,4 +1,6 @@
 {% extends "base.html" %} {% block content %} {% include 'navbar.html' %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/offers.css') }}" type="text/css" />
+
 <div class="container mx-auto row searchbar">
   <form>
     <div class="input-group mx-auto py-3">
@@ -13,6 +15,7 @@
     <!-- List of items will be rendered here -->
   </div>
 </div>
+
 <script src="../static/js/search.js"></script>
 <script src="../static/js/accept_activity.js"></script>
 {% endblock %}
