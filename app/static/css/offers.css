@@ -27,7 +27,7 @@ body {
   background-color: #2283ea;
 }
 
-#acceptbtn {
+.acceptbtn {
   background-color: white;
   color: black;
   border: 3.5px solid #2283ea;
@@ -40,6 +40,6 @@ body {
   text-align: center;
 }
 
-#acceptbtn:hover {
+.acceptbtn:hover {
   transform: scale(1.07);
 }
