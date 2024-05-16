@@ -113,37 +113,35 @@ def clear_welcome_flag():
     session.pop('show_welcome', None)
     return '', 204
 
-@app.route("/accept/<activity_id>", methods=['GET', 'POST'])
+@app.route("/accept/<activity_id>", methods=['POST'])
 def accept(activity_id):
-    form = EmptyForm()
-    if form.validate_on_submit():
-        activity = Activity.query.get(activity_id)
-
-        if activity is None:
-            flash('Activity not found.')
-            return redirect(request.referrer)
-        
-        if activity.status != "Open":
-            flash('Activity is not open for acceptance.')
-        
-        if activity.acceptor_id == current_user.id:
-            flash('You cannot accept your own activity.')
-
-        if current_user.has_accepted(activity):
-            flash('You have already accepted this activity.')
-            return redirect(url_for('index'))
-        
-        # Check if the user has accepted 5 activities already (the maximum number of accepted activities allowed)
-        ActivityCount = Activity.query.filter_by(acceptor_id=current_user.id).count()
-        if ActivityCount >= 5:
-            flash('You have already accepted the maximum number of activities allowed (5).')
-            return redirect(url_for('index'))
-        
-        current_user.accept(activity)
-        db.session.commit()
-        flash('Accepted activity' + Activity.query.get(activity_id).description + '!')
+    activity = Activity.query.get_or_404(activity_id)
     
-    return redirect(request.referrer)
+    if activity is None:
+        print("Activity not found")
+        return jsonify({'error': 'Activity not found'}), 403
+    
+    if activity.status != "Open":
+        print("Activity not open for acceptance")
+        return jsonify({'error': 'Activity not open for acceptance'}), 403
+    
+    if activity.acceptor_id == current_user.id:
+        print("You cannot accept your own activity")
+        return jsonify({'error': 'You cannot accept your own activity'}), 403
+
+    if current_user.has_accepted(activity):
+        print("You have already accepted this activity'")
+        return jsonify({'error': 'You have already accepted this activity'}), 403
+        
+    # Check if the user has accepted 5 activities already (the maximum number of accepted activities allowed)
+    ActivityCount = Activity.query.filter_by(acceptor_id=current_user.id).count()
+    if ActivityCount >= 5:
+        print("Activity not open for acceptance")
+        return jsonify({'error': 'You have already accepted the maximum number of activities allowed (5).'}), 403
+        
+    current_user.accept(activity)
+    db.session.commit()
+    return jsonify({'success': 'Accepted activity: ' + Activity.query.get(activity_id).description}), 200
 
 @app.route('/complete_activity/<int:activity_id>', methods=['POST'])
 @login_required
