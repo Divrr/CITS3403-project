@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project is a web application for UWA students to offer and request services to build a vibrant and supportive student community.
+This project is a web application for students to help students, where you can offer your skills and services or request help when you need it and together, help build a vibrant and supportive UWA community.
 
 ### User Workflow
 
