@@ -1,68 +1,47 @@
 {% extends "base.html" %} {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UWA Community Hub</title>
-    <link rel="stylesheet" href="../static/UWAstyles2.css" />
-  </head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login_signup.css') }}" />
 
-  <body>
-    <div class="outercontainter">
-      <div class="container">
-        <img
-          src="../static/img/UWA University of Western Australia.png"
-          alt="Logo"
-          id="logo"
-          ,
-          width="200px"
-          ,
-          class="center"
-        />
-        <h1>UWA COMMUNITY HUB</h1>
-        <div id="signInForm"></div>
-        <br />
-        <h2>Sign In</h2>
-        <form action="" method="post">
-          {{ form.hidden_tag() }}
-          <p>{{ form.username(size=32, placeholder="Username")}}</p>
-          {% if form.username.errors %}
-          <ul>
-            {% for error in form.username.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-          <p>{{ form.password(size=64, placeholder="Password") }}</p>
-          {% if form.password.errors %}
-          <ul>
-            {% for error in form.password.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-          <p>{{ form.remember_me(size=32) }} {{form.remember_me.label}}</p>
-          {% if form.remember_me.errors %}
-          <ul>
-            {% for error in form.remember_me.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-          <p>{{ form.submit() }}</p>
-        </form>
-        <div>
-          <p class="noaccount">
-            <a id="underLink" href="{{ url_for('signup') }}"
-              >Don't have an account? Create Account here</a
-            >
-          </p>
-        </div>
-      </div>
+<div class="outercontainter">
+  <div class="container">
+    <img src="../static/img/UWA University of Western Australia.png" alt="Logo" id="logo" , width="200px" ,
+      class="center" />
+    <h1>UWA COMMUNITY HUB</h1>
+    <div id="signInForm"></div>
+    <br />
+    <h2>Sign In</h2>
+    <form action="" method="post">
+      {{ form.hidden_tag() }}
+      <p>{{ form.username(size=32, placeholder="Username")}}</p>
+      {% if form.username.errors %}
+      <ul>
+        {% for error in form.username.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <p>{{ form.password(size=64, placeholder="Password") }}</p>
+      {% if form.password.errors %}
+      <ul>
+        {% for error in form.password.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <p>{{ form.remember_me(size=32) }} {{form.remember_me.label}}</p>
+      {% if form.remember_me.errors %}
+      <ul>
+        {% for error in form.remember_me.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <p>{{ form.submit() }}</p>
+    </form>
+    <div>
+      <p class="noaccount">
+        <a id="underLink" href="{{ url_for('signup') }}">Don't have an account? Create Account here</a>
+      </p>
     </div>
-
-    <script src="../static/UWAscript2.js"></script>
-  </body>
-</html>
+  </div>
+</div>
 {% endblock %}
