@@ -68,7 +68,7 @@ def login():
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template("login.html", form=form)
+    return render_template("login.html", title="UWA Community Hub", form=form)
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
@@ -80,7 +80,7 @@ def signup():
         db.session.commit()
         flash('Account successfully created!', 'success')
         return redirect(url_for('login'))
-    return render_template("signup.html", form=form)
+    return render_template("signup.html", title="UWA Community Hub", form=form)
 
 @app.route('/logout')
 def logout():
@@ -143,28 +143,28 @@ def accept(activity_id):
     db.session.commit()
     return jsonify({'success': 'Accepted activity: ' + Activity.query.get(activity_id).description}), 200
 
-@app.route('/complete_activity/<int:activity_id>', methods=['POST'])
+@app.route('/resolve/<int:activity_id>', methods=['POST'])
 @login_required
-def complete_activity(activity_id):
-    print(f"Attempting to complete activity with id: {activity_id}")
+def resolve(activity_id):
+    print(f"Attempting to resolve activity with id: {activity_id}")
     activity = Activity.query.get_or_404(activity_id)
     if activity.author_id != current_user.id:
-        print("Unauthorized attempt to complete activity.")
+        print("Unauthorized attempt to resolve activity.")
         return jsonify({'error': 'Unauthorized'}), 403
     
-    activity.close()
+    current_user.resolve(activity)
     db.session.commit()
-    print(f"Activity with id: {activity_id} marked as complete.")
-    return jsonify({'success': 'Activity marked as complete'}), 200
+    print(f"Activity with id: {activity_id} marked as resolve.")
+    return jsonify({'success': 'Activity marked as resolve'}), 200
 
-@app.route("/unaccept/<int:activity_id>", methods=['POST'])
+@app.route("/cancel/<int:activity_id>", methods=['POST'])
 @login_required
-def unaccept(activity_id):
+def cancel(activity_id):
     activity = Activity.query.get_or_404(activity_id)
     
     if activity.acceptor_id != current_user.id:
         return jsonify({'error': 'Unauthorized'}), 403
     
-    current_user.unaccept(activity)
+    current_user.cancel(activity)
     db.session.commit()
     return jsonify({'success': 'Activity acceptance canceled'}), 200

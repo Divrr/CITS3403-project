@@ -25,27 +25,21 @@ class User(UserMixin, db.Model):
     def accept(self, activity):
         if not self.has_accepted(activity):
             activity.status = 'Pending'
-            self.accepted.add(activity)
-
+            activity.acceptor_id = self.id
+            db.session.add(activity)
+            
     def resolve(self, activity):
         if self.has_authored(activity):
             activity.status = 'Closed'
-            self.authored.remove(activity)
-            if activity.acceptor_id:
-                activity.acceptor.accepted.remove(activity)
-
+            db.session.add(activity)
+    
     def cancel(self, activity):
         if self.has_accepted(activity):
             activity.status = 'Open'
-            self.authored.remove(activity)
-
-    def unaccept(self, activity):
-        if self.has_accepted(activity):
-            activity.status = 'Open'
             activity.acceptor_id = None
-            db.session.add(activity)
             self.accepted.remove(activity)
-            db.session.commit()
+            db.session.add(activity)
+            db.session.add(self)
 
     def has_accepted(self, activity):
         query = self.accepted.select().where(Activity.id == activity.id)
@@ -68,14 +62,9 @@ class Activity(db.Model):
     description  : Mapped[str]      = mapped_column(String(100), nullable=False)
 
     status       : Mapped[str]      = mapped_column(Enum('Open', 'Pending', 'Closed'), nullable=False, default='Open')
-    updated_at   : Mapped[datetime] = mapped_column(index=True, nullable=False, default=lambda: datetime.now(timezone.utc))
 
     author       : Mapped[User] = relationship(back_populates='authored', foreign_keys=[author_id])
     acceptor     : Mapped[User] = relationship(back_populates='accepted', foreign_keys=[acceptor_id])
-
-    def close(self):
-        self.status = 'Closed'
-        self.updated_at = datetime.now(timezone.utc)
 
     def __repr__(self):
         return '<Request {}: "{}">'.format(self.category, self.description)
