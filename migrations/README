@@ -73,6 +73,9 @@ This project is a web application for students to help students, where you can o
 
 - **`script.py.mako`**: Mako template script for generating dynamic content.
 - **`LICENSE`**: Licensing information for the project.
+- **`requirements.txt`**: Used to install all the necessary dependencies.
+
+### Installation Steps
 
 ### Installation Steps
 
