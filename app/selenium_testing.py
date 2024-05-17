@@ -1,68 +1,72 @@
+import multiprocessing
 import time
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from unittest import TestCase
 
-options = Options()
-options.add_experimental_option("detach", True)
+from app import create_app, db
+from config import TestConfig
 
-# Set the path to the chromedriver executable
-driver = webdriver.Chrome(service = Service(ChromeDriverManager().install()), options=options)
+class TestGroupCreation(TestCase):
+    def setUp(self):
+        self.app = create_app(TestConfig)
+        self.app_context = self.app.app_context()
+        self.app_context.push()
+        db.create_all()
+        self.driver = webdriver.Chrome()
+        self.driver.get('http://127.0.0.1:5000')
+    
+    def tearDown(self):
+        self.driver.quit()
+        db.session.remove()
+        db.drop_all()
+        self.app_context.pop()
 
-driver.get('http://127.0.0.1:5000')
-driver.maximize_window()
+    def test_login(self):
+        self.driver.get('http://127.0.0.1:5000/login')
+        time.sleep(3)
+        username_field = self.driver.find_element("xpath", "//input[@name='username']")
+        password_field = self.driver.find_element("xpath", "//input[@name='password']")
+        username_field.send_keys("user1")
+        password_field.send_keys("password")
+        self.driver.execute_script('window.scrollBy(0,240)')
+        time.sleep(3)
+        submit_button = self.driver.find_element("xpath", "//input[@name='submit']")
+        submit_button.click()
 
-time.sleep(5)
-driver.execute_script('window.scrollBy(0,240)')
-link_to_signup = driver.find_element("xpath", "//a[@href='/signup']")
-driver.execute_script('window.scrollBy(0,240)')
-time.sleep(8)
-link_to_signup.click()
+    def test_signup(self):
+        self.driver.get('http://127.0.0.1:5000/signup')
+        username_field = self.driver.find_element("xpath", "//input[@name='username']")
+        email_field = self.driver.find_element("xpath", "//input[@name='email']")
+        password_field = self.driver.find_element("xpath", "//input[@name='password']")
+        password2_field = self.driver.find_element("xpath", "//input[@name='password2']")
+        time.sleep(8)
+        self.driver.execute_script('window.scrollBy(0,280)')
+        time.sleep(3)
+        submit_button = self.driver.find_element("xpath", "//input[@name='submit']")
 
-username_field = driver.find_element("xpath", "//input[@name='username']")
-email_field = driver.find_element("xpath", "//input[@name='email']")
-password_field = driver.find_element("xpath", "//input[@name='password']")
-password2_field = driver.find_element("xpath", "//input[@name='password2']")
-time.sleep(8)
-driver.execute_script('window.scrollBy(0,280)')
-time.sleep(3)
-submit_button = driver.find_element("xpath", "//input[@name='submit']")
+        username_field.send_keys("testuser")
+        email_field.send_keys("aviv2silman@gmail.com")
+        password_field.send_keys("password64")
+        self.driver.execute_script('window.scrollBy(0,190)')
+        password2_field.send_keys("password64")
+        self.driver.execute_script('window.scrollBy(0,190)')
+        submit_button.click()
 
-username_field.send_keys("testuser")
-email_field.send_keys("aviv2silman@gmail.com")
-password_field.send_keys("password64")
-driver.execute_script('window.scrollBy(0,190)')
-password2_field.send_keys("password64")
-driver.execute_script('window.scrollBy(0,190)')
-submit_button.click()
-
-time.sleep(3)
-username_field = driver.find_element("xpath", "//input[@name='username']")
-password_field = driver.find_element("xpath", "//input[@name='password']")
-username_field.send_keys("testuser")
-password_field.send_keys("password64")
-driver.execute_script('window.scrollBy(0,240)')
-time.sleep(3)
-submit_button = driver.find_element("xpath", "//input[@name='submit']")
-submit_button.click()
-
-time.sleep(2)
-close_button = driver.find_element("xpath", "//button[@class='btn btn-secondary']")
-close_button.click()
-
-time.sleep(6)
-offers = driver.find_element("xpath", "//a[@href='/offers']")
-offers.click()
-
-time.sleep(2)
-requests = driver.find_element("xpath", "//a[@href='/requests']")
-requests.click()
-
-time.sleep(2)
-home = driver.find_element("xpath", "//a[@href='/index']")
-home.click()
-
-time.sleep(2)
-logout = driver.find_element("xpath", "//a[@href='/logout']")
-logout.click()
+    def test_create_accountlink(self):
+        self.driver.get('http://127.0.0.1:5000/login')
+        self.driver.execute_script('window.scrollBy(0,240)')
+        link_to_signup = self.driver.find_element("xpath", "//a[@href='/signup']")
+        self.driver.execute_script('window.scrollBy(0,240)')
+        time.sleep(4)
+        link_to_signup.click()
+        
+    #def test_alreadyhaveaccountlink(self):
+    #    self.driver.get('http://127.0.0.1:5000/signup')
+    #    self.driver.execute_script('window.scrollBy(0,240)')
+    #    time.sleep(2)
+    #    link_to_login = self.driver.find_element("xpath", "//a[@href='/login']")
+    #    self.driver.execute_script('window.scrollBy(0,240)')
+    #    time.sleep(2)
+        #link_to_login.click()
