@@ -98,16 +98,6 @@ This project is a web application for students to help students, where you can o
     pip install -r requirements.txt
     ```
 
-4. **Set up the environment variables**
-
-    Configure the required environment variables in `env.py`.
-
-5. **Run the migrations**
-
-    ```bash
-    alembic upgrade head
-    ```
-
 6. **Start the application**
 
     ```bash
