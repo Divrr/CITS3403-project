@@ -75,17 +75,6 @@ This project is a web application for students to help students, where you can o
 - **`script.py.mako`**: Mako template script for generating dynamic content.
 - **`LICENSE`**: Licensing information for the project.
 
-## Installation and Setup
-
-### Prerequisites
-
-- Python 3.x
-- Flask
-- SQLAlchemy
-- Alembic
-- Flask-WTF
-- jQuery
-
 ### Installation Steps
 
 1. **Clone the repository**
