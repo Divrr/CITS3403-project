@@ -1,12 +1,17 @@
 import multiprocessing
 import time
+import logging
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from unittest import TestCase
 
 from app import create_app, db
 from config import TestConfig
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class TestGroupCreation(TestCase):
     def setUp(self):
@@ -23,28 +28,32 @@ class TestGroupCreation(TestCase):
         db.drop_all()
         self.app_context.pop()
 
-    def test_login(self):
+    def login(self):
+        logger.info('Logging in')
         self.driver.get('http://127.0.0.1:5000/login')
-        time.sleep(3)
-        username_field = self.driver.find_element("xpath", "//input[@name='username']")
-        password_field = self.driver.find_element("xpath", "//input[@name='password']")
+        username_field = self.driver.find_element(By.XPATH, "//input[@name='username']")
+        password_field = self.driver.find_element(By.XPATH, "//input[@name='password']")
         username_field.send_keys("user1")
         password_field.send_keys("password")
         self.driver.execute_script('window.scrollBy(0,240)')
-        time.sleep(3)
-        submit_button = self.driver.find_element("xpath", "//input[@name='submit']")
-        submit_button.click()
+        submit_button = self.driver.find_element(By.XPATH, "//input[@name='submit']")
+        self.driver.execute_script("arguments[0].click();", submit_button)  # JavaScript click
+        logger.info('Logged in successfully')
+
+    def test_login(self):
+        logger.info('Starting test_login')
+        self.login()
+        logger.info('Finished test_login')
 
     def test_signup(self):
+        logger.info('Starting test_signup')
         self.driver.get('http://127.0.0.1:5000/signup')
-        username_field = self.driver.find_element("xpath", "//input[@name='username']")
-        email_field = self.driver.find_element("xpath", "//input[@name='email']")
-        password_field = self.driver.find_element("xpath", "//input[@name='password']")
-        password2_field = self.driver.find_element("xpath", "//input[@name='password2']")
-        time.sleep(8)
+        username_field = self.driver.find_element(By.XPATH, "//input[@name='username']")
+        email_field = self.driver.find_element(By.XPATH, "//input[@name='email']")
+        password_field = self.driver.find_element(By.XPATH, "//input[@name='password']")
+        password2_field = self.driver.find_element(By.XPATH, "//input[@name='password2']")
         self.driver.execute_script('window.scrollBy(0,280)')
-        time.sleep(3)
-        submit_button = self.driver.find_element("xpath", "//input[@name='submit']")
+        submit_button = self.driver.find_element(By.XPATH, "//input[@name='submit']")
 
         username_field.send_keys("testuser")
         email_field.send_keys("aviv2silman@gmail.com")
@@ -52,60 +61,55 @@ class TestGroupCreation(TestCase):
         self.driver.execute_script('window.scrollBy(0,190)')
         password2_field.send_keys("password64")
         self.driver.execute_script('window.scrollBy(0,190)')
-        submit_button.click()
+        self.driver.execute_script("arguments[0].click();", submit_button)  # JavaScript click
+        logger.info('Finished test_signup')
 
     def test_create_accountlink(self):
+        logger.info('Starting test_create_accountlink')
         self.driver.get('http://127.0.0.1:5000/login')
-        self.driver.execute_script('window.scrollBy(0,240)')
-        link_to_signup = self.driver.find_element("xpath", "//a[@href='/signup']")
-        self.driver.execute_script('window.scrollBy(0,240)')
-        time.sleep(4)
-        link_to_signup.click()
+        link_to_signup = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, "//a[@href='/signup']"))
+        )
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", link_to_signup)
+        self.driver.execute_script("arguments[0].click();", link_to_signup)  # JavaScript click
+        logger.info('Finished test_create_accountlink')
 
     def test_already_have_account_link(self):
+        logger.info('Starting test_already_have_account_link')
         self.driver.get('http://127.0.0.1:5000/signup')
-        self.driver.execute_script('window.scrollBy(0,490)')
-        link_to_login = self.driver.find_element("xpath", "//a[@href='/login']")
-        self.driver.execute_script('window.scrollBy(0,240)')
-        time.sleep(3)
-        self.driver.execute_script('window.scrollBy(0,240)')
-        link_to_login.click()
+        link_to_login = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, "//a[@href='/login']"))
+        )
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", link_to_login)
+        self.driver.execute_script("arguments[0].click();", link_to_login)  # JavaScript click
+        logger.info('Finished test_already_have_account_link')
 
     def test_navbar_offer(self):
+        logger.info('Starting test_navbar_offer')
+        self.login()
         self.driver.get('http://127.0.0.1:5000/index')
-        time.sleep(2)
-        offers = self.driver.find_element("xpath", "//a[@href='/offers']")
-        time.sleep(2)
-        offers.click()
+        offers = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, "//a[@href='/offers']"))
+        )
+        self.driver.execute_script("arguments[0].click();", offers)  # JavaScript click
+        logger.info('Finished test_navbar_offer')
 
     def test_navbar_request(self):
+        logger.info('Starting test_navbar_request')
+        self.login()
         self.driver.get('http://127.0.0.1:5000/offers')
-        time.sleep(2)
-        requests = self.driver.find_element("xpath", "//a[@href='/requests']")
-        time.sleep(2)
-        requests.click()
+        requests = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, "//a[@href='/requests']"))
+        )
+        self.driver.execute_script("arguments[0].click();", requests)  # JavaScript click
+        logger.info('Finished test_navbar_request')
 
     def test_navbar_profile(self):
+        logger.info('Starting test_navbar_profile')
+        self.login()
         self.driver.get('http://127.0.0.1:5000/requests')
-        time.sleep(2)
-        home = self.driver.find_element("xpath", "//a[@href='/index']")
-        time.sleep(2)
-        home.click()
-
-
-
-
-
-
-
-
-
-
-    #def test_alreadyhaveaccountlink(self):
-    #    self.driver.get('http://127.0.0.1:5000/signup')
-    #    self.driver.execute_script('window.scrollBy(0,240)')
-    #    time.sleep(2)
-    #    link_to_login = self.driver.find_element("xpath", "//a[@href='/login']")
-    #    self.driver.execute_script('window.scrollBy(0,240)')
-    #    time.sleep(2)
-        #link_to_login.click()
+        home = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, "//a[@href='/index']"))
+        )
+        self.driver.execute_script("arguments[0].click();", home)  # JavaScript click
+        logger.info('Finished test_navbar_profile')
