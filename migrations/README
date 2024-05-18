@@ -9,16 +9,17 @@ This project is a web application for students to help students, where you can o
 1. **Sign Up**: Click the blue link on the page you are on that says "Don't have an account? Create Account here" to navigate to the page to create a new account. Once you are there, create an account by providing your username, email, password, and then password again. Click "Signup". You are now navigated to the sign-in.
 2. **Sign In**: Log in with your username and password. If you would like the site to remember your details, select "Remember Me". Click "Login". You are now navigated to the user's page called "Home".
 3. **Welcome Message**: Upon login and subsequent navigation to the user page "Home", you will see a pop-op welcome message describing the purpose of this webseit. Read carefully. Click "Close".
-4. **Navigate Offers/Requests**:
+4. **Navigation Bar**: At the top of every page, there is a navigation bar. If you are on another page and want to return to the user page to view your items and accepts, click "Home". If you want to browse, search, or accept offers, click "Offers". If you want to browse, search, or accept requests, click "Requests".
+5. **Navigate Offers/Requests**:
    - **Offers Page**: Users can browse and accept various service offers.
    - **Requests Page**: Users can browse and accept requests for services.
    - **Search Functionality**: Users can search for specific keywords or scroll through the list.
-5. **Accept Offers/Requests**: Once users find a suitable offer or request, they can click accept. Accepted items will appear under "Your Accepts" on the home page.
-6. **Contact or Cancel**:
+6. **Accept Offers/Requests**: Once users find a suitable offer or request, they can click accept. Accepted items will appear under "Your Accepts" on the home page.
+7. **Contact or Cancel**:
    - **Contact**: Users can contact the offer/request owner via email when the contact button is clicked.
    - **Cancel**: If users decide not to engage, they can cancel, returning the offer/request to the respective pages.
-7. **Create Offers/Requests**: Users can create their own offers or requests by clicking the big plus button, filling out a form with a category name and description of their choice, and submitting it. The new offer/request will appear on the offers/requests page and under "Your Items".
-8. **Resolve Offers/Requests**: Users can resolve their items once completed. The contact button appears only if someone accepts the offer/request, enabling further discussion via email.
+8. **Create Offers/Requests**: Users can create their own offers or requests by clicking the big plus button, filling out a form with a category name and description of their choice, and submitting it. The new offer/request will appear on the offers/requests page and under "Your Items".
+9. **Resolve Offers/Requests**: Users can resolve their items once completed. The contact button appears only if someone accepts the offer/request, enabling further discussion via email.
 
 ## Files and Directory Structure
 
