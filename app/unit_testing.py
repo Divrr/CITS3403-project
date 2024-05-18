@@ -3,6 +3,7 @@ from unittest import TestCase
 from app import create_app, db
 from config import TestConfig
 from app.models import User, Activity
+import requests
 
 class DatabaseUnitTest(TestCase):
 

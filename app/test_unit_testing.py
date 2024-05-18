@@ -1,21 +1,22 @@
 import unittest
-from app import create_app, db
+from app import create_app, db, app
 from app.models import User, Activity
+from config import TestConfig
 
 class BootstrapUnitTest(unittest.TestCase):
 
     def setUp(self):
-        app = create_app()
+        app = create_app(TestConfig)
         app.config['TESTING'] = True
         self.app = app.test_client()
-        with app.app_context():
-            db.create_all()
-            self.create_test_data()
+        self.app_context = app.app_context()
+        self.app_context.push()
+        db.create_all()
+        self.create_test_data()
 
     def tearDown(self):
-        with app.app_context():
-            db.session.remove()
-            db.drop_all()
+        db.session.remove()
+        db.drop_all()
 
     def create_test_data(self):
         # Add test users
