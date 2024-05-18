@@ -37,5 +37,42 @@ class DatabaseUnitTest(TestCase):
         self.assertEqual(retrieved_activity.type, 'Offer')
         self.assertEqual(retrieved_activity.category, 'Programming')
 
+    def test_accept_request(self):
+        activity = Activity(author_id=1, type='Request', category='Web Development', description='Build a website for a small business')
+        db.session.add(activity)
+        db.session.commit()
+
+        retrieved_activity = Activity.query.filter_by(description='Build a website for a small business').first()
+        self.assertEqual(retrieved_activity.author_id, 1)
+        self.assertEqual(retrieved_activity.type, 'Request')
+        self.assertEqual(retrieved_activity.category, 'Web Development')
+
+class TestJQueryConnection(TestCase):
+    def setUp(self):
+        self.url = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+
+    def test_connection(self):
+        try:
+            response = requests.get(self.url)
+            response.raise_for_status()
+            self.assertEqual(response.status_code, 200)
+            self.assertGreater(len(response.content), 0)
+        except requests.exceptions.RequestException as e:
+            self.fail(f"Connection failed: {e}")
+
+class TestBootstrapConnection(TestCase):
+    def setUp(self):
+        self.url = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+
+    def test_connection(self):
+        try:
+            response = requests.get(self.url)
+            response.raise_for_status()
+            self.assertEqual(response.status_code, 200)
+            self.assertGreater(len(response.content), 0)
+        except requests.exceptions.RequestException as e:
+            self.fail(f"Connection failed: {e}")
+    
+
 if __name__ == '__main__':
     unittest.main()
