@@ -61,7 +61,46 @@ class TestGroupCreation(TestCase):
         self.driver.execute_script('window.scrollBy(0,240)')
         time.sleep(4)
         link_to_signup.click()
-        
+
+    def test_already_have_account_link(self):
+        self.driver.get('http://127.0.0.1:5000/signup')
+        self.driver.execute_script('window.scrollBy(0,490)')
+        link_to_login = self.driver.find_element("xpath", "//a[@href='/login']")
+        self.driver.execute_script('window.scrollBy(0,240)')
+        time.sleep(3)
+        self.driver.execute_script('window.scrollBy(0,240)')
+        link_to_login.click()
+
+    def test_navbar_offer(self):
+        self.driver.get('http://127.0.0.1:5000/index')
+        time.sleep(2)
+        offers = self.driver.find_element("xpath", "//a[@href='/offers']")
+        time.sleep(2)
+        offers.click()
+
+    def test_navbar_request(self):
+        self.driver.get('http://127.0.0.1:5000/offers')
+        time.sleep(2)
+        requests = self.driver.find_element("xpath", "//a[@href='/requests']")
+        time.sleep(2)
+        requests.click()
+
+    def test_navbar_profile(self):
+        self.driver.get('http://127.0.0.1:5000/requests')
+        time.sleep(2)
+        home = self.driver.find_element("xpath", "//a[@href='/index']")
+        time.sleep(2)
+        home.click()
+
+
+
+
+
+
+
+
+
+
     #def test_alreadyhaveaccountlink(self):
     #    self.driver.get('http://127.0.0.1:5000/signup')
     #    self.driver.execute_script('window.scrollBy(0,240)')
