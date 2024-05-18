@@ -6,17 +6,17 @@ This project is a web application for students to help students, where you can o
 
 ### User Workflow
 
-1. **Sign Up**: Users create an account by providing necessary details.
-2. **Sign In**: Users log in with their credentials.
-3. **Welcome Message**: Upon logging in, users are welcomed with a short welcome message.
+1. **Sign Up**: Click the blue link on the page you are on that says "Don't have an account? Create Account here" to navigate to the page to create a new account. Once you are there, create an account by providing your username, email, password, and then password again. Click "Signup". You are now navigated to the sign-in.
+2. **Sign In**: Log in with your username and password. If you would like the site to remember your details, select "Remember Me". Click "Login". You are now navigated to the user's page called "Home".
+3. **Welcome Message**: Upon login and subsequent navigation to the user page "Home", you will see a pop-op welcome message describing the purpose of this webseit. Read carefully. Click "Close".
 4. **Navigate Offers/Requests**:
-    - **Offers Page**: Users can browse and accept various service offers.
-    - **Requests Page**: Users can browse and accept requests for services.
-    - **Search Functionality**: Users can search for specific keywords or scroll through the list.
+   - **Offers Page**: Users can browse and accept various service offers.
+   - **Requests Page**: Users can browse and accept requests for services.
+   - **Search Functionality**: Users can search for specific keywords or scroll through the list.
 5. **Accept Offers/Requests**: Once users find a suitable offer or request, they can click accept. Accepted items will appear under "Your Accepts" on the home page.
-6. **Contact or Cancel**: 
-    - **Contact**: Users can contact the offer/request owner via email when the contact button is clicked.
-    - **Cancel**: If users decide not to engage, they can cancel, returning the offer/request to the respective pages.
+6. **Contact or Cancel**:
+   - **Contact**: Users can contact the offer/request owner via email when the contact button is clicked.
+   - **Cancel**: If users decide not to engage, they can cancel, returning the offer/request to the respective pages.
 7. **Create Offers/Requests**: Users can create their own offers or requests by clicking the big plus button, filling out a form with a category name and description of their choice, and submitting it. The new offer/request will appear on the offers/requests page and under "Your Items".
 8. **Resolve Offers/Requests**: Users can resolve their items once completed. The contact button appears only if someone accepts the offer/request, enabling further discussion via email.
 
@@ -81,28 +81,28 @@ This project is a web application for students to help students, where you can o
 
 1. **Clone the repository**
 
-    ```bash
-    git clone <https://github.com/Divrr/CITS3403-project.git>
-    ```
+   ```bash
+   git clone <https://github.com/Divrr/CITS3403-project.git>
+   ```
 
 2. **Create a virtual environment**
 
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
 
 3. **Install the dependencies**
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-6. **Start the application**
+4. **Start the application**
 
-    ```bash
-    flask run
-    ```
+   ```bash
+   flask run
+   ```
 
 ## Running the Application
 
@@ -121,19 +121,14 @@ This project is licensed under the terms specified in the `LICENSE` file.
 
 ## Image References
 
-- **Plus Icon**: 
-  
-- **Profile Icon**: 
+- **Plus Icon**:
+- **Profile Icon**:
   FLATICON- ![Profile Icon](https://www.flaticon.com/free-icon/profile_3135715)
-  
-- **Tick Icon**: 
-   Stockio- ![Tick Icon](https://www.stockio.com/free-clipart/green-tick-simple#google_vignette)
-  
-- **University of Western Australia Logo**: 
+- **Tick Icon**:
+  Stockio- ![Tick Icon](https://www.stockio.com/free-clipart/green-tick-simple#google_vignette)
+- **University of Western Australia Logo**:
   ![UWA Logo](https://www.google.com/url?sa=i&url=https%3A%2F%2Fseeklogo.com%2Fvector-logo%2F491535%2Fthe-university-of-western-australia&psig=AOvVaw0kMSh4zbcN1o5-PJmUoKJ0&ust=1716040660013000&source=images&cd=vfe&opi=89978449&ved=0CBQQjhxqFwoTCLDvoOHrlIYDFQAAAAAdAAAAABAI)
-  
 - **University of Western Australia Background**:
   Churchill Gowns- ![UWA Background](https://www.churchillgowns.com.au/pages/university-of-western-australia)
-  
-- **Cancel Icon**: 
+- **Cancel Icon**:
   CLEANPNG- ![Cancel Icon](https://www.cleanpng.com/png-button-computer-icons-cancel-button-831795/)
