@@ -18,7 +18,8 @@
         <div class="inputdescription">
           Provide the theme or category that best describes your offer or
           request. One or two words only please. Popular examples include
-          social, uni work, repairs, teaching, learning, and outdoors.
+          social, uni work, repairs, teaching, learning, and outdoors. 15
+          characters max.
         </div>
         {{ form.category(class="form-control") }}
       </div>
@@ -27,13 +28,20 @@
       <div class="mb-3">
         {{ form.description.label }}
         <div class="inputdescription">
-          Describe your offer or request in further detail. What is it, how much
-          time do you need/can you give, and where would the task be
-          accomplished? Keep it succinct, remember, anyone who accepts your
-          offer or request will email you or you can email them, so you can
-          share more details at that point!
+          Describe your offer or request in further detail. For example, what is
+          it, how much time do you need/can you give, and where would the task
+          be accomplished? 100 characters max.
         </div>
         {{ form.description(class="form-control") }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3">
+        What's Next? <br />
+        Either the person who accepts your offer or request will email you, or
+        you can email them using the "Contact" button on the Home page, so you
+        can share more details at that point! The "Contact" button will only
+        become available once another user has accepted your offer or request.
       </div>
     </div>
     <div class="row">
