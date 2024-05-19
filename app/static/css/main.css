@@ -226,7 +226,7 @@ h5 {
 
 .article2 {
     background-color: rgb(201, 240, 217);
-    border: solid 15px rgb(141 202 167);
+    border: solid 15px rgb(141, 202, 167);
     border-radius: 40px;
 }
 
@@ -365,18 +365,26 @@ body {
     padding: 5px 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    white-space: normal; /* Allow text to wrap */
+    white-space: nowrap; /* Prevent text from wrapping */
     text-align: center;  /* Center text */
+    transition: font-size 0.3s ease, padding 0.3s ease; /* Smooth transition */
 }
 
 .contact-button:hover {
     transform: scale(1.07);
 }
 
+@media (max-width: 991px) {
+    .contact-button {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+}
+
 @media (max-width: 767px) {
     .contact-button {
         font-size: 12px;
-        padding: 5px;
+        padding: 5px 6px;
     }
 }
 
