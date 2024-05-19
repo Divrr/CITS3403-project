@@ -28,7 +28,8 @@ login.login_view = 'login'
 csrf = CSRFProtect()
 csrf.init_app(app)
 
-from app.test_data import initialise_test_database
-initialise_test_database()  # this is temporary!
+# The following automatically resets the database with test data every time the app is run:
+# from app.test_data import initialise_test_database
+# initialise_test_database() 
 
 from app import routes, models

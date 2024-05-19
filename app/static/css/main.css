@@ -58,6 +58,13 @@ h1 {
     }
 }
 
+@media (max-width: 767px) {
+    body {
+        padding-top: 10px;
+        /* Further reduced padding for smaller screens */
+    }
+}
+
 .navbar {
     background-color: transparent !important;
     width: 100%;
@@ -219,7 +226,7 @@ h5 {
 
 .article2 {
     background-color: rgb(201, 240, 217);
-    border: solid 15px rgb(141 202 167);
+    border: solid 15px rgb(141, 202, 167);
     border-radius: 40px;
 }
 
@@ -349,21 +356,36 @@ body {
 .contact-button {
     background-color: rgb(246, 255, 244);
     color: darkgreen;
-    height: 50px;
     border: 3px solid rgb(68, 158, 105);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     font-size: 16px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 5px 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-align: center;  /* Center text */
+    transition: font-size 0.3s ease, padding 0.3s ease; /* Smooth transition */
 }
 
 .contact-button:hover {
     transform: scale(1.07);
+}
+
+@media (max-width: 991px) {
+    .contact-button {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+}
+
+@media (max-width: 767px) {
+    .contact-button {
+        font-size: 12px;
+        padding: 5px 6px;
+    }
 }
 
 .userbuttons {
@@ -408,8 +430,6 @@ div {
     margin-bottom: 1%;
     /* Adjust the value for desired space */
 }
-
-
 
 .form-container .form-control {
     height: auto;
