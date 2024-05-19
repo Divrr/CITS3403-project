@@ -154,9 +154,22 @@ This project is licensed under the terms specified in the `LICENSE` file.
 
 # Acknowledgements
 
+- The Flask Mega-Tutorial, Miguel Grinberg, parts 1, 4 and 5, https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
 - ahax. (2017, January 5). AJAX request to perform search in Flask. Stack Overflow. https://stackoverflow.com/questions/41475945/ajax-request-to-perform-search-in-flask
 - Cairocoders. (2020, November 15). Flask MySQL jquery ajax Live Search. YouTube. https://www.youtube.com/watch?v=Us8gBacBDJ8
 - contributors, M. O., Jacob Thornton, and Bootstrap. (n.d.). Toasts. Getbootstrap.com. https://getbootstrap.com/docs/5.3/components/toasts/
 - Red Eyed Coder Club. (2022, May 2). Flask AJAX Tutorial: Basic AJAX in Flask app | Flask casts. YouTube. https://www.youtube.com/watch?v=nF9riePnm80
+- no display specified error with selenium test. (2014, April). https://stackoverflow.com/questions/22648074/no-display-specified-error-with-selenium-test
+- how to click a href link using selenium.(2023, June). https://stackoverflow.com/questions/30635228/how-to-click-a-href-link-using-selenium
+- Unit Test for Search Functionality, https://claude.ai/chat/a4b1300f-7666-4dc7-a698-5ea17deaba47
+- how to best do unit testing for a web application.(2009, February). https://stackoverflow.com/questions/570451/how-to-best-do-unit-testing-for-a-web-application
+- Tuskr, unit testing. retrieved 18 May 2024. https://tuskr.app/learn/unit-testing
+- selenium documentation. retrieved 17 May 2024. https://www.selenium.dev/documentation/
+- tensorFlow documentation. retrieved 17 May 2024. https://blog.tensorflow.org/2020/07/accelerating-tensorflow-lite-xnnpack-integration.html  
+- find element by id driver method selenium python. 14 May 2024. https://www.geeksforgeeks.org/find_element_by_id-driver-method-selenium-python/
+- selenium python tutorial. 14 May 2024. https://www.geeksforgeeks.org/selenium-python-tutorial/
+- chrome drivers. 14 May 2024. https://chromedriver.chromium.org/downloads
+- how-do i create a very simple hyperlink on index html with flask. retrieved 5 May 2024. https://stackoverflow.com/questions/34025620/how-do-i-create-a-very-simple-hyperlink-on-index-html-with-flask
+- email validation from wtform using flask. retrieved 6 May 2024. https://stackoverflow.com/questions/25324113/email-validation-from-wtform-using-flask  
 
-AI tools were used to explain syntax and errors, populate data, and suggest alterations. These AI tools include: Github copilot, ChatGPT, Microsoft Copilot, and Pi.
+AI tools were used to explain syntax and errors, populate data, and suggest alterations. These AI tools include: Github copilot, ChatGPT, Microsoft Copilot, Claude, and Pi.
