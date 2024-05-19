@@ -1,4 +1,3 @@
-
 from app import db, app
 from app.models import *
 
@@ -28,47 +27,53 @@ def initialise_test_database():
 
     db.session.add_all(users)
 
+    activities = [
+        Activity(author_id=1, type='Offer', category='Community Gardening', description='Help maintain a community garden and grow fresh produce for local residents!'),
+        Activity(author_id=2, type='Request', category='Language Exchange', description='Looking for language partner to practice speaking Spanish'),
+        Activity(author_id=3, type='Offer', category='Art', description='Can host a painting workshop for children in the local community center'),
+        Activity(author_id=4, type='Request', category='Fitness', description='Looking for a workout partner to motivate each other and achieve fitness goals'),
+        Activity(author_id=5, type='Offer', category='Photography', description='Offering professional photography services for events and portraits'),
+        Activity(author_id=6, type='Request', category='Music', description='Any music teachers for singing?'),
+        Activity(author_id=7, type='Request', category='Animal Shelter', description='Come find opportunities to help at a local animal shelter'),
+        Activity(author_id=8, type='Request', category='Community Clean-up', description='Organize a clean-up event to keep the neighborhood clean and beautiful'),
+        Activity(author_id=9, type='Offer', category='Meditation', description='I can teach meditation for stress relief and relaxation'),
+        Activity(author_id=10, type='Offer', category='Cooking', description='Offering cooking lessons for beginners'),
+        Activity(author_id=1, type='Request', category='Sports', description='Looking for a tennis partner to play on weekends'),
+        Activity(author_id=2, type='Offer', category='Writing', description='Can provide editing and proofreading services for written documents'),
+        Activity(author_id=3, type='Request', category='Technology', description='Seeking help with computer programming assignments'),
+        Activity(author_id=4, type='Offer', category='Gardening', description='Can help with landscaping and garden maintenance'),
+        Activity(author_id=5, type='Request', category='Dance', description='Looking for a dance instructor for salsa lessons'),
+        Activity(author_id=6, type='Offer', category='Volunteering', description='Volunteering at a local charity organization'),
+        Activity(author_id=7, type='Request', category='Fitness', description='Seeking a personal trainer for customized workout plans'),
+        Activity(author_id=8, type='Offer', category='Photography', description='Offering wedding photography services'),
+        Activity(author_id=9, type='Request', category='Music', description='Looking for a guitar teacher for beginners'),
+        Activity(author_id=10, type='Offer', category='Art', description='Can create custom artwork and paintings'),
+        Activity(author_id=1, type='Request', category='Language Exchange', description='Looking for a language partner to practice speaking French'),
+        Activity(author_id=2, type='Offer', category='Cooking', description='Offering catering services for events'),
+        Activity(author_id=3, type='Request', category='Fitness', description='Seeking a running buddy for regular jogging sessions'),
+        Activity(author_id=4, type='Offer', category='Technology', description='Can provide technical support and troubleshooting for computers'),
+        Activity(author_id=5, type='Request', category='Gardening', description='Looking for gardening tips and advice'),
+        Activity(author_id=6, type='Offer', category='Writing', description='Offering ghostwriting services for books and articles'),
+        Activity(author_id=7, type='Request', category='Art', description='Looking for an art teacher for drawing lessons'),
+        Activity(author_id=8, type='Offer', category='Music', description='Can provide piano lessons for beginners'),
+        Activity(author_id=9, type='Request', category='Language Exchange', description='Looking for a language partner to practice speaking German'),
+        Activity(author_id=10, type='Offer', category='Fitness', description='Offering online fitness coaching and workout plans'),
+        Activity(author_id=1, type='Request', category='Technology', description='Seeking help with setting up a home network'),
+        Activity(author_id=2, type='Offer', category='Gardening', description='Can help with vegetable gardening and organic farming'),
+        Activity(author_id=3, type='Request', category='Dance', description='Looking for a dance partner for ballroom dancing'),
+        Activity(author_id=4, type='Offer', category='Volunteering', description='Volunteering at a local homeless shelter'),
+        Activity(author_id=5, type='Request', category='Fitness', description='Seeking a yoga instructor for private sessions'),
+        Activity(author_id=6, type='Offer', category='Photography', description='Offering portrait photography services'),
+        Activity(author_id=7, type='Request', category='Music', description='Looking for a violin teacher for intermediate level'),
+        Activity(author_id=8, type='Offer', category='Art', description='Can provide art commissions and custom illustrations')
+    ]
 
 
-    db.session.add_all([
-        Activity(author_id=1, type='Offer', category='Programming', description='Python programming task'),
-        Activity(author_id=2, type='Request', category='Web Development', description='Build a website'),
-        Activity(author_id=3, type='Offer', category='Data Analysis', description='Analyze sales data'),
-        Activity(author_id=4, type='Request', category='Machine Learning', description='Train a model'),
-        Activity(author_id=5, type='Offer', category='Mobile App Development', description='Develop an Android app'),
-        Activity(author_id=6, type='Request', category='Database Management', description='Optimize database queries'),
-        Activity(author_id=7, type='Offer', category='UI/UX Design', description='Design a user-friendly interface'),
-        Activity(author_id=8, type='Request', category='Software Testing', description='Write test cases'),
-        Activity(author_id=9, type='Request', category='Cybersecurity', description='Perform a security audit'),
-        Activity(author_id=10, type='Offer', category='Cloud Computing', description='Deploy an application on AWS')
-    ])
+    for i in range(15):
+        activities[i].acceptor_id = i % 7
+        activities[i].status = 'Pending'
+    
+    db.session.add_all(activities)
 
-    db.session.add_all([
-        Activity(author_id=1, acceptor_id=2, type='Request', category='Web Development', description='Build a website for a small business', status='Pending'),
-        Activity(author_id=2, acceptor_id=3, type='Request', category='Data Analysis', description='Perform statistical analysis on sales data', status='Pending'),
-        Activity(author_id=3, acceptor_id=4, type='Request', category='Machine Learning', description='Train a model to predict customer churn', status='Pending'),
-        Activity(author_id=4, acceptor_id=5, type='Request', category='Mobile App Development', description='Develop an iOS app for a startup', status='Pending'),
-        Activity(author_id=5, acceptor_id=6, type='Request', category='Database Management', description='Optimize database queries for a large-scale application', status='Pending'),
-        Activity(author_id=6, acceptor_id=7, type='Offer', category='UI/UX Design', description='Design a user-friendly interface for a mobile app', status='Pending'),
-        Activity(author_id=7, acceptor_id=8, type='Offer', category='Software Testing', description='Write test cases for a web application', status='Pending'),
-        Activity(author_id=8, acceptor_id=9, type='Offer', category='Cybersecurity', description='Perform a security audit on a network infrastructure', status='Pending'),
-        Activity(author_id=9, acceptor_id=10, type='Offer', category='Cloud Computing', description='Deploy a scalable web application on AWS', status='Pending'),
-        Activity(author_id=10, acceptor_id=1, type='Offer', category='Artificial Intelligence', description='Implement a natural language processing algorithm', status='Pending')
-    ])
-
+    # Commit the changes to the database
     db.session.commit()
-
-    # retrieve data
-    users = User.query.all()
-    activities = Activity.query.all()
-
-    # print data
-    print('Users (id, username, email, password_hash):')
-    for user in users:
-        print(user.id , user.username, user.email, user.password_hash)
-
-    print('\nActivities (id, author_id, acceptor_id, type, category, description):')
-    for activity in activities:
-        print(activity.id, activity.author_id, activity.acceptor_id, activity.type, activity.category, activity.description)
-
-    print('\nDone! Test data has been generated. You can now run the app now!')
