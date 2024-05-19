@@ -16,6 +16,8 @@ Here are some basic vocabulary used in this website:
 (noun) "Item": Any offer or request.
 (verb) To "accept" an offer: You are agreeing to recieve a service that another user is offering.
 (verb) To "accept" a request: You are agreeing to provide the service that another user is asking for.
+(verb) To "resolve" an item: You, as the creator of an item, are removing it for yourself and all other users by clicking the tick button
+(verb) To "cancel" an accept: You, as a user who has accepted an item, is choosing to undo your accept, thereby removing that item from your homepage and returning it to its respective Offers/Requests page for another user to accept by clicking the x button.
 
 1. **Sign Up**: Click the blue link on the page you are on that says "Don't have an account? Create Account here" to navigate to the page to create a new account. Once you are there, create an account by providing your username, email, password, and then password again. Click "Signup". You are now navigated to the sign-in.
 2. **Sign In**: Log in with your username and password. If you would like the site to remember your details, select "Remember Me". Click "Login". You are now navigated to the user's page called "Home".
@@ -51,7 +53,7 @@ Here are some basic vocabulary used in this website:
 - **`unit_testing.py`**: Testing scripts to ensure application functionality.
 - **`test_unit_testing.py`**: Further testing scripts to ensure application functionality.
 - **`selenium_testing.py`**: Selenium-based unit tests for verifying application functionality.
-- **`blueprints.py`**:  Sets up a Flask Blueprint for the main module and imports the routes.
+- **`blueprints.py`**: Sets up a Flask Blueprint for the main module and imports the routes.
 
 ### Templates (HTML)
 
