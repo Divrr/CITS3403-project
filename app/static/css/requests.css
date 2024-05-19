@@ -67,7 +67,7 @@ body {
 /* Media Queries for responsive design */
 @media (max-width: 768px) {
   body {
-    padding-top: 250px; /* Adjusted for mobile screens */
+    padding-top: 280px; /* Adjusted for mobile screens */
   }
 
   .searchbar {
@@ -82,7 +82,7 @@ body {
 
 @media (max-width: 576px) {
   body {
-    padding-top: 200px; /* Further adjusted for even smaller screens */
+    padding-top: 230px; /* Further adjusted for even smaller screens */
   }
 
   .searchbar {
