@@ -16,6 +16,8 @@ Here are some basic vocabulary used in this website:
 (noun) "Item": Any offer or request.
 (verb) To "accept" an offer: You are agreeing to recieve a service that another user is offering.
 (verb) To "accept" a request: You are agreeing to provide the service that another user is asking for.
+(verb) To "resolve" an item: You, as the creator of an item, are removing it for yourself and all other users by clicking the tick button
+(verb) To "cancel" an accept: You, as a user who has accepted an item, is choosing to undo your accept, thereby removing that item from your homepage and returning it to its respective Offers/Requests page for another user to accept by clicking the x button.
 
 1. **Sign Up**: Click the blue link on the page you are on that says "Don't have an account? Create Account here" to navigate to the page to create a new account. Once you are there, create an account by providing your username, email, password, and then password again. Click "Signup". You are now navigated to the sign-in.
 2. **Sign In**: Log in with your username and password. If you would like the site to remember your details, select "Remember Me". Click "Login". You are now navigated to the user's page called "Home".
@@ -48,7 +50,10 @@ Here are some basic vocabulary used in this website:
 - **`models.py`**: Database models using SQLAlchemy for ORM.
 - **`routes.py`**: Routes/endpoints and corresponding view functions.
 - **`test_data.py`**: Test data for populating the database during development or testing.
-- **`testing.py`**: Testing scripts to ensure application functionality.
+- **`unit_testing.py`**: Testing scripts to ensure application functionality.
+- **`test_unit_testing.py`**: Further testing scripts to ensure application functionality.
+- **`selenium_testing.py`**: Selenium-based unit tests for verifying application functionality.
+- **`blueprints.py`**: Sets up a Flask Blueprint for the main module and imports the routes.
 
 ### Templates (HTML)
 
@@ -162,3 +167,27 @@ This project is licensed under the terms specified in the `LICENSE` file.
   Churchill Gowns- ![UWA Background](https://www.churchillgowns.com.au/pages/university-of-western-australia)
 - **Cancel Icon**:
   CLEANPNG- ![Cancel Icon](https://www.cleanpng.com/png-button-computer-icons-cancel-button-831795/)
+- **Plus Icon**:
+  Vecteezy- ![Plus Icon](https://www.vecteezy.com/vector-art/14215574-green-plus-sign-vector-icon-cross-symbol-of-safety-guidance)
+
+# Acknowledgements
+
+- The Flask Mega-Tutorial, Miguel Grinberg, parts 1, 4 and 5, https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+- ahax. (2017, January 5). AJAX request to perform search in Flask. Stack Overflow. https://stackoverflow.com/questions/41475945/ajax-request-to-perform-search-in-flask
+- Cairocoders. (2020, November 15). Flask MySQL jquery ajax Live Search. YouTube. https://www.youtube.com/watch?v=Us8gBacBDJ8
+- contributors, M. O., Jacob Thornton, and Bootstrap. (n.d.). Toasts. Getbootstrap.com. https://getbootstrap.com/docs/5.3/components/toasts/
+- Red Eyed Coder Club. (2022, May 2). Flask AJAX Tutorial: Basic AJAX in Flask app | Flask casts. YouTube. https://www.youtube.com/watch?v=nF9riePnm80
+- no display specified error with selenium test. (2014, April). https://stackoverflow.com/questions/22648074/no-display-specified-error-with-selenium-test
+- how to click a href link using selenium.(2023, June). https://stackoverflow.com/questions/30635228/how-to-click-a-href-link-using-selenium
+- Unit Test for Search Functionality, https://claude.ai/chat/a4b1300f-7666-4dc7-a698-5ea17deaba47
+- how to best do unit testing for a web application.(2009, February). https://stackoverflow.com/questions/570451/how-to-best-do-unit-testing-for-a-web-application
+- Tuskr, unit testing. retrieved 18 May 2024. https://tuskr.app/learn/unit-testing
+- selenium documentation. retrieved 17 May 2024. https://www.selenium.dev/documentation/
+- tensorFlow documentation. retrieved 17 May 2024. https://blog.tensorflow.org/2020/07/accelerating-tensorflow-lite-xnnpack-integration.html  
+- find element by id driver method selenium python. 14 May 2024. https://www.geeksforgeeks.org/find_element_by_id-driver-method-selenium-python/
+- selenium python tutorial. 14 May 2024. https://www.geeksforgeeks.org/selenium-python-tutorial/
+- chrome drivers. 14 May 2024. https://chromedriver.chromium.org/downloads
+- how-do i create a very simple hyperlink on index html with flask. retrieved 5 May 2024. https://stackoverflow.com/questions/34025620/how-do-i-create-a-very-simple-hyperlink-on-index-html-with-flask
+- email validation from wtform using flask. retrieved 6 May 2024. https://stackoverflow.com/questions/25324113/email-validation-from-wtform-using-flask  
+
+AI tools were used to explain syntax and errors, populate data, and suggest alterations. These AI tools include: Github copilot, ChatGPT, Microsoft Copilot, Claude, and Pi.
