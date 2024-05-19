@@ -1,15 +1,25 @@
 {% extends "base.html" %} {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/login_signup.css') }}" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/login_signup.css') }}"
+/>
 
 <div class="outercontainter">
   <div class="container">
-    <img src="../static/img/UWA University of Western Australia.png" alt="Logo" id="logo" , width="200px" ,
-      class="center" />
+    <img
+      src="../static/img/UWA University of Western Australia.png"
+      alt="Logo"
+      id="logo"
+      ,
+      width="200px"
+      ,
+      class="center"
+    />
     <h1>UWA COMMUNITY HUB</h1>
     <br />
     <div id="authForm"></div>
     <h2>Create Account</h2>
-    <form action="" method="post">
+    <form method="post">
       {{ form.hidden_tag() }}
       <p>{{ form.username(size=32, placeholder="Username")}}</p>
       {% if form.username.errors %}
@@ -46,7 +56,9 @@
       <p>{{ form.submit() }}</p>
     </form>
     <p>
-      <a id="underLink" href="{{ url_for('login') }}">Already have an account? Sign In here</a>
+      <a id="underLink" href="{{ url_for('login') }}"
+        >Already have an account? Sign In here</a
+      >
     </p>
   </div>
 </div>
