@@ -48,7 +48,10 @@ Here are some basic vocabulary used in this website:
 - **`models.py`**: Database models using SQLAlchemy for ORM.
 - **`routes.py`**: Routes/endpoints and corresponding view functions.
 - **`test_data.py`**: Test data for populating the database during development or testing.
-- **`testing.py`**: Testing scripts to ensure application functionality.
+- **`unit_testing.py`**: Testing scripts to ensure application functionality.
+- **`test_unit_testing.py`**: Further testing scripts to ensure application functionality.
+- **`selenium_testing.py`**: Selenium-based unit tests for verifying application functionality.
+- **`blueprints.py`**:  Sets up a Flask Blueprint for the main module and imports the routes.
 
 ### Templates (HTML)
 
@@ -146,6 +149,7 @@ This project is licensed under the terms specified in the `LICENSE` file.
   CLEANPNG- ![Cancel Icon](https://www.cleanpng.com/png-button-computer-icons-cancel-button-831795/)
 
 # Acknowledgements
+
 - ahax. (2017, January 5). AJAX request to perform search in Flask. Stack Overflow. https://stackoverflow.com/questions/41475945/ajax-request-to-perform-search-in-flask
 - Cairocoders. (2020, November 15). Flask MySQL jquery ajax Live Search. YouTube. https://www.youtube.com/watch?v=Us8gBacBDJ8
 - contributors, M. O., Jacob Thornton, and Bootstrap. (n.d.). Toasts. Getbootstrap.com. https://getbootstrap.com/docs/5.3/components/toasts/
