@@ -144,3 +144,11 @@ This project is licensed under the terms specified in the `LICENSE` file.
   Churchill Gowns- ![UWA Background](https://www.churchillgowns.com.au/pages/university-of-western-australia)
 - **Cancel Icon**:
   CLEANPNG- ![Cancel Icon](https://www.cleanpng.com/png-button-computer-icons-cancel-button-831795/)
+
+# Acknowledgements
+- ahax. (2017, January 5). AJAX request to perform search in Flask. Stack Overflow. https://stackoverflow.com/questions/41475945/ajax-request-to-perform-search-in-flask
+- Cairocoders. (2020, November 15). Flask MySQL jquery ajax Live Search. YouTube. https://www.youtube.com/watch?v=Us8gBacBDJ8
+- contributors, M. O., Jacob Thornton, and Bootstrap. (n.d.). Toasts. Getbootstrap.com. https://getbootstrap.com/docs/5.3/components/toasts/
+- Red Eyed Coder Club. (2022, May 2). Flask AJAX Tutorial: Basic AJAX in Flask app | Flask casts. YouTube. https://www.youtube.com/watch?v=nF9riePnm80
+
+AI tools were used to explain syntax and errors, populate data, and suggest alterations. These AI tools include: Github copilot, ChatGPT, Microsoft Copilot, and Pi.
