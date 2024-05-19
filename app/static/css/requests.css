@@ -1,29 +1,49 @@
 body {
-  padding: 50px;
-  padding-top: 260px;
-  /* Adjust this value based on your header's actual height */
+  padding: 20px;
+  padding-top: 300px; /* Large screens */
   background-color: #e69b5e;
-  margin: 70px;
+  margin: 0;
+}
+
+.fixed_heading {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000; /* Ensure it is above other content */
+  padding: 10px; /* Add some padding to ensure content within header is properly spaced */
 }
 
 .searchbar {
   width: 100%;
   background-color: rgb(201, 240, 217);
   border: 15px solid rgb(141 202 167);
-  border-radius: 95px;
+  border-radius: 30px; /* Reduced radius for smaller screens */
   font-size: large;
   font-family: sans-serif;
-  margin-top: 5px;
-  margin-bottom: 25px;
-  padding: 40px;
+  margin-top: 20px; /* Added margin to separate from header */
+  margin-bottom: 15px; /* Reduced margin for smaller screens */
+  padding: 20px; /* Reduced padding for smaller screens */
 }
 
-#itemlist>div>div {
+#itemlist > div > div {
   background-color: #ffc484;
   border: solid 4px #f48a18;
+  margin-bottom: 10px; /* Added margin for spacing between items */
+  display: flex; /* Use flexbox to control text overflow */
+  justify-content: center; /* Center the text */
+  align-items: center; /* Center the text vertically */
+  min-width: 0; /* Prevent overflow */
+  padding: 10px; /* Add padding for better spacing */
 }
 
-#itemlist>div>div:hover {
+#itemlist > div > div span {
+  font-size: 1.2rem; /* Initial font size */
+  max-width: 100%; /* Prevent overflow */
+  white-space: nowrap; /* Prevent text wrap */
+  overflow: hidden; /* Hide overflow */
+}
+
+#itemlist > div > div:hover {
   background-color: #f48a18;
 }
 
@@ -42,4 +62,39 @@ body {
 
 .acceptbtn:hover {
   transform: scale(1.07);
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+  body {
+    padding-top: 280px; /* Adjusted for mobile screens */
+  }
+
+  .searchbar {
+    border-radius: 15px; /* Further reduced radius for smaller screens */
+    padding: 15px;
+  }
+
+  #itemlist > div > div {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding-top: 230px; /* Further adjusted for even smaller screens */
+  }
+
+  .searchbar {
+    padding: 10px;
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  .acceptbtn {
+    padding: 8px 16px; /* Reduced padding for smaller screens */
+    font-size: 14px; /* Reduced font size for smaller screens */
+  }
 }

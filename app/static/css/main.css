@@ -58,6 +58,13 @@ h1 {
     }
 }
 
+@media (max-width: 767px) {
+    body {
+        padding-top: 10px;
+        /* Further reduced padding for smaller screens */
+    }
+}
+
 .navbar {
     background-color: transparent !important;
     width: 100%;
@@ -349,21 +356,28 @@ body {
 .contact-button {
     background-color: rgb(246, 255, 244);
     color: darkgreen;
-    height: 50px;
     border: 3px solid rgb(68, 158, 105);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     font-size: 16px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 5px 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    white-space: normal; /* Allow text to wrap */
+    text-align: center;  /* Center text */
 }
 
 .contact-button:hover {
     transform: scale(1.07);
+}
+
+@media (max-width: 767px) {
+    .contact-button {
+        font-size: 12px;
+        padding: 5px;
+    }
 }
 
 .userbuttons {
@@ -408,8 +422,6 @@ div {
     margin-bottom: 1%;
     /* Adjust the value for desired space */
 }
-
-
 
 .form-container .form-control {
     height: auto;
