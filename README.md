@@ -149,6 +149,8 @@ This project is licensed under the terms specified in the `LICENSE` file.
   Churchill Gowns- ![UWA Background](https://www.churchillgowns.com.au/pages/university-of-western-australia)
 - **Cancel Icon**:
   CLEANPNG- ![Cancel Icon](https://www.cleanpng.com/png-button-computer-icons-cancel-button-831795/)
+- **Plus Icon**:
+  Vecteezy- ![Plus Icon](https://www.vecteezy.com/vector-art/14215574-green-plus-sign-vector-icon-cross-symbol-of-safety-guidance)
 
 # Acknowledgements
 
