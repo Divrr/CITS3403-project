@@ -69,8 +69,8 @@ def initialise_test_database():
     ]
 
 
-    for i in range(15):
-        activities[i].acceptor_id = i % 7
+    for i in range(10):
+        activities[i].acceptor_id = ((i-1) % 5) + 1
         activities[i].status = 'Pending'
     
     db.session.add_all(activities)
