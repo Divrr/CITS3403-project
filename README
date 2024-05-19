@@ -110,7 +110,25 @@ Here are some basic vocabulary used in this website:
    pip install -r requirements.txt
    ```
 
-4. **Start the application**
+4. **Initialise the database**
+
+   ```bash
+   flask db upgrade
+   ```
+
+   Additionally, you can add test data from `test_data.py` to your website. To do so, run:
+
+   ```bash
+   flask shell
+   ```
+
+   which puts you into a python interpreter. Then, run:
+
+   ```python
+   >> exec(open('app/test_data.py').read())
+   ```
+
+5. **Start the application**
 
    ```bash
    flask run

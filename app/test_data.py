@@ -77,3 +77,6 @@ def initialise_test_database():
 
     # Commit the changes to the database
     db.session.commit()
+
+initialise_test_database()
+print('Test database initialised! You can exit the program now (exit() or Ctrl+D)')
