@@ -49,7 +49,7 @@ def form():
         db.session.commit()
         flash('Your activity has been created!', 'success')
         return redirect(url_for('index'))
-    return render_template('offer_request_form.html', form=form)
+    return render_template('offer_request_form.html', form=form, title="Offer Request Form")
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
