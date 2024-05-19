@@ -1,11 +1,20 @@
 {% extends "base.html" %} {% block content %} {% include 'navbar.html' %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/offers.css') }}" type="text/css" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/offers.css') }}"
+  type="text/css"
+/>
 
 <div class="container mx-auto row searchbar">
   <form>
     <div class="input-group mx-auto py-3">
-      <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-button"
-        style="border-radius: 50px" />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search"
+        aria-label="Search"
+        style="border-radius: 50px"
+      />
     </div>
   </form>
 </div>
